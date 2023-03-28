@@ -52,7 +52,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-03-28 20:23:36'
+  postUpdate: '2023-03-28 20:26:04'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -165,27 +165,18 @@
 博主这里是一致的，是因为我已经设置好了的话。如果没设置的话应该是
 5-'enum'keyword,generics,autoboxing etc.
 
-
-image-20230328195934032
-
 查看和Java
 Compiler的jdk版本是否一致
 设置之前是1.5
-
-
-image-20230328195616616
 
 如果不一致
 将这两处的版本改成项目的jdk版本
 第二种解决方案（半劳永逸）
 修改pom.xml
-123456789101112&lt;build&gt;      &lt;plugins&gt;           &lt;plugin&gt;                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;                &lt;artifactId&gt;maven-compiler-plug ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/28/github%E5%B7%A5%E4%BD%9C%E6%B5%81/" title="github工作流">github工作流</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-28T03:30:46.000Z" title="发表于 2023-03-28 11:30:46">2023-03-28</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a></span></div><div class="content">
+123456789101112&lt;build&gt;      &lt;plugins&gt;           &lt;plugin&gt;                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;                &lt;configuration&gt; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/28/github%E5%B7%A5%E4%BD%9C%E6%B5%81/" title="github工作流">github工作流</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-28T03:30:46.000Z" title="发表于 2023-03-28 11:30:46">2023-03-28</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a></span></div><div class="content">
 github工作流
 一般流程
 1.先git clone远端仓库（remote）到本地。
-
-
-克隆远端仓库
 
 这里的disk是实际源文件，当git
 clone之后，local和disk的内容是一样的
@@ -201,18 +192,15 @@ git checkout -b my-feature
 作用：创建并切换到新的分支
 git会把my-feature这个branch的代码同步到硬盘
 
-
-创建分支
-
 3.改好代码，保存文件之后。硬盘上的文件是有变化的，但是git不知道。
 使用命令查看硬盘上的文件与保存的分支的区别
 git diff
 
-
-查看变化
-
 4.将修改的文件告知git
-git add &lt;changed_file&gt; （后面是文件名） ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/27/%E6%95%B0%E7%BB%84/" title="数组">数组</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-27T11:42:06.000Z" title="发表于 2023-03-27 19:42:06">2023-03-27</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95%E5%AD%A6%E4%B9%A0/">代码随想录学习</a></span></div><div class="content">
+git add &lt;changed_file&gt; （后面是文件名）
+这些文件会放到暂存区中。
+
+5.将修改真正放到git中 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/03/27/%E6%95%B0%E7%BB%84/" title="数组">数组</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-27T11:42:06.000Z" title="发表于 2023-03-27 19:42:06">2023-03-27</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95%E5%AD%A6%E4%B9%A0/">代码随想录学习</a></span></div><div class="content">
 数组
 数组理论基础
 数组是存放在连续内存空间上的相同类型数据的集合。
@@ -236,4 +224,4 @@ git add &lt;changed_file&gt; （后面是文件名） ...</div></div></div><div 
             </div>
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">Java学习</span><span class="card-category-list-count">1</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95%E5%AD%A6%E4%B9%A0/" style="font-size: 1.5em; color: #99a9bf">代码随想录学习</a> <a href="/tags/Maven%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">Maven学习</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 1.1em; color: #999">工具使用</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3/" style="font-size: 1.1em; color: #999">个人感想</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">5</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-03-28T12:23:35.549Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Torch</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>备案号：赣ICP备2023001668号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3/" style="font-size: 1.1em; color: #999">个人感想</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 1.1em; color: #999">工具使用</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95%E5%AD%A6%E4%B9%A0/" style="font-size: 1.5em; color: #99a9bf">代码随想录学习</a> <a href="/tags/Maven%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">Maven学习</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">5</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-03-28T12:26:03.376Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Torch</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>备案号：赣ICP备2023001668号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

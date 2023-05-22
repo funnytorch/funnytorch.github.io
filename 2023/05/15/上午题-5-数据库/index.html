@@ -1,0 +1,509 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>上午题-5-数据库 | Torch's blog</title><meta name="author" content="Torch"><meta name="copyright" content="Torch"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[toc] 概念数据模型   结构数据模型   关系模型：二维表  三级模式结构 三级模式  三级模式两级映像  外模式——视图 模式（概念模式）——基本表 内模式——存储文件 两级映像  外模式&#x2F;模式映像：逻辑独立性 模式&#x2F;内模式映像：物理独立性  关系模式基本术语  外码：注意还要是另一个关系的码  完整性约束   并、差、交、笛卡尔积  重点：笛卡尔积    投影、连接  σ1&gt;3\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="上午题-5-数据库">
+<meta property="og:url" content="http://www.funnytorch.love/2023/05/15/%E4%B8%8A%E5%8D%88%E9%A2%98-5-%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="Torch&#39;s blog">
+<meta property="og:description" content="[toc] 概念数据模型   结构数据模型   关系模型：二维表  三级模式结构 三级模式  三级模式两级映像  外模式——视图 模式（概念模式）——基本表 内模式——存储文件 两级映像  外模式&#x2F;模式映像：逻辑独立性 模式&#x2F;内模式映像：物理独立性  关系模式基本术语  外码：注意还要是另一个关系的码  完整性约束   并、差、交、笛卡尔积  重点：笛卡尔积    投影、连接  σ1&gt;3\">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.328888.xyz/2023/04/07/irjA0t.jpeg">
+<meta property="article:published_time" content="2023-05-15T11:32:14.000Z">
+<meta property="article:modified_time" content="2023-05-22T11:43:00.189Z">
+<meta property="article:author" content="Torch">
+<meta property="article:tag" content="软件设计师">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.328888.xyz/2023/04/07/irjA0t.jpeg"><link rel="shortcut icon" href="https://i.328888.xyz/2023/04/07/irjDBJ.png"><link rel="canonical" href="http://www.funnytorch.love/2023/05/15/%E4%B8%8A%E5%8D%88%E9%A2%98-5-%E6%95%B0%E6%8D%AE%E5%BA%93/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '上午题-5-数据库',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-22 19:43:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.328888.xyz/2023/04/07/irjA0t.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Torch's blog"><span class="site-name">Torch's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">上午题-5-数据库</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-15T11:32:14.000Z" title="发表于 2023-05-15 19:32:14">2023-05-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-22T11:43:00.189Z" title="更新于 2023-05-22 19:43:00">2023-05-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E8%80%83%E5%A4%87%E8%80%83/">软考备考</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="上午题-5-数据库"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer" />
+<p>[toc]</p>
+<h4 id="概念数据模型">概念数据模型</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515194550352.png" alt=""></p>
+<hr>
+<h4 id="结构数据模型">结构数据模型</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515194957146.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515195031907.png" alt=""></p>
+<p>关系模型：二维表</p>
+<hr>
+<h4 id="三级模式结构">三级模式结构</h4>
+<h5 id="三级模式">三级模式</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515195228338.png" alt=""></p>
+<p>三级模式两级映像</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515195340750.png" alt=""></p>
+<p>外模式——视图</p>
+<p>模式（概念模式）——基本表</p>
+<p>内模式——存储文件</p>
+<h5 id="两级映像">两级映像</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515195748801.png" alt=""></p>
+<p>外模式/模式映像：逻辑独立性</p>
+<p>模式/内模式映像：物理独立性</p>
+<hr>
+<h4 id="关系模式基本术语">关系模式基本术语</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515200844595.png" alt=""></p>
+<p>外码：注意还要是另一个关系的码</p>
+<hr>
+<h4 id="完整性约束">完整性约束</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515201546280.png" alt=""></p>
+<hr>
+<h4 id="并、差、交、笛卡尔积">并、差、交、笛卡尔积</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515201743977.png" alt=""></p>
+<p>重点：笛卡尔积</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515202107549.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515202124914.png" alt=""></p>
+<hr>
+<h4 id="投影、连接">投影、连接</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515202741167.png" alt=""></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mrow><mn>1</mn><mo>&gt;</mo><mn>3</mn></mrow></msub></mrow><annotation encoding="application/x-tex">\sigma_{1&gt;3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6079em;vertical-align:-0.1774em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">&gt;</span><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span></span></span></span>表示第一列大于第三列</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mrow><mn>1</mn><msup><mo>&gt;</mo><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><msup><mn>5</mn><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow></msub></mrow><annotation encoding="application/x-tex">\sigma_{1&gt;&#x27;5&#x27;}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6079em;vertical-align:-0.1774em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.328em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight"><span class="mrel mtight">&gt;</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mtight"><span class="mord mtight">5</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span></span></span></span>表示第一列的值大于5</p>
+<h4 id="题目">题目</h4>
+<ol>
+<li></li>
+</ol>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515210836954.png" alt=""></p>
+<p>查询效率最高即查询速度最快，D选项先进行查询，再笛卡尔积，可以笛卡尔积之后的元组数量少，从而查询效率高。</p>
+<hr>
+<h4 id="θ连接和等值连接">θ连接和等值连接</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515203343186.png" alt=""></p>
+<p>θ为=时为等值连接</p>
+<hr>
+<h4 id="自然连接">自然连接</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515204609513.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515204622641.png" alt=""></p>
+<p>自然连接，如果<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>×</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">R\times S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span>中有多个相同的属性列，也要选择多个都相同的，比如例子中的要选择A、C属性都相同的</p>
+<hr>
+<h4 id="左外连接、右外连接、全外连接">左外连接、右外连接、全外连接</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515205232621.png" alt=""></p>
+<hr>
+<h4 id="除">除</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515205456122.png" alt=""></p>
+<p>先找C、D列在R中的，有{a, b}、{b, d}、{c, k}，然后再找这三个对应的C、D列，发现只有{b, d}对应的C、D列不能全部与S对应上</p>
+<h4 id="转SQL语言">转SQL语言</h4>
+<h5 id="投影、选择转SQL语言">投影、选择转SQL语言</h5>
+<p>投影：select</p>
+<p>选择：where</p>
+<h5 id="笛卡尔积转SQL语言">笛卡尔积转SQL语言</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515212555648.png" alt=""></p>
+<h5 id="自然连接转SQL语言">自然连接转SQL语言</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515212836624.png" alt=""></p>
+<hr>
+<h4 id="SQL语言">SQL语言</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515213157107.png" alt=""></p>
+<h5 id="数据定义语言">数据定义语言</h5>
+<p>建立数据库：<code>create database 数据库名</code></p>
+<p>建立表：</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515213757464.png" alt=""></p>
+<p>unique可以为空</p>
+<p>primary key 唯一且不为空</p>
+<p>外键可以为空</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">数据库的外键可以为空，也可以非空，但是如果非空，则这个值必须在主表中存在。</span><br><span class="line">比如主表是一个班级，主键是班级id，</span><br><span class="line">子表是学生分配班级表，主键是学生id，外键是所在班级id。</span><br><span class="line">如果一个学生的外键id为空，说明这个学生还没有被分配到任何一个班级</span><br><span class="line">如果一个学生的外键id非空，并且是班级表中的某个id，则说明学生分配到这个班级</span><br></pre></td></tr></table></figure>
+<p>修改基本表结构</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515213506665.png" alt=""></p>
+<h5 id="数据操作语言">数据操作语言</h5>
+<p><code>insert into 表名(列名序列) values(元组值)</code></p>
+<p><code>insert into 表名(列名序列) select 查询语句</code></p>
+<p><code>delete from 表名 [where 条件表达式]</code>([]可选，不加全部删除)</p>
+<p><code>update 表名 set 列名=值表达式[, 列名=值表达式...][where 条件表达式]</code></p>
+<h5 id="数据查询语言">数据查询语言</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select 目标表的列名或列表达式序列 </span><br><span class="line">from 表 </span><br><span class="line">[where 行条件表达式]</span><br><span class="line">[group by 列名序列]</span><br><span class="line">[having 组表达式]</span><br><span class="line">[order by 列名 [ASC|DESC]...]</span><br></pre></td></tr></table></figure>
+<p><code>select distinct 类别 as kind from teacher</code>：去除重复，as命名</p>
+<p>字符串匹配运算符：[not] like</p>
+<p>匹配串：</p>
+<ul>
+<li>%代表任意长度的字符串</li>
+<li>_代表任意单个字符</li>
+</ul>
+<p>比较运算符： &lt;&gt;（不等于）</p>
+<p><code>select * from score where 分数 between 60 and 80</code>：[60, 80]</p>
+<p>集合运算符：in、not in</p>
+<p><code>select * from score where 分数 in (85, 86, 88)</code></p>
+<p>逻辑组合：and、or</p>
+<p>空值：is null、is not null</p>
+<h6 id="聚合函数">聚合函数</h6>
+<p>avg——数值表达式的平均值</p>
+<p>count——指定表达式的选择的项数</p>
+<p>min、max——指定表达式的最小、大值</p>
+<p>sum——指定表达式的和</p>
+<p><code>select count(*) as 人数 from student where 班号='09031'</code></p>
+<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516192832973.png" style="zoom:200%;" />
+<p>where后面不能跟聚合函数，having后面可以跟聚合函数</p>
+<h6 id="内连接">内连接</h6>
+<p>inner join</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from student st inner join score sc on st.学号=sc.学号</span><br></pre></td></tr></table></figure>
+<p>（st、sc为定义表的别名，on跟连接条件）</p>
+<ul>
+<li>
+<p>等值连接</p>
+<ul>
+<li>
+<pre><code class="language-mysql">select student.姓名, score.课程号, score.分数 from stundet, score
+wherer student.学号=score.学号
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">- 非等值连接</span><br><span class="line"></span><br><span class="line">  - 连接关系不是等于，比如where后面是between...and...</span><br><span class="line"></span><br><span class="line">- 自连接</span><br><span class="line"></span><br><span class="line">  - ![](http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516194150506.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">###### 外连接</span><br><span class="line"></span><br><span class="line">out join</span><br><span class="line"></span><br><span class="line">- 左外连接：以left join左边的表为主体，右边表匹配的加入</span><br><span class="line">  - left outer join 或 left join</span><br><span class="line">- 右外连接：以right join右边的表为主体，左边的表匹配的加入</span><br><span class="line">  - right outer join 或 right join</span><br><span class="line">- 全外连接：保留两表的不匹配信息</span><br><span class="line">  - full outer join 或 full join</span><br><span class="line"></span><br><span class="line">```mysql</span><br><span class="line">select course.课程名, teacher.姓名</span><br><span class="line">from course right join teacher</span><br><span class="line">on course.任课教师编号= teacher.教师编号</span><br></pre></td></tr></table></figure>
+
+
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="一般子查询">一般子查询</h6>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select 课程号, 学号, 分数</span><br><span class="line">from score</span><br><span class="line">where 课程号=&#x27;3-105&#x27; and  分数 &gt; any </span><br><span class="line">(select 分数 from score</span><br><span class="line">where 课程号=&#x27;3-245&#x27;)</span><br><span class="line">order by 分数 desc</span><br></pre></td></tr></table></figure>
+<p>any的意思是分数大于子查询的一个分数即可</p>
+<p>all是要大于全部</p>
+<h6 id="相关子查询">相关子查询</h6>
+<p>检索成绩比该课程平均成绩低的学生成绩表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select 学号, 课程号, 分数</span><br><span class="line">from score a</span><br><span class="line">where 分数 &lt;</span><br><span class="line">(select avg(分数)</span><br><span class="line">from score b </span><br><span class="line">where a.课程号=b.课程号 and 分数 is not null)</span><br></pre></td></tr></table></figure>
+<h6 id="查询结果的并、交、差运算">查询结果的并、交、差运算</h6>
+<ul>
+<li>union：并</li>
+<li>intersect：交</li>
+<li>except：差</li>
+</ul>
+<h6 id="题目-2">题目</h6>
+<ol>
+<li></li>
+</ol>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516200500268.png" alt=""></p>
+<p>54.*:*:*</p>
+<p>按照题目的意思可以翻译成1:*:*和*:1:*，上下会覆盖，所以是*:*:*</p>
+<h5 id="sql控制语句">sql控制语句</h5>
+<p>授权</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant&lt;权限&gt;[,&lt;权限&gt;...][on&lt;对象类型&gt;&lt;对象名&gt;]to&lt;用户&gt;[,&lt;用户&gt;...][with grant option]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>with grant option：获得权限的用户可以将权限赋给其他用户</li>
+</ul>
+<p>注意这个<strong>on</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on table teacher to user1 with grant option</span><br></pre></td></tr></table></figure>
+<p>表的全部权限</p>
+<h5 id="视图">视图</h5>
+<p>视图是从一个或者多个基本表或视图中导出的表</p>
+<p>视图是一个虚拟表</p>
+<p>视图创建</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create view 视图名(列表名)</span><br><span class="line">as select 查询子句</span><br><span class="line">[with check option]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>with check option表示对update、insert、delete操作时保证更新、插入或删除的行满足视图定义中的谓词条件（即子查询中的条件表达式）</li>
+</ul>
+<p>视图删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop view 视图名</span><br></pre></td></tr></table></figure>
+<h5 id="索引">索引</h5>
+<p>索引改变的是数据库的内模式</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516202251371.png" alt=""></p>
+<hr>
+<h4 id="关系模式">关系模式</h4>
+<p>A-&gt;B</p>
+<p>A决定B或B依赖A</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516202635072.png" alt=""></p>
+<h5 id="函数依赖">函数依赖</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516203618656.png" alt=""></p>
+<h5 id="码和推理规则">码和推理规则</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516204245914.png" alt=""></p>
+<h5 id="属性闭包计算">属性闭包计算</h5>
+<p>求候选码</p>
+<ul>
+<li>
+<p>L 类：所有依赖关系中仅出现在函数依赖左部的属性。　（<strong>一定包含在候选码中</strong>）</p>
+</li>
+<li>
+<p>R 类：所有依赖关系中仅出现在函数依赖右部的属性。　　（<strong>一定不包含在候选码中</strong>）</p>
+</li>
+<li>
+<p>LR 类：所有依赖关系中即出现在函数依赖左部又出现在函数依赖右部的属性。　　（<strong>可能包含在候选码中</strong>）</p>
+</li>
+<li>
+<p>N 类：所有依赖关系中没有出现的属性。（<strong>一定包含在候选码中</strong>）</p>
+</li>
+</ul>
+<p>步骤：</p>
+<ul>
+<li>先将L类和N类的加入，然后求闭包，如果等于U，则是一个候选码</li>
+<li>如果不等于U，从LR类中加入元素，求闭包</li>
+</ul>
+<p><strong>注意：</strong></p>
+<p>A-&gt;BC</p>
+<p>等价于A-&gt;B和A-&gt;C</p>
+<hr>
+<h4 id="范式">范式</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516210940460.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517090504658.png" alt=""></p>
+<h5 id="第一范式（1NF）">第一范式（1NF）</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516211116196.png" alt=""></p>
+<p>修改需要修改多项（比如修改学生姓名），插入、删除异常（比如插入一门课程，还得填写学生，删除一门课程）</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516211650424.png" alt=""></p>
+<h5 id="第二范式（2NF）">第二范式（2NF）</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516212018676.png" alt=""></p>
+<p>例如，成绩是完全函数依赖于学号和课程号，而姓名是部分函数依赖于与学号和课程号（因为姓名完全函数依赖于学号）</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516213308048.png" alt=""></p>
+<p>2NF存在问题：R1中插入、删除学院，以及每次插入学生信息都要输入学院和院长</p>
+<h5 id="第三范式（3NF）">第三范式（3NF）</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516213736774.png" alt=""></p>
+<p>比如原本的就存在学号-&gt;学院，学院-&gt;院长（传递函数依赖）</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516214405189.png" alt=""></p>
+<p>比如店长部分依赖于（书店、图书）（候选码，中的书店）</p>
+<h5 id="BC范式（BCNF）">BC范式（BCNF）</h5>
+<p>非主属性对码的部分函数依赖在之前的1NF-&gt;2NF消除了，所以只存在主属性对码的部分函数依赖</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230516214839092.png" alt=""></p>
+<p>3NF-&gt;BCNF</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517085629685.png" alt=""></p>
+<p>(店长，图书)-&gt;库存量，舍弃</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517085839335.png" alt=""></p>
+<p>消除了插入和删除异常</p>
+<h5 id="第四范式（4NF）（很少考）">第四范式（4NF）（很少考）</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517090126613.png" alt=""></p>
+<p>候选码（任课教师，参考书）</p>
+<h5 id="判断部分函数依赖技巧">判断部分函数依赖技巧</h5>
+<p>一般给出的都是满足1NF</p>
+<p>先找出候选码，然后判断非主属性对候选码是否存在部分函数依赖</p>
+<h5 id="判断传递函数依赖技巧">判断传递函数依赖技巧</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517091925013.png" alt=""></p>
+<p><strong>主要用伪传递律。</strong></p>
+<p>首先，求出候选码为（时间，学生）</p>
+<p>由（时间，学生）-&gt;教室，（时间，教室）-&gt;课程，类似于x-&gt;y，wy-&gt;z，x为（时间，学生），w为时间，y为教室。</p>
+<p>所以有xw-&gt;z，由于x包含w，所以是（时间，学生）-&gt;课程。</p>
+<p>又课程推出教师，所以教师传递函数依赖于候选码。</p>
+<h5 id="关系分解">关系分解</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517094156365.png" alt=""></p>
+<p>候选码是员工号和家庭成员。</p>
+<p>由于（姓名 部门 部门电话 部门负责人 家庭住址都是部分函数依赖于候选码），故将其分解。</p>
+<p>分解成两个关系，对于第一个关系，可以明显发现是存在传递函数依赖的。（存在插入删除异常，比如要添加一个部分或者删除一个部门）</p>
+<p>x-&gt;y, y-&gt;z1, y-&gt;z2</p>
+<p>如题，则是员工号-&gt;部门，部门-&gt;部门电话，部门-&gt;部门负责人。所以将部门、部门电话、部门负责人单独列到一张表中。</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517094614629.png" alt=""></p>
+<h5 id="无损连接和保持函数依赖">无损连接和保持函数依赖</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517095658639.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517100203241.png" alt=""></p>
+<p>B-&gt;A, C-&gt;B 是传递函数依赖</p>
+<p>判断的方法，对于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>π</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\pi_{AB}(F)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mclose">)</span></span></span></span>先判断其函数依赖集能不能由原F推出。其他的类似。</p>
+<p>然后求并集，看有没有体现，可以看到D-&gt;C没有，所以对D求闭包。</p>
+<hr>
+<h4 id="数据库设计">数据库设计</h4>
+<p>数据库设计的策略一般有：</p>
+<ul>
+<li>自顶向下</li>
+<li>自底向上</li>
+</ul>
+<p>数据库设计的步骤（新奥尔良法）：</p>
+<ul>
+<li>用户需求分析</li>
+<li>概念设计：描述概念模型比较理想的是采用E-R方法</li>
+<li>逻辑设计：将E-R图转换为关系模式，再进行规范化（范式）</li>
+<li>物理设计</li>
+</ul>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517101736553.png" alt=""></p>
+<h5 id="需求分析">需求分析</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517101854313.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517102058202.png" alt=""></p>
+<h5 id="概念结构设计阶段">概念结构设计阶段</h5>
+<p>联系</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517102336310.png" alt=""></p>
+<p>属性</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517102712778.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517103356328.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517103448455.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517104343669.png" alt=""></p>
+<p>合并各分ER图</p>
+<h5 id="逻辑结构设计阶段">逻辑结构设计阶段</h5>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517104810262.png" alt=""></p>
+<h6 id="E-R图转换为关系模式">E-R图转换为关系模式</h6>
+<p><strong>一对一联系的转换</strong></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517105350612.png" alt=""></p>
+<p><strong>一对多联系的转换</strong></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517105634720.png" alt=""></p>
+<p>少的加入多的</p>
+<p><strong>多对多联系的转换</strong></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517105744834.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517105842176.png" alt=""></p>
+<p><strong>题目</strong></p>
+<ol>
+<li></li>
+</ol>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517110301659.png" alt=""></p>
+<p>54注意</p>
+<hr>
+<h4 id="事务">事务</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517110644000.png" alt=""></p>
+<hr>
+<h4 id="数据库的备份和恢复">数据库的备份和恢复</h4>
+<p>备份方法</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517110947266.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517111015262.png" alt=""></p>
+<h5 id="题目-3">题目</h5>
+<ol>
+<li></li>
+</ol>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517111223376.png" alt=""></p>
+<hr>
+<h4 id="封锁">封锁</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517111343172.png" alt=""></p>
+<hr>
+<h4 id="分布式数据库">分布式数据库</h4>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517111600784.png" alt=""></p>
+<hr>
+<h4 id="其他题目">其他题目</h4>
+<p>1.<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517111919327.png" alt=""></p>
+<ol start="2">
+<li></li>
+</ol>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517112007178.png" alt=""></p>
+<ol start="3">
+<li></li>
+</ol>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517112119421.png" alt=""></p>
+<ol start="4">
+<li></li>
+</ol>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517112433405.png" alt=""></p>
+<ol start="5">
+<li></li>
+</ol>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517112554607.png" alt=""></p>
+<ol start="6">
+<li></li>
+</ol>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230517112709772.png" alt=""></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://www.funnytorch.love">Torch</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.funnytorch.love/2023/05/15/%E4%B8%8A%E5%8D%88%E9%A2%98-5-%E6%95%B0%E6%8D%AE%E5%BA%93/">http://www.funnytorch.love/2023/05/15/%E4%B8%8A%E5%8D%88%E9%A2%98-5-%E6%95%B0%E6%8D%AE%E5%BA%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.funnytorch.love" target="_blank">Torch's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88/">软件设计师</a></div><div class="post_share"><div class="social-share" data-image="https://i.328888.xyz/2023/04/07/irjA0t.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/17/%E4%B8%8B%E5%8D%88%E9%A2%98-2-%E8%AF%95%E9%A2%98%E4%BA%8C/" title="下午题-2-试题二"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">下午题-2-试题二</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/15/%E4%B8%8A%E5%8D%88%E9%A2%98-5-%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/" title="上午题-5-知识产权"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">上午题-5-知识产权</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/05/08/%E4%B8%8A%E5%8D%88%E9%A2%98-1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" title="上午题#1-计算机系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-08</div><div class="title">上午题#1-计算机系统</div></div></a></div><div><a href="/2023/05/14/%E4%B8%8A%E5%8D%88%E9%A2%98-2-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/" title="上午题-2-程序设计语言"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-14</div><div class="title">上午题-2-程序设计语言</div></div></a></div><div><a href="/2023/05/15/%E4%B8%8A%E5%8D%88%E9%A2%98-5-%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/" title="上午题-5-知识产权"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-15</div><div class="title">上午题-5-知识产权</div></div></a></div><div><a href="/2023/05/15/%E4%B8%8B%E5%8D%88%E9%A2%98-1-%E8%AF%95%E9%A2%98%E4%B8%80/" title="下午题-1-试题一"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-15</div><div class="title">下午题-1-试题一</div></div></a></div><div><a href="/2023/05/17/%E4%B8%8B%E5%8D%88%E9%A2%98-2-%E8%AF%95%E9%A2%98%E4%BA%8C/" title="下午题-2-试题二"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-17</div><div class="title">下午题-2-试题二</div></div></a></div><div><a href="/2023/05/17/%E4%B8%8A%E5%8D%88%E9%A2%98-7-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="上午题-7-面向对象"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-17</div><div class="title">上午题-7-面向对象</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.328888.xyz/2023/04/07/irjA0t.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Torch</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/HJ2489" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:torch2147483647@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">概念数据模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">结构数据模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">三级模式结构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">三级模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%A4%E7%BA%A7%E6%98%A0%E5%83%8F"><span class="toc-number">3.2.</span> <span class="toc-text">两级映像</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="toc-number">4.</span> <span class="toc-text">关系模式基本术语</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="toc-number">5.</span> <span class="toc-text">完整性约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E3%80%81%E5%B7%AE%E3%80%81%E4%BA%A4%E3%80%81%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF"><span class="toc-number">6.</span> <span class="toc-text">并、差、交、笛卡尔积</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%95%E5%BD%B1%E3%80%81%E8%BF%9E%E6%8E%A5"><span class="toc-number">7.</span> <span class="toc-text">投影、连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">8.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%CE%B8%E8%BF%9E%E6%8E%A5%E5%92%8C%E7%AD%89%E5%80%BC%E8%BF%9E%E6%8E%A5"><span class="toc-number">9.</span> <span class="toc-text">θ连接和等值连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E7%84%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">10.</span> <span class="toc-text">自然连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A6%E5%A4%96%E8%BF%9E%E6%8E%A5%E3%80%81%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5%E3%80%81%E5%85%A8%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">11.</span> <span class="toc-text">左外连接、右外连接、全外连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%99%A4"><span class="toc-number">12.</span> <span class="toc-text">除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%ACSQL%E8%AF%AD%E8%A8%80"><span class="toc-number">13.</span> <span class="toc-text">转SQL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8A%95%E5%BD%B1%E3%80%81%E9%80%89%E6%8B%A9%E8%BD%ACSQL%E8%AF%AD%E8%A8%80"><span class="toc-number">13.1.</span> <span class="toc-text">投影、选择转SQL语言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF%E8%BD%ACSQL%E8%AF%AD%E8%A8%80"><span class="toc-number">13.2.</span> <span class="toc-text">笛卡尔积转SQL语言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%87%AA%E7%84%B6%E8%BF%9E%E6%8E%A5%E8%BD%ACSQL%E8%AF%AD%E8%A8%80"><span class="toc-number">13.3.</span> <span class="toc-text">自然连接转SQL语言</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL%E8%AF%AD%E8%A8%80"><span class="toc-number">14.</span> <span class="toc-text">SQL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80"><span class="toc-number">14.1.</span> <span class="toc-text">数据定义语言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E8%AF%AD%E8%A8%80"><span class="toc-number">14.2.</span> <span class="toc-text">数据操作语言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80"><span class="toc-number">14.3.</span> <span class="toc-text">数据查询语言</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0"><span class="toc-number">14.3.1.</span> <span class="toc-text">聚合函数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%86%85%E8%BF%9E%E6%8E%A5"><span class="toc-number">14.3.2.</span> <span class="toc-text">内连接</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">14.3.3.</span> <span class="toc-text">一般子查询</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">14.3.4.</span> <span class="toc-text">相关子查询</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E7%9A%84%E5%B9%B6%E3%80%81%E4%BA%A4%E3%80%81%E5%B7%AE%E8%BF%90%E7%AE%97"><span class="toc-number">14.3.5.</span> <span class="toc-text">查询结果的并、交、差运算</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">14.3.6.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#sql%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">14.4.</span> <span class="toc-text">sql控制语句</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-number">14.5.</span> <span class="toc-text">视图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">14.6.</span> <span class="toc-text">索引</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F"><span class="toc-number">15.</span> <span class="toc-text">关系模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96"><span class="toc-number">15.1.</span> <span class="toc-text">函数依赖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A0%81%E5%92%8C%E6%8E%A8%E7%90%86%E8%A7%84%E5%88%99"><span class="toc-number">15.2.</span> <span class="toc-text">码和推理规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E9%97%AD%E5%8C%85%E8%AE%A1%E7%AE%97"><span class="toc-number">15.3.</span> <span class="toc-text">属性闭包计算</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8C%83%E5%BC%8F"><span class="toc-number">16.</span> <span class="toc-text">范式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F%EF%BC%881NF%EF%BC%89"><span class="toc-number">16.1.</span> <span class="toc-text">第一范式（1NF）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F%EF%BC%882NF%EF%BC%89"><span class="toc-number">16.2.</span> <span class="toc-text">第二范式（2NF）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F%EF%BC%883NF%EF%BC%89"><span class="toc-number">16.3.</span> <span class="toc-text">第三范式（3NF）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BC%E8%8C%83%E5%BC%8F%EF%BC%88BCNF%EF%BC%89"><span class="toc-number">16.4.</span> <span class="toc-text">BC范式（BCNF）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E8%8C%83%E5%BC%8F%EF%BC%884NF%EF%BC%89%EF%BC%88%E5%BE%88%E5%B0%91%E8%80%83%EF%BC%89"><span class="toc-number">16.5.</span> <span class="toc-text">第四范式（4NF）（很少考）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E9%83%A8%E5%88%86%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E6%8A%80%E5%B7%A7"><span class="toc-number">16.6.</span> <span class="toc-text">判断部分函数依赖技巧</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E6%8A%80%E5%B7%A7"><span class="toc-number">16.7.</span> <span class="toc-text">判断传递函数依赖技巧</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%88%86%E8%A7%A3"><span class="toc-number">16.8.</span> <span class="toc-text">关系分解</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A0%E6%8D%9F%E8%BF%9E%E6%8E%A5%E5%92%8C%E4%BF%9D%E6%8C%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96"><span class="toc-number">16.9.</span> <span class="toc-text">无损连接和保持函数依赖</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">17.</span> <span class="toc-text">数据库设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">17.1.</span> <span class="toc-text">需求分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E9%98%B6%E6%AE%B5"><span class="toc-number">17.2.</span> <span class="toc-text">概念结构设计阶段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E9%98%B6%E6%AE%B5"><span class="toc-number">17.3.</span> <span class="toc-text">逻辑结构设计阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#E-R%E5%9B%BE%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F"><span class="toc-number">17.3.1.</span> <span class="toc-text">E-R图转换为关系模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">18.</span> <span class="toc-text">事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%A4%87%E4%BB%BD%E5%92%8C%E6%81%A2%E5%A4%8D"><span class="toc-number">19.</span> <span class="toc-text">数据库的备份和恢复</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">19.1.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%81%E9%94%81"><span class="toc-number">20.</span> <span class="toc-text">封锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">21.</span> <span class="toc-text">分布式数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%A2%98%E7%9B%AE"><span class="toc-number">22.</span> <span class="toc-text">其他题目</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/22/%E4%B8%8A%E5%8D%88%E9%A2%98-3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="上午题-3-数据结构">上午题-3-数据结构</a><time datetime="2023-05-22T11:42:08.000Z" title="发表于 2023-05-22 19:42:08">2023-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/22/%E4%B8%8A%E5%8D%88%E9%A2%98-14-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="上午题-14-计算机网络">上午题-14-计算机网络</a><time datetime="2023-05-22T08:27:34.000Z" title="发表于 2023-05-22 16:27:34">2023-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/22/%E4%B8%8A%E5%8D%88%E9%A2%98-13-%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" title="上午题-13-信息安全">上午题-13-信息安全</a><time datetime="2023-05-22T08:16:21.000Z" title="发表于 2023-05-22 16:16:21">2023-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/22/%E4%B8%8A%E5%8D%88%E9%A2%98-12-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" title="上午题-12-软件工程">上午题-12-软件工程</a><time datetime="2023-05-22T08:13:07.000Z" title="发表于 2023-05-22 16:13:07">2023-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/19/%E4%B8%8A%E5%8D%88%E9%A2%98-11-%E7%BB%93%E6%9E%84%E5%8C%96%E5%BC%80%E5%8F%91/" title="上午题-11-结构化开发">上午题-11-结构化开发</a><time datetime="2023-05-19T08:55:34.000Z" title="发表于 2023-05-19 16:55:34">2023-05-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Torch</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>备案号：赣ICP备2023001668号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

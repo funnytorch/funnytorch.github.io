@@ -1,0 +1,516 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>函数-极限-连续 | Torch's blog</title><meta name="author" content="Torch"><meta name="copyright" content="Torch"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[toc] 一. 函数1.1 函数概念 （图中应为则称y是x的函数） &#x3D;&#x3D;可以多个x对应一个y&#x3D;&#x3D; 函数概念有两个基本要素：定义域和对应法则 （定义域和对应法则确定了，值域也就确定了） 考法：看两个函数是不是同一个函数（就去看定义域和对应法则） 1.2 常见函数符号函数 取整函数 常用结论：$x-1 &lt; [x] \leq x $ 复合函数 能不能复合看$D_f \cap R_g \ne">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数-极限-连续">
+<meta property="og:url" content="http://www.funnytorch.love/2023/07/08/%E5%87%BD%E6%95%B0-%E6%9E%81%E9%99%90-%E8%BF%9E%E7%BB%AD/index.html">
+<meta property="og:site_name" content="Torch&#39;s blog">
+<meta property="og:description" content="[toc] 一. 函数1.1 函数概念 （图中应为则称y是x的函数） &#x3D;&#x3D;可以多个x对应一个y&#x3D;&#x3D; 函数概念有两个基本要素：定义域和对应法则 （定义域和对应法则确定了，值域也就确定了） 考法：看两个函数是不是同一个函数（就去看定义域和对应法则） 1.2 常见函数符号函数 取整函数 常用结论：$x-1 &lt; [x] \leq x $ 复合函数 能不能复合看$D_f \cap R_g \ne">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg">
+<meta property="article:published_time" content="2023-07-08T00:45:09.000Z">
+<meta property="article:modified_time" content="2023-07-08T00:52:07.473Z">
+<meta property="article:author" content="Torch">
+<meta property="article:tag" content="考研数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg"><link rel="shortcut icon" href="https://pic1.imgdb.cn/item/646c285ce03e90d874adadbd.png"><link rel="canonical" href="http://www.funnytorch.love/2023/07/08/%E5%87%BD%E6%95%B0-%E6%9E%81%E9%99%90-%E8%BF%9E%E7%BB%AD/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '函数-极限-连续',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-08 08:52:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Torch's blog"><span class="site-name">Torch's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">函数-极限-连续</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-08T00:45:09.000Z" title="发表于 2023-07-08 08:45:09">2023-07-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-08T00:52:07.473Z" title="更新于 2023-07-08 08:52:07">2023-07-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%80%83%E7%A0%94%E5%A4%87%E8%80%83/">考研备考</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="函数-极限-连续"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer" />
+
+
+<p>[toc]</p>
+<h4 id="一-函数"><a href="#一-函数" class="headerlink" title="一. 函数"></a>一. 函数</h4><h5 id="1-1-函数概念"><a href="#1-1-函数概念" class="headerlink" title="1.1 函数概念"></a>1.1 函数概念</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230131160146861.png" alt=""></p>
+<p>（图中应为<strong>则称y是x的函数</strong>）</p>
+<p>==可以多个x对应一个y==</p>
+<p>函数概念有两个基本要素：<strong>定义域和对应法则</strong></p>
+<p>（定义域和对应法则确定了，值域也就确定了）</p>
+<p>考法：看两个函数是不是同一个函数（就去看定义域和对应法则）</p>
+<h5 id="1-2-常见函数"><a href="#1-2-常见函数" class="headerlink" title="1.2 常见函数"></a>1.2 常见函数</h5><h6 id="符号函数"><a href="#符号函数" class="headerlink" title="符号函数"></a>符号函数</h6><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230131111257016.png" alt=""></p>
+<h6 id="取整函数"><a href="#取整函数" class="headerlink" title="取整函数"></a>取整函数</h6><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230131111518259.png" alt=""></p>
+<p>常用结论：$x-1 &lt; [x] \leq x $</p>
+<h6 id="复合函数"><a href="#复合函数" class="headerlink" title="复合函数"></a>复合函数</h6><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230131112157590.png" alt=""></p>
+<p>能不能复合看$D_f \cap R_g \ne \emptyset$ ，不是任何两个函数都可以复合</p>
+<h6 id="反函数"><a href="#反函数" class="headerlink" title="反函数"></a>反函数</h6><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230131160308222.png" alt=""></p>
+<p>对于一个y来说，只有唯一的x与之对应，所以这要求x和y是一一映射的</p>
+<p>注：</p>
+<p>1.<strong>不是每个函数都有反函数</strong>，如$y=x^3$有反函数，而$y=x^2$没有反函数</p>
+<p>2.<strong>单调函数一定有反函数，但反函数不一定是单调函数</strong>，如$f(x)=\begin{cases}x,\qquad 0\leq x\leq1\\3-x,\ 1\leq x \leq 2 \end{cases}$</p>
+<p>有反函数的充要条件是不同的x映射不同的y</p>
+<p>3.</p>
+<p>（==可以这样理解：反函数就是用y表示出x来，函数的图像没有变，如果交换x和y的表示就是对称==），$y=f(x)$和$y=f^{-1}(x)$的图像关于直线$y=x$对称</p>
+<p>4.反函数的复合</p>
+<p>$f^{-1}[f(x)]=x$</p>
+<p>$f[f^{-1}(x)]=x$  （==$y=f^{-1}(x)$==，把下图中的x和y换一下更好理解一点）</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215093814806.png" alt=""></p>
+<p>怎么理解：这样想，从x映射到y，反函数是y映射到x，相当于映射回来了</p>
+<p>如何求一个函数的反函数</p>
+<ul>
+<li>用y表示出x来</li>
+<li>x和y对调</li>
+</ul>
+<p><em>例题：求函数$y=sh\ x=\frac{e^x-e^{-x}}{2}$的反函数    答案：$y=ln(x + \sqrt{1+x^2})$</em></p>
+<h6 id="初等函数"><a href="#初等函数" class="headerlink" title="初等函数"></a>初等函数</h6><p><strong>基本初等函数</strong></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215094033557.png" alt=""></p>
+<p>注意：反正切函数考得非常多，定义域为$(-\infty, \infty)$，值域是$(-\frac{\pi}{2}, \frac{\pi}{2})$， 是一个单调增函数</p>
+<p>反正弦函数的值域是$[-\frac{\pi}{2}, \frac{\pi}{2}]$，反余弦函数的值域是$[0, \pi]$</p>
+<p>还有一个常数函数（就是常数）</p>
+<p><strong>初等函数</strong></p>
+<p>由常数和基本初等函数经过有限次的加、减、乘、除和复合所得到且能用一个解析式表示的函数，称为初等函数。</p>
+<h5 id="1-3-函数的性质"><a href="#1-3-函数的性质" class="headerlink" title="1.3 函数的性质"></a>1.3 函数的性质</h5><h6 id=""><a href="#" class="headerlink" title=""></a><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215095044242.png" alt=""></h6><p>注意：<strong>奇偶性中，定义域要关于原点对称</strong></p>
+<p>奇函数的图形关于原点对称，<strong>且若f(x)在x=0处有定义，则f(0)=0</strong></p>
+<p>偶函数的图形关于y轴对称</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215095422717.png" alt=""></p>
+<p>乘法：<strong>同加为原，同乘为偶，异乘为奇</strong></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215095919940.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215100753699.png" alt=""></p>
+<p>有界函数和无界函数的定义是互为否命题</p>
+<p><strong>例题</strong></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215101436291.png" alt=""></p>
+<h4 id="二-极限"><a href="#二-极限" class="headerlink" title="二.极限"></a>二.极限</h4><h5 id="2-1-极限的概念"><a href="#2-1-极限的概念" class="headerlink" title="2.1 极限的概念"></a>2.1 极限的概念</h5><h6 id="数列的极限"><a href="#数列的极限" class="headerlink" title="数列的极限"></a>数列的极限</h6><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215104258697.png" alt=""></p>
+<p>注意：</p>
+<p>（2）中几何意义说明，有极限的数列的无穷多项被限制在了$(a-\varepsilon, a+\varepsilon)$中。也能更好理解<strong>收敛数列必定有界</strong>（数列收敛就是有极限，数列有极限就是收敛，有极限的数列的N后面的无穷多项都被限制在了$(a-\varepsilon, a+\varepsilon)$中，说明<strong>有界</strong>）</p>
+<p>（3）中的结论可以与<strong>单调有界数列必有极限</strong>结合使用，说明从后面开始单调有界的数列也有极限（因为和前有限项无关）</p>
+<p>（4）一个数列的极限是a，那么它的奇数列和偶数列也应该以a为极限。反之，<strong>如果一个数列的奇数列和偶数列都有极限，则这个数列不一定有极限</strong>（如$(-1)^n$，奇数列的极限为-1，偶数列的极限为1，但这个数列没有极限），但是==如果奇数列和偶数列都有极限并且极限相等，才能推出原数列有极限并且是奇数列和偶数列的极限==</p>
+<p>例题</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215110142872.png" alt=""></p>
+<p>以上的解法用到了（4）</p>
+<p>其他解法</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215110641007.png" alt=""></p>
+<p>解法3是用了基本极限</p>
+<p>解法4（取对数转化），$ln(1+\frac{1}{n})$趋近于0，$(-1)^n$是一个有界量，有界量乘以无穷小为无穷小，所以$ln(X_n)$趋近于无穷小，就是0，则$X_n$趋近于1</p>
+<p>两个结论的证明</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215111524540.png" alt=""></p>
+<p>（2）中充分由（1）可得，证必要中$||x_n||$就为$|x_n|$</p>
+<h6 id="函数的极限"><a href="#函数的极限" class="headerlink" title="函数的极限"></a>函数的极限</h6><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215191508969.png" alt=""></p>
+<p>函数的极限等于a可以推出相应的数列的极限等于a，但反之不行。例子是$sin(\pi x)$和$sin(n\pi)$</p>
+<p>有的时候求数列极限的时候也会转换为求其对应函数的极限（<strong>因为函数的极限等于与其对应的数列的极限，并且求函数的极限可以用洛必达法则</strong>）</p>
+<p>注意：这里的$x\to\infty$是指$x\to -\infty$和$x\to \infty$；而数列极限中的$n\to\infty$是指$n\to+\infty$</p>
+<p><strong>定理</strong>：极限$\lim_{x\to\infty}f(x)$存在的充要条件是极限$lim_{x\to-\infty}f(x)$和$\lim_{x\to+\infty}f(x)$存在并且相等</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215194058637.png" alt=""></p>
+<p>$x\to x_0$中$x\neq x_0$，而$f(x)\to A$中$f(x)$可以等于A。</p>
+<p>注意（3），求f(x)在$x_0$处的极限与$x_0$处有没有定义和$f(x_0)$的值无关。</p>
+<p>如图中的$\lim_{x\to0}\frac{sinx}{x}=1$，x在0处没有定义。</p>
+<p>图中的$\lim_{x\to0}\frac{sin(xsin\frac{1}{x})}{xsin\frac{1}{x}}=1$就是一个例子（答案是错误的，因为$sin\frac{1}{x}$在趋近于0的时候越来越密，就导致$x_0$附近也有很多x使得$sin\frac{1}{x}=0$，使得整体的$xsin\frac{1}{x}$不满足趋近于$x_0$的时候，且不等于$x_0$）</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215195420263.png" alt=""></p>
+<p>存在左极限和右极限并且左右极限相等才能反推</p>
+<p><strong>需要区分左右极限的情况</strong></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215195537331.png" alt=""></p>
+<p>例题</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215200637854.png" alt=""></p>
+<h5 id="2-2-极限性质"><a href="#2-2-极限性质" class="headerlink" title="2.2 极限性质"></a>2.2 极限性质</h5><p>数列收敛就是有极限，发散就是无极限</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215201421999.png" alt=""></p>
+<p>根据极限的几何意义来理解，无穷多项被控制在了$(a-\varepsilon, a+\varepsilon)$中，至于其他有限项（因为是有限的，所以当然能控制住）。</p>
+<p>有界数列不一定收敛，如$(-1)^n$</p>
+<p>对于函数来说，局部有界并不能推出极限存在（如$sin\frac{1}{x}$、$f(x)=\begin{cases}-1,\quad x<0\\0,\quad x=0\\1,\quad x>0\end{cases}$， $x\to0$时）</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215202924895.png" alt=""></p>
+<p>对于（1），如果带等号就错了，因为例如$-\frac{1}{n}$，$n\to\infty$，$-\frac{1}{n}\to0$, 但是应该是存在N&gt;0, 当n&gt;N时，$x_n&lt;0$。$x_n$取不到0。又例如图中的例子$\frac{(-1)^n}{n}$，越靠近极限时，数列在正负摆动。</p>
+<p>对于（2），如果不带等号就错了，$\frac{1}{n}\to0$，但是数列的项却是大于0的。</p>
+<p><strong>极限值保数列的项（或函数值）没有等号</strong></p>
+<p><strong>数列的项（或函数值）保极限值有等号</strong></p>
+<p>保号性例题：</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215204725227.png" alt=""></p>
+<p>排除法</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215204813046.png" alt=""></p>
+<p>当题目是一般函数时，可以考虑用排除法，用法是用特殊函数去代换。</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215205148852.png" alt=""></p>
+<h5 id="2-3-极限存在准则"><a href="#2-3-极限存在准则" class="headerlink" title="2.3 极限存在准则"></a>2.3 极限存在准则</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215205627205.png" alt=""></p>
+<p>夹逼准则常在n项和中用</p>
+<p>有界就说明有上界和下界，单调增、有上界（下界是$a_0$）</p>
+<p>单调有界准则常用来证明数列存在极限。常考对于$x_{n+1}=f(x_n)$类似的递推式，求a的值，先要证明有极限（即收敛），再求极限。</p>
+<p><strong>夹逼准则的例题</strong></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215210004143.png" alt=""></p>
+<p>夹逼准则在放缩的时候的一个最常用的思想是<strong>把所有分母都换成最大或者所有分母都换成最小</strong>，让分母一样好合并。</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215210539553.png" alt=""></p>
+<p>利用取整函数的不等式和夹逼准则来解决</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215211738379.png" alt=""></p>
+<p>解法二（用单调有界必有极限）</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230215211824324.png" alt=""></p>
+<h5 id="2-4-无穷小量"><a href="#2-4-无穷小量" class="headerlink" title="2.4 无穷小量"></a>2.4 无穷小量</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216095558486.png" alt=""></p>
+<p><strong>（1）中，即$\alpha(x)$比$\beta(x)$还小，称之为$\beta(x)$的高阶无穷小</strong>；注意（5）中相除结果是C（而不是0）</p>
+<p>等价无穷小是同阶无穷小中的特殊情况</p>
+<p>例题：</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216100905435.png" alt=""></p>
+<p>$sin\alpha(x)\to0$可以得出$\alpha(x)\to n\pi$, 又$|\alpha(x)|&lt;\frac{\pi}{2}$, 所以得出$\alpha\to0$。所以后面的$sin\alpha(x)$才能用$\alpha(x)$替换（因为两个都是趋近于无穷小，可以用无穷小的等价，注意：一定要两个都是趋近于无穷小才能替换）</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216101403156.png" alt=""></p>
+<p>（1）、（2）中要注意是有限个即可。</p>
+<p>（3）下面给出的例子，不能分开求极限等于0，乘法法则使用的前提是<strong>分开的每一部分必须要存在极限</strong>，而$sin\frac{1}{x}$不存在极限。正确的做法是用（3），无穷小量与有界量的积为无穷小。</p>
+<h5 id="2-5-无穷大量"><a href="#2-5-无穷大量" class="headerlink" title="2.5 无穷大量"></a>2.5 无穷大量</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216101910568.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216102425162.png" alt=""></p>
+<p>（1）是函数中的，（2）是数列中的，对于比较来说，前面的无穷大除以后面的无穷大（满足趋近条件时）为0。</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216111414986.png" alt=""></p>
+<p>与前面的无穷小量的性质进行类比，发现无穷大的和不一定是无穷大，比如$-n+n$；无穷大与有界变量之积不一定为无穷大，如$(或\sqrt{n})n \times\frac{1}{n}$  （有界变量可能是无穷小量），再比如$x\times sinx$（x是无穷大，sinx是有界变量，但是xsinx却是一个无界的非无穷大的函数）</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216112737064.png" alt=""></p>
+<p>区别：无穷大量是后面都很大，无界变量是后面有很大。</p>
+<p>无穷大量一定是无界变量，但无界变量不一定是无穷大量。</p>
+<p>例题：</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216113053700.png" alt=""></p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216113323733.png" alt=""></p>
+<p>一定要注意$f(x)\neq0$</p>
+<h6 id="答疑："><a href="#答疑：" class="headerlink" title="答疑："></a>答疑：</h6><ul>
+<li>函数的渐近线，可以在附近波动也可以等于</li>
+</ul>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216113838139.png" alt=""></p>
+<ul>
+<li>邻域表示</li>
+</ul>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216151148567.png" alt=""></p>
+<h5 id="2-6-例题"><a href="#2-6-例题" class="headerlink" title="2.6 例题"></a>2.6 例题</h5><h6 id="2-6-1-极限的概念、性质及存在准则"><a href="#2-6-1-极限的概念、性质及存在准则" class="headerlink" title="2.6.1 极限的概念、性质及存在准则"></a>2.6.1 极限的概念、性质及存在准则</h6><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216153459075.png" alt=""></p>
+<p>由于$\varepsilon$的任意性，$\varepsilon$和$2\varepsilon$都可以表示要多小有多小，都能刻画$x_n$与$a$的接近程度，所以等价（等价就意味着是充要条件）</p>
+<p>另一种理解方式：从左推右很容易得出，右推左，由于$\varepsilon$任意小，右边的$\varepsilon$可以取左边$\varepsilon$的$\frac{1}{3}$，这样就能推出左边了。</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216154737013.png" alt=""></p>
+<p>考察的是数列的极限与部分列的极限的关系，奇数列和偶数列的极限存在并且都为a（都相等）是数列有极限并且极限为a的充要条件。</p>
+<p>（D）中的3n和3n+1是部分列，没有覆盖全部数列，少了3n+2，所以不能推出数列的极限是a。</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216155907922.png" alt=""></p>
+<p>$sin\frac{1}{x}$在0附近时不停地在[-1,1]之间震荡，$x_n$能说明是无界的，$y_n$能说明是但不是无穷大。</p>
+<p>无穷大一定无界，但无界不一定无穷大。这道题从函数的角度给出了例子。</p>
+<h6 id="2-6-2-求极限"><a href="#2-6-2-求极限" class="headerlink" title="2.6.2 求极限"></a>2.6.2 求极限</h6><p>==个人理解：==</p>
+<p>无穷小代换和泰勒公式并不是分开求极限，而是直接代换。</p>
+<p>分开求极限需要满足部分都存在极限。</p>
+<p>（即是课本中的极限的四则运算</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230706203801163.png" alt=""></p>
+<p>三个等式成立的条件是：</p>
+<p>前提条件：函数f(x)和g(x)在$x_0$的极限都存在并且有限（极限为无穷大不认为有极限）</p>
+<p>第三条中还限制g(x)在$x_0$的极限不为0)</p>
+<p>关于等价无穷小替换的原则说明：</p>
+<p>乘除可以换的意思是要为因子。</p>
+<p>典型题目：</p>
+<script type="math/tex; mode=display">
+lim_{x\rightarrow+\infty}\frac{(1+\frac{1}{x})^{x^2}}{e^x}</script><p>我之前的错误解答：</p>
+<script type="math/tex; mode=display">
+原式=lim_{x\rightarrow+\infty}\frac{e^{x^2ln(1+\frac{1}{x})}}{e^x}(此处用了等价无穷小代换)\\
+=lim_{x\rightarrow+\infty}\frac{e^{x^2\cdot\frac{1}{x}}}{e^x}\\
+=lim_{x\rightarrow+\infty}\frac{e^x}{e^x}=1</script><p>错因：我认为这里是乘除，而等价无穷小代换可以在乘除中使用，所以进行了替换。</p>
+<p>实际上这个思维的误区是分开算极限了，等价无穷小代换在乘除中使用的具体意思是作为因子可以替换（求极限的因子，比如$lim[]\times[]$，空的是因子，而本题中的$lim\frac{e^{[]}}{e^x}$的空中不是因子，我这里把它当做因子其实是将其转换为了$\frac{lime^{[]}}{lime^x}$，之后由于底数是确定的，继而变成了$\frac{e^{lim[]}}{e^x}$，此处的空中才是因子）</p>
+<p>实际上，原式可以转换成$\lim_{x\rightarrow+\infty}e^{x^2ln(1+\frac{1}{x})-x}$，在这其中$ln(1+\frac{1}{x})$不能代换，涉及到减法。</p>
+<p><strong>常用方法（8）</strong></p>
+<ul>
+<li><p>利用==基本极限==求极限</p>
+<ul>
+<li>常用的基本极限<ul>
+<li><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216163205830.png" alt=""></li>
+<li>$\lim_{x\to0}\frac{sinx}{x}=1$</li>
+<li>$\lim_{x\to0}(1+x)^{\frac{1}{x}}=e$     另一种形式：$\lim_{x\to\infty}(1+\frac{1}{x})^x=e$</li>
+<li>注意：$\lim_{x\to0}(1+\frac{1}{x})^x、\lim_{x\to\infty}(1+x)^{\frac{1}{x}}$的极限不存在，在对于形如$[f(x)]^{q(x)}$的幂指函数，我们一般要求底数要大于0（<strong>如果底数小于0，指数是个无理数，那么就毫无意义</strong>），即$f(x)&gt;0$。而对于以上的两个例子，$x\to0$和$x\to\infty$，当$x\to0^-$和$x\to-\infty$的时候底数小于0。                       如果是$\lim_{x\to0^+}(1+\frac{1}{x})^x、\lim_{x\to+\infty}(1+x)^{\frac{1}{x}}$就存在极限，求解过程如下：$\lim_{x\to0^+}(1+\frac{1}{x})^x=\lim_{x\to+\infty}(1+x)^{\frac{1}{x}}=\lim_{x\to+\infty}e^{\frac{ln(1+x)}{x}}=e^0=1$（由于$ln(1+x)$在$x\to+\infty$时，其增长比x慢，故相除为0，可以详细见常见的无穷大量的比较）</li>
+<li>后面的诸如$\lim_{x\to0}\frac{e^x-1}{x}=1$之类的放在了等价无穷小代换的地方。</li>
+<li>对于n项和的求极限，x趋近于无穷大看最高项，x趋近于无穷小看，最低项。</li>
+<li>对于最后的$e^{nx}$来说，是典型的$e^{\infty}$形式，需要考虑左右极限，即考虑是$+\infty$还是$-\infty$。</li>
+<li><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216165802234.png" alt=""></li>
+<li>红色的是证明过程，是由基本极限得来的</li>
+</ul>
+</li>
+<li>例题（两个重要基本极限）：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216170912755.png" alt="">p是常数，注意指数为p和n的区别，为n的时候是$1^\infty$值是不确定的，为p的时候是$1^p$，值是1。</li>
+<li>例题（$1^\infty$类型）：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216172349499.png" alt="">在转换形式的时候我是用的上下同除一个x，也可以学习老师这种，更简便。        <img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216172451534.png" alt="">在考试中可以用排除法，更快解决</li>
+<li>例题（$1^\infty$类型）：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216173127214.png" alt="">先由$\lim_{n\to\infty}\sqrt[n]{a}=1$, 判断出要求的是一个$1^\infty$类型的题目，用总结的三步曲，找出$\alpha(x)、\beta(x)$，求它们两者相乘的极限。由于$\lim_{n\to\infty}\frac{\sqrt[n]{a}-1}{\frac{1}{n}}$符合基本极限$\lim_{x\to0}\frac{a^x-1}{x}=lna$的形式，故把3拆开。</li>
+</ul>
+</li>
+<li><p>利用==等价无穷小代换==求极限</p>
+<ul>
+<li><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216191625873.png" alt="">由于$\lim\frac{\alpha_1}{\beta_1}=A、\alpha\sim\alpha_1、\beta\sim\beta_1$，所以$\lim\frac{\alpha}{\beta}=A$</p>
+</li>
+<li><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216192859234.png" alt=""></p>
+<p><strong>补充：$1-cos^\alpha x\sim \frac{ax^2}{2}$</strong>证明在后面</p>
+<p>图中证明是用洛必达法则。图中等价于$\frac{1}{6}x^3、\frac{1}{3}x^3$的联系起来记忆，记忆上面的，下面的是把x和sinx换位，并且sinx变成arcsinx（另一个则是tanx和x换位，tanx变成arctanx)。对于图中红色部分给出的是高数书上的例题，书上是用倒代（通分，没有分母通过倒代制造出分母，然后洛必达法则)或泰勒解决的。</p>
+</li>
+<li><p>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216193836428.png" alt="">对于分子的$\sqrt{1+f(x)sin2x}-1$<strong>不能直接用无穷小代换$(1+x)^{\alpha}-1\sim\alpha x$</strong>, 因为用这个<strong>要满足$x\to0$</strong>，所以现在我们先要证$f(x)sin2x\to0$，由于分母趋近于0，分子除以分母趋近于2，说明分子趋近于0，所以$\sqrt{1+f(x)sin2x}\to1$, 又根号里面有个1，说明$f(x)sin2x$只能趋近于0。</p>
+</li>
+<li><p>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216194830069.png" alt="">对于解法3，由于ln1=0，所以先减个ln1，而$ln(cosx)-ln1$的形式刚好符合拉格朗日中值定理$f(b)-f(a)=f^\prime(\xi)(b-a)$  $\xi$是位于ab之间的一个数。由于$x\to0$, $cosx\to1$, 左边的cosx趋近于1，右边的1本来就是1，所以中间的$\xi$也趋近于1。</p>
+</li>
+<li><p>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216201135023.png" alt="">解法1单纯用等价代换，解法2先用等价代换再用洛必达法则，解法3先用等价代换再用拉格朗日中值定理。</p>
+</li>
+<li><p>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216202743237.png" alt="">对于幂指函数，<strong>我们一般用$e^{lnf(x)}$形式改写成指数形式，这样就能用$e^x-1\sim x$的代换</strong>              <strong>另一种解法:</strong><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216203054515.png" alt="">对于结论$(1+x)^\alpha-1\sim\alpha x$可以推广到$(1+\alpha(x))^{\beta(x)}-1\sim\alpha(x)\beta(x)$, 证明如图中红字所示。不过需要注意的是要满足$\alpha(x)\to0、\alpha(x)\beta(x)\to0$，对于$\beta(x)$没有要求。蓝字部分则是$\beta(x)\to\infty$的情况。</p>
+</li>
+<li><p>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216203950994.png" alt="">通过加一个x和减一个x实现等价代换，（当时的疑问是$\frac{1}{6}x^3$和$-\frac{1}{6}x^3$不是等价的吗，实际上这两个不等价，因为等价的条件是$\lim\frac{\alpha}{\beta}=1$，而这里等于-1，<strong>注意要实现减法的代换要满足两者相除的极限不等于1，而实现加法的代换要满足两者相除的极限不等于-1</strong>)</p>
+</li>
+<li><p>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230216210517314.png" alt="">解法2最后那一步，$\frac{tanx}{x}$趋近于1，$1-sec^2x=-tan^2x$，$\frac{-tan^2x}{x}$趋近于0。解法3是用泰勒公式，将$ln(1+tanx)$展开到$x^2$，因为分母的量级是$x^2$。</p>
+</li>
+</ul>
+</li>
+<li><p>利用==有理运算法则==求极限</p>
+<ul>
+<li><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230217112902808.png" alt="">若两个函数的极限存在，那么这两个函数的加减乘除等于极限的加减乘除。</li>
+<li>对于注中的证明，（1）可以用反证法来证明，假设F(x)存在，又$g(x)=F(x)-f(x)$，f(x)存在，所以推出g(x)存在，矛盾。之后的（2）（3）（4）举出例子来即可。记忆这4条，可以记忆特殊的，如图<strong>只有（1）中是不存在，其他的都是不一定</strong>。这些法则也能用到<strong>连续、导数、级数</strong>中。</li>
+<li><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230217144532013.png" alt=""><u><strong>极限趋于无穷大不算存在极限</strong></u>                                                                                                                          （1)中注意与之前的有理运算法则进行区分，那里的是$存在\times不存在=不一定$，而（1)中的g(x)的存在性和f(x                                                                  )g(x)的存在性一致（因为$\lim f(x)=A\neq0$)。A是一个常量，你g(x)乘以一个常量怎么也不会影响你的存在性。（2)的证明在右上角，让$\frac{f(x)}{g(x)}\times g(x)$。（3)的证明在最下方。</li>
+<li>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230217152240365.png" alt="">看到这种多项相加减的，<strong>先把极限存在的项分离出来</strong>，题中我们是分离出来了$ae^x$，由于整个的极限存在（为1)，分离出来的$ae^x$的极限存在，所以剩余的$lim_{x\to0}[\frac{1-e^x}{x}]$的极限一定存在（由存在极限的相加减一定有极限得出)</li>
+<li>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230217153322942.png" alt="">首先先把存在的极限分出来，由于整体的极限是2，所以可知$\lim_{x\to+\infty}(ae^\frac{1}{x}-x)$的极限是存在的。又因为$x\to\infty$，所以$ae^\frac{1}{x}-1$一定是趋向于0 的。（这是一个结论，在图中的右侧红字，证明可以用上方的红字证明)。从而可知a=1，（在这里我是直接将$e^\frac{1}{x}-1$求出极限来等于0，最后解出b=2。==这种做法是错误的，原因是x的极限是不存在的，而$e^\frac{1}{x}-1$的极限存在但是为0，所以不能用常用的结论（1）分离出来==)</li>
+<li>例题（常用结论（3））：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230217154811829.png" alt=""></li>
+<li>例题（<strong>重点</strong>）<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230217155645810.png" alt="">对于解法1, 对原式进行基本分析，<strong>可以看出这是一个$\frac{\infty}{\infty}$的类型，不能用有理数的运算法则，对于这种题目，我们一般将其的无穷因子提出来，再解答</strong>。解法2是将其拆成3项（这样做的前提条件是每一项都要存在极限)。还有一种<strong>抓大头</strong>的方法，只适合用于<strong>选择填空题</strong>中，并且要注意谨慎使用（在解决一些简单的问题可能没有错，但是如果是复杂的，比如有复合的，用这种方法就很容易做错)</li>
+</ul>
+</li>
+<li><p>利用==洛必达法则==求极限</p>
+<ul>
+<li><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230217161618804.png" alt="">要用洛必达法则一定要满足以上的三点，其中（2)是柯西中值定理的要求（因为洛必达法则是由柯西中值定理证出来的)。？号处等号成立的条件是$\lim_{x\to x_0}\frac{f^\prime(x)}{g^\prime(x)}$存在或者为$\infty$。（所以在不能确定导之后的是否存在以及是不是无穷大的时候最好就不要用洛必达)</li>
+<li>$0\cdot \infty$可以通过将一个移下去化成$\frac{0}{0}、\frac{\infty}{\infty}$, $\infty-\infty$可以通过分式差、通分将其化成。$1^\infty、\infty^0、0^0$这三种一般与幂指函数有关，可以通过$e^{ln(x)}$将其转化为$0\cdot\infty$。</li>
+<li>对于$1^{\infty}$，用之前提到的三步曲会更简便</li>
+<li>例题（<strong>比较巧妙</strong>）：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230217164204427.png" alt="">这题是一个$0\cdot\infty$类型的，我是直接将$\infty$移下去，然后用洛必达法则（当然也可以将0移下去，不过就是求导的时候不好求)。这样做比较复杂。按照老师的方法，先将$1-x^2$分解，把那些极限非0的因子提出来（如题中的$1+x、sin\frac{\pi}{2}x$) ，再用洛必达，就简便得多了。</li>
+<li>例题（<strong>重要</strong>）：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230217170053223.png" alt="">n阶导数可以推出n-1阶导数连续。注中是经典的错误（我一开始也是这样做的)。从右往左，第一个等号不成立是因为二阶可导并不能推出二阶连续。第二个等号是二阶可导并不能推出二阶导函数极限存在。第三个等号是一阶可导并不能推出一阶导函数极限存在。因为无法判断右边极限是否存在，所以就不能用洛必达法则。<strong>对于n阶可导，洛必达法则最多可以用到出现$f^{n-1}(x)$；对于n阶连续，洛必达法则最多可以用到出现$f^n(x)$</strong>                                                                         解法2：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230217172623049.png" alt="">泰勒公式有两种余项，一种是拉格朗日余项，另一种是皮亚诺余项，拉格朗日余项叫整体泰勒公式，皮亚诺余项叫局部泰勒公式。如果要用高阶导数研究函数的局部形态，就用皮亚诺余项，如果要用高阶导数研究函数的整体形态，就用拉格朗日余项。（<strong>这里求极限，极限只与这一点的邻近函数值有关，是局部形态，所以在研究极限的时候，用皮亚诺余项)</strong></li>
+</ul>
+</li>
+<li><p>利用==泰勒公式==求极限</p>
+<ul>
+<li><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230227192009695.png" alt="">只需记忆5个常用的在0处的皮亚诺余项（由于是求极限，是局部形态)的泰勒公式。对于$arcsinx、tanx、arctanx$可以通过之前记忆的等价无穷小代换来推出。（推出的原理是第一行红字)。注意$x-arctanx\sim\frac{1}{3}x^3 \Rightarrow x-arctanx=\frac{1}{3}x^3+o(x^3) \Rightarrow arctanx=x-\frac{1}{3}x^2+o(x^3)$ ， $o(x^3)$前面不是减号（泰勒公式的形式中最后都是加上一个皮亚诺余项)</p>
+</li>
+<li><p>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230227194352780.png" alt="">解法1中求$e^{-\frac{x^2}{2}}$的泰勒展开式，严格按照$f(x)=f(0)+f^\prime(0)x+\frac{f^{\prime\prime}(0)}{2!}x^2+…+\frac{f^{(n)}}{n!}x^n+o(x^n)$的形式求即可。</p>
+<p>解法2是先用洛必达，再凑成能够等价代换的形式。<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230227200020981.png" alt="">解法2，原来的极限是等于2，我们乘以一个x，则新式子的极限等于0，从而得出a=1。解法3，代入a=0，得$\lim_{x\to0}\frac{ln(1+x)-bx^2}{x^2}$，$\frac{ln(1+x)}{x^2}$是无穷，无穷加b，显然不等于2，所以矛盾。<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230227201851481.png" alt="">经典错误的原因：等价无穷小代换在加法中需要满足两者代换后的结果相除不能等于-1，而在这里不知道xf(x)代换后的结果是什么。<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230227202232597.png" alt="">其他的解法：解法2是想办法凑出要求的形式。<strong>解法3是解决这类问题的一般手段</strong>：利用$\lim f(x)=A \iff f(x)=A+\alpha$（其中$\alpha$​是无穷小)，先表示出f(x)，再回带到要求的形式中解出。具体解答如下：</p>
+<script type="math/tex; mode=display">
+\frac{sin6x+xf(x)}{x^3}=0+\alpha \Rightarrow f(x)=\frac{\alpha\cdot x^3-sin6x}{x}
+\\\lim_{x\to0}\frac{6+f(x)}{x^2}=\lim_{x\to0}\frac{6x-sin6x+\alpha\cdot x^3}{x^3}=\lim_{x\to0}\frac{6x-sin6x}{x^3}\\\Rightarrow=\frac{\frac{1}{6}\cdot(6x)^3}{x^3}=36</script><p>解法4是用特定的函数代入去排除，给出的条件的极限为0，而分母$x^3$趋近于0，我们只需要让分子也为0就能符合条件了。</p>
+</li>
+</ul>
+</li>
+<li><p>利用==夹逼原理==求极限 </p>
+<ul>
+<li>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230227204021833.png" alt="">不能由每一项的极限是0，然后总的极限就是为0（和的极限等于极限的和)。这个定理应用的条件是有限项，这里$n\to\infty$。</li>
+<li>例题（<strong>重要</strong>）：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230227205133124.png" alt="">解法1：把最大的那项提出来，由于$\lim_{n\to\infty}x^n=0$，所以$原式=\lim_{n\to\infty} \sqrt[n]{3^n}=3$解法2（夹逼)：<strong>先将其放大，求得极限是3，缩小的时候尽量往3靠。</strong>（这里我一开始取最小的$1^n$，这样求出极限是1，所以以后要先放大，缩小的方法往放大的极限靠拢)<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230227205817480.png" alt="">更一般的例题：这里用夹逼准则更好做。最后可以得出结论：<strong>对于m个正数的n次方的和开n方取极限，就等于这m个当中底数最大的那个</strong><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230227210407606.png" alt="">在判断谁大的时候用几何的方法更方便。<strong>扩展：</strong>假如将1改成2或者100怎么办，方法是将2拆成1+1的形式，答案还是和图中一样。</li>
+</ul>
+</li>
+<li><p>利用==单调有界准则==求极限</p>
+<ul>
+<li>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230228111203890.png" alt="">一开始的$x_n&gt;0$是用归纳法证出来的（$x_1&gt;0$, $x_2&gt;0$)。先用单调有界准则证明存在极限，然后用a设极限代入求出a来。</li>
+</ul>
+</li>
+<li><p>利用==定积分定义==求极限</p>
+<ul>
+<li>例题：<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230228113253583.png" alt="">定积分定义中$\Delta x_k$是划分的子区间，$\xi$是子区间中的一点，注意$\Delta x_k$是任意划分的，$\xi$也是任意取的。这题中$\Delta x_k$是等分，将b-a n等分。可以看出，是从$\frac{1}{n}$到$\frac{n}{n}$，所以就是从0到1。</li>
+</ul>
+</li>
+</ul>
+<h6 id="2-6-3-无穷小量阶的比较"><a href="#2-6-3-无穷小量阶的比较" class="headerlink" title="2.6.3 无穷小量阶的比较"></a>2.6.3 无穷小量阶的比较</h6><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230301103204470.png" alt=""></p>
+<p>对于这种根式加减根式的，一般考虑有理化。由于$\alpha(x)$和$\beta(x)$是等价无穷小，所以他们相除的极限为1。这里我们让$\frac{\beta(x)}{\alpha(x)}$,是让分母简单点。有理化之后，可以看出分母的$\sqrt{1+xarcsinx}+\sqrt{cosx}$为2，所以先把极限非零因子$\frac{1}{2}$提出来。由于$\frac{xarcsinx}{x^2}$和$\frac{1-cosx}{x^2}$的极限存在，故把其分开求极限。</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230301104843575.png" alt=""></p>
+<p>解法2采用了拉格朗日定理。解法3采用了等价代换（为了凑出，加一减一）（在对分子用等价代换的时候，由于是减法，所以需要两者不等价，对原来的判断比较难，所以我们先将其化作相应的无穷小，再判断是否等价。）在对$\sqrt{cosx}-1$转换的时候，用的是右上角的结论。</p>
+<p>右上角的结论的证明过程：</p>
+<script type="math/tex; mode=display">
+1-cos^\alpha x=-(cos^\alpha x-1)=-\alpha ln(cosx)=-\alpha (cosx-1)=\frac{ax^2}{2}
+\\(由x\to0时,x\sim ln(x+1))</script><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230301203931697.png" alt=""></p>
+<p>我一开始看到等价，就想用相除的极限等于1来做，这样很麻烦，而且我也没想出来。</p>
+<p>这道题的思路是：两者是等价无穷小，则两者的阶数一定相等，$\frac{b}{n^a}$的阶数明显可以看出是a。然后我们只需知道$(1+\frac{1}{n})^n-e$的阶数即可，对于这种幂指函数，常用$e^{lnx}$的形式。</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230301204547179.png" alt=""></p>
+<p>解法2是采用了拉格朗日，$\xi$是在$nln(1+\frac{1}{n})$与1之间，由于$nln(1+\frac{1}{n})$在$n\to\infty$时也趋近于1，所以$\xi$为1。</p>
+<h4 id="三-函数的连续性"><a href="#三-函数的连续性" class="headerlink" title="三.函数的连续性"></a>三.函数的连续性</h4><p><strong>注意：</strong></p>
+<p>在一点处连续并不能说明在这点的去心邻域内连续，只能说明在这点的领域内有定义（例子如$f(x)=x^2D(x)$</p>
+<p><img src="https://picx.zhimg.com/50/v2-0828b7d5f9cd25c31ecf573737f9ad59_720w.jpg?source=1940ef5c" alt=""></p>
+<h5 id="3-1-连续性的概念"><a href="#3-1-连续性的概念" class="headerlink" title="3.1 连续性的概念"></a>3.1 连续性的概念</h5><p><em>定义1</em>  若$\lim_{\Delta x\to0}\Delta y=lim_{\Delta x\to0}[f(x_0+\Delta x)-f(x_0)]=0$。则称$y=f(x)$在点$x_0$处连续。</p>
+<p><em>定义2</em> 若$\lim_{x\to x_0}f(x)=f(x_0)$则称$y=f(x)$在点$x_0$处连续。</p>
+<p><em>定义3</em> 若$\lim_{x\to x_0^-}f(x)=f(x_0)$则称$y=f(x)$在点$x_0$处左连续。</p>
+<p>​           若$\lim_{x\to x_0^+}f(x)=f(x_0)$则称$y=f(x)$在点$x_0$处右连续。</p>
+<p><em>定理</em>  $f(x)$连续 $\Leftrightarrow$ $f(x)$左连续且右连续</p>
+<p><em>定义4</em> 区间上连续</p>
+<p>$(a,b)$上连续，则要在$(a,b)$上每一个点都连续。</p>
+<p>$[a,b]$上连续，则要在$(a,b)$上每一个点都连续以外，还要在a处右连续和b处左连续。</p>
+<h5 id="3-2-间断点及其分类"><a href="#3-2-间断点及其分类" class="headerlink" title="3.2 间断点及其分类"></a>3.2 间断点及其分类</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230302094242873.png" alt=""></p>
+<p>注意间断点的定义，有些地方片面地说不连续的就是间断点（按照这种说法，那对于$lnx$来说，x=-1处就是间断点，但实际上-1处的去心领域没有定义，所以算不上间断点）。</p>
+<p>可去间断点有两种情况，在间断的地方没有定义，或者有定义，但定义的值不等于极限值。所以可以理解记忆，没有定义，我们可以在这点补充定义；有定义，我们可以改变定义。让这点的函数值等于极限值，从而连续。像这样的就是可去间断点。</p>
+<p>跳跃间断点：函数值在经过这点时发生了一个跳跃性的变化。</p>
+<p>无穷间断点：左右极限至少一个趋向无穷就行，如$\lim_{x\to0}\frac{1}{x}$。</p>
+<p>振荡间断点：趋近于该点的时候，取值不断发生变化，如$\lim_{x\to0}sin\frac{1}{x}$。</p>
+<p>例题：</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230302101248761.png" alt=""></p>
+<p>知识：$(ln|x|)^\prime=\frac{1}{x}$</p>
+<p>这道题的对x=0的点可以不分左右极限讨论，对x=1的点，可以最后再来分，这样简便些。</p>
+<h5 id="3-3-连续性的运算和性质"><a href="#3-3-连续性的运算和性质" class="headerlink" title="3.3 连续性的运算和性质"></a>3.3 连续性的运算和性质</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230302103120724.png" alt=""></p>
+<p>基本初等函数：常数函数（就是常数）、幂函数、指数函数、对数函数、三角函数、反三角函数。</p>
+<p>初等函数：由常数和基本初等函数经过有限次的加、减、乘、除和复合所得到且能用一个解析式表示的函数，称为初等函数。</p>
+<p>注意：基本初等函数是在<strong>其定义域内</strong>是连续；而初等函数是在<strong>其定义区间</strong>内是连续；</p>
+<p>这两者的区别：定义区间是包含在定义域内部的区间。</p>
+<p>反例：$f(x)=\sqrt{cosx-1}$，它是一个初等函数，它在其定义域显然不连续，又它的图像是一些离散的点，所以它没有定义区间。</p>
+<h5 id="3-4-闭区间上连续函数的性质"><a href="#3-4-闭区间上连续函数的性质" class="headerlink" title="3.4 闭区间上连续函数的性质"></a>3.4 闭区间上连续函数的性质</h5><p><em>定理5</em> （有界性定理）</p>
+<p>若$f(x)$在$[a,b]$上连续，则$f(x)$在$[a,b]$上有界。</p>
+<p>理解：$f(x)$在这个闭区间上连续，则一定有最大最小值，所以有界。</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230302104406381.png" alt=""></p>
+<p>推论是更一般的结论。</p>
+<h5 id="3-5-常考题型和典型例题"><a href="#3-5-常考题型和典型例题" class="headerlink" title="3.5 常考题型和典型例题"></a>3.5 常考题型和典型例题</h5><h6 id="3-5-1-讨论函数的连续性及间断点的类型"><a href="#3-5-1-讨论函数的连续性及间断点的类型" class="headerlink" title="3.5.1 讨论函数的连续性及间断点的类型"></a>3.5.1 讨论函数的连续性及间断点的类型</h6><p>例题：</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230302105644464.png" alt=""></p>
+<p><strong>这个讨论连续性不会讨论</strong>。</p>
+<p>图中的：</p>
+<p>[解]由于$f(x)$是初等函数，则除$x=0,1$外处处连续。</p>
+<p>详细解释：先找出没有定义的点，本题是$x=0,1$，由于$f(x)$是初等函数，初等函数在其定义区间上连续。不妨设x是除0,1以外的任意一点(即x是其定义域上一点)，则x的邻域是连续的，所以x是连续的（x在邻域内）。由此可知，除0,1以外任意一点都是连续的。</p>
+<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230302111126049.png" alt=""></p>
+<p>错因：自己选的A，是通过简单观察没有发现不存在定义的点。</p>
+<p>关键点：由于$f(x)$等于这个极限，我们应该先把极限求出来，看到$x^{2n}$，应联想到求极限中常用的基本极限$x^n$。</p>
+<h6 id="3-5-2-有关闭区间上连续函数性质的证明题"><a href="#3-5-2-有关闭区间上连续函数性质的证明题" class="headerlink" title="3.5.2 有关闭区间上连续函数性质的证明题"></a>3.5.2 有关闭区间上连续函数性质的证明题</h6><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230302112116916.png" alt=""></p>
+<p>错因：没有思路</p>
+<p>首先将要证明的式子转换一下。即要证明$\frac{pf(x)+qf(d)}{p+q}$处于$f(x)$在区间$[c,d]$上的最大值与最小值之间。然后放缩一下。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230302112800022.png" alt=""></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://www.funnytorch.love">Torch</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.funnytorch.love/2023/07/08/%E5%87%BD%E6%95%B0-%E6%9E%81%E9%99%90-%E8%BF%9E%E7%BB%AD/">http://www.funnytorch.love/2023/07/08/%E5%87%BD%E6%95%B0-%E6%9E%81%E9%99%90-%E8%BF%9E%E7%BB%AD/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.funnytorch.love" target="_blank">Torch's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6/">考研数学</a></div><div class="post_share"><div class="social-share" data-image="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/06/01/idea%E7%BB%93%E5%90%88git%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/" title="idea结合git使用流程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">idea结合git使用流程</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Torch</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/HJ2489" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:torch2147483647@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80-%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">一. 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 函数概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 常见函数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">符号函数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.2.</span> <span class="toc-text">取整函数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.3.</span> <span class="toc-text">复合函数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%8F%8D%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.4.</span> <span class="toc-text">反函数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.5.</span> <span class="toc-text">初等函数</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-%E5%87%BD%E6%95%B0%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 函数的性质</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link"><span class="toc-number">1.3.1.</span> <span class="toc-text"></span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C-%E6%9E%81%E9%99%90"><span class="toc-number">2.</span> <span class="toc-text">二.极限</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E6%9E%81%E9%99%90%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 极限的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%95%B0%E5%88%97%E7%9A%84%E6%9E%81%E9%99%90"><span class="toc-number">2.1.1.</span> <span class="toc-text">数列的极限</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E9%99%90"><span class="toc-number">2.1.2.</span> <span class="toc-text">函数的极限</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E6%9E%81%E9%99%90%E6%80%A7%E8%B4%A8"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 极限性质</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-%E6%9E%81%E9%99%90%E5%AD%98%E5%9C%A8%E5%87%86%E5%88%99"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 极限存在准则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-%E6%97%A0%E7%A9%B7%E5%B0%8F%E9%87%8F"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 无穷小量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-5-%E6%97%A0%E7%A9%B7%E5%A4%A7%E9%87%8F"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 无穷大量</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AD%94%E7%96%91%EF%BC%9A"><span class="toc-number">2.5.1.</span> <span class="toc-text">答疑：</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-6-%E4%BE%8B%E9%A2%98"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 例题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#2-6-1-%E6%9E%81%E9%99%90%E7%9A%84%E6%A6%82%E5%BF%B5%E3%80%81%E6%80%A7%E8%B4%A8%E5%8F%8A%E5%AD%98%E5%9C%A8%E5%87%86%E5%88%99"><span class="toc-number">2.6.1.</span> <span class="toc-text">2.6.1 极限的概念、性质及存在准则</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-6-2-%E6%B1%82%E6%9E%81%E9%99%90"><span class="toc-number">2.6.2.</span> <span class="toc-text">2.6.2 求极限</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-6-3-%E6%97%A0%E7%A9%B7%E5%B0%8F%E9%87%8F%E9%98%B6%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">2.6.3.</span> <span class="toc-text">2.6.3 无穷小量阶的比较</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89-%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">三.函数的连续性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E8%BF%9E%E7%BB%AD%E6%80%A7%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 连续性的概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-%E9%97%B4%E6%96%AD%E7%82%B9%E5%8F%8A%E5%85%B6%E5%88%86%E7%B1%BB"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 间断点及其分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-%E8%BF%9E%E7%BB%AD%E6%80%A7%E7%9A%84%E8%BF%90%E7%AE%97%E5%92%8C%E6%80%A7%E8%B4%A8"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 连续性的运算和性质</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-%E9%97%AD%E5%8C%BA%E9%97%B4%E4%B8%8A%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 闭区间上连续函数的性质</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-%E5%B8%B8%E8%80%83%E9%A2%98%E5%9E%8B%E5%92%8C%E5%85%B8%E5%9E%8B%E4%BE%8B%E9%A2%98"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 常考题型和典型例题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#3-5-1-%E8%AE%A8%E8%AE%BA%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%80%A7%E5%8F%8A%E9%97%B4%E6%96%AD%E7%82%B9%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.5.1.</span> <span class="toc-text">3.5.1 讨论函数的连续性及间断点的类型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-5-2-%E6%9C%89%E5%85%B3%E9%97%AD%E5%8C%BA%E9%97%B4%E4%B8%8A%E8%BF%9E%E7%BB%AD%E5%87%BD%E6%95%B0%E6%80%A7%E8%B4%A8%E7%9A%84%E8%AF%81%E6%98%8E%E9%A2%98"><span class="toc-number">3.5.2.</span> <span class="toc-text">3.5.2 有关闭区间上连续函数性质的证明题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/08/%E5%87%BD%E6%95%B0-%E6%9E%81%E9%99%90-%E8%BF%9E%E7%BB%AD/" title="函数-极限-连续">函数-极限-连续</a><time datetime="2023-07-08T00:45:09.000Z" title="发表于 2023-07-08 08:45:09">2023-07-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/06/01/idea%E7%BB%93%E5%90%88git%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/" title="idea结合git使用流程">idea结合git使用流程</a><time datetime="2023-06-01T03:18:23.000Z" title="发表于 2023-06-01 11:18:23">2023-06-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/28/Markdown%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/" title="Markdown语法学习">Markdown语法学习</a><time datetime="2023-05-28T10:52:14.000Z" title="发表于 2023-05-28 18:52:14">2023-05-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/24/%E8%BD%AF%E8%80%83%E5%88%B7%E9%A2%98/" title="软考刷题">软考刷题</a><time datetime="2023-05-24T02:14:57.000Z" title="发表于 2023-05-24 10:14:57">2023-05-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/23/%E4%B8%8B%E5%8D%88%E9%A2%98-4-%E8%AF%95%E9%A2%98%E5%9B%9B/" title="下午题-4-试题四">下午题-4-试题四</a><time datetime="2023-05-23T02:33:48.000Z" title="发表于 2023-05-23 10:33:48">2023-05-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Torch</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>备案号：赣ICP备2023001668号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

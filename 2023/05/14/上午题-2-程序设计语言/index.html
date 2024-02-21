@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>上午题-2-程序设计语言 | Torch's blog</title><meta name="author" content="Torch"><meta name="copyright" content="Torch"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[toc] 编译程序和解释程序  程序设计语言的控制成分 顺序结构 选择结构 循环结构  题目  函数 题目1.  解析：常量和表达式没有地址  编译、解释程序翻译阶段 符号表 记住蓝色的两句话即可  词法分析 正规式词法分析的工具  a|b表示a或b (a|b)*，就是每一位可以是a，也可以是b 有限自动机词法分析的工具   箭头所指的为初态，双圆圈为终态 合法的字符识别后要到终态 a,">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>上午题-2-程序设计语言 | Torch's blog</title><meta name="author" content="Torch"><meta name="copyright" content="Torch"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[toc] 编译程序和解释程序   程序设计语言的控制成分  顺序结构 选择结构 循环结构  题目   函数  题目     解析：常量和表达式没有地址  编译、解释程序翻译阶段  符号表  记住蓝色的两句话即可 词法分析  正规式 词法分析的工具  a|b表示a或b (a|b)*，就是每一位可以是a，也可以是b 有限自动机">
 <meta property="og:type" content="article">
 <meta property="og:title" content="上午题-2-程序设计语言">
 <meta property="og:url" content="https://funnytorch.github.io/2023/05/14/%E4%B8%8A%E5%8D%88%E9%A2%98-2-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/index.html">
 <meta property="og:site_name" content="Torch&#39;s blog">
-<meta property="og:description" content="[toc] 编译程序和解释程序  程序设计语言的控制成分 顺序结构 选择结构 循环结构  题目  函数 题目1.  解析：常量和表达式没有地址  编译、解释程序翻译阶段 符号表 记住蓝色的两句话即可  词法分析 正规式词法分析的工具  a|b表示a或b (a|b)*，就是每一位可以是a，也可以是b 有限自动机词法分析的工具   箭头所指的为初态，双圆圈为终态 合法的字符识别后要到终态 a,">
+<meta property="og:description" content="[toc] 编译程序和解释程序   程序设计语言的控制成分  顺序结构 选择结构 循环结构  题目   函数  题目     解析：常量和表达式没有地址  编译、解释程序翻译阶段  符号表  记住蓝色的两句话即可 词法分析  正规式 词法分析的工具  a|b表示a或b (a|b)*，就是每一位可以是a，也可以是b 有限自动机">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg">
 <meta property="article:published_time" content="2023-05-14T09:02:55.000Z">
@@ -183,132 +183,263 @@
     document.addEventListener('pjax:send', () => { preloader.initLoading() })
     document.addEventListener('pjax:complete', () => { preloader.endLoading() })
   }
-})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="Torch's blog"><span class="site-name">Torch's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">上午题-2-程序设计语言</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-14T09:02:55.000Z" title="发表于 2023-05-14 17:02:55">2023-05-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-15T03:42:54.512Z" title="更新于 2023-05-15 11:42:54">2023-05-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E8%80%83%E5%A4%87%E8%80%83/">软考备考</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">583</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="上午题-2-程序设计语言"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer" />
-
-
-
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="Torch's blog"><span class="site-name">Torch's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">上午题-2-程序设计语言</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-14T09:02:55.000Z" title="发表于 2023-05-14 17:02:55">2023-05-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-15T03:42:54.512Z" title="更新于 2023-05-15 11:42:54">2023-05-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E8%80%83%E5%A4%87%E8%80%83/">软考备考</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">552</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="上午题-2-程序设计语言"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer" />
 <p>[toc]</p>
-<h4 id="编译程序和解释程序"><a href="#编译程序和解释程序" class="headerlink" title="编译程序和解释程序"></a>编译程序和解释程序</h4><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230514170535466.png" alt=""></p>
-<hr>
-<h4 id="程序设计语言的控制成分"><a href="#程序设计语言的控制成分" class="headerlink" title="程序设计语言的控制成分"></a>程序设计语言的控制成分</h4><ul>
+<h4 id="编译程序和解释程序">编译程序和解释程序</h4>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230514170535466.png" /></p>
+<hr />
+<h4 id="程序设计语言的控制成分">程序设计语言的控制成分</h4>
+<ul>
 <li>顺序结构</li>
 <li>选择结构</li>
 <li>循环结构</li>
 </ul>
-<h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230514171507735.png" alt=""></p>
-<hr>
-<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230514172150630.png" alt=""></p>
-<h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h5><p>1.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230514172411499.png" alt=""></p>
+<h5 id="题目">题目</h5>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230514171507735.png" /></p>
+<hr />
+<h4 id="函数">函数</h4>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230514172150630.png" /></p>
+<h5 id="题目-1">题目</h5>
+<ol type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230514172411499.png" /></p>
 <p>解析：常量和表达式没有地址</p>
-<hr>
-<h4 id="编译、解释程序翻译阶段"><a href="#编译、解释程序翻译阶段" class="headerlink" title="编译、解释程序翻译阶段"></a>编译、解释程序翻译阶段</h4><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515090119506.png" alt=""></p>
-<h5 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515090441105.png" alt=""></p>
-<p>记住蓝色的两句话即可 </p>
-<h5 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515091211862.png" alt=""></p>
-<h6 id="正规式"><a href="#正规式" class="headerlink" title="正规式"></a>正规式</h6><p>词法分析的工具</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515094004719.png" alt=""></p>
+<hr />
+<h4 id="编译解释程序翻译阶段">编译、解释程序翻译阶段</h4>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515090119506.png" /></p>
+<h5 id="符号表">符号表</h5>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515090441105.png" /></p>
+<p>记住蓝色的两句话即可</p>
+<h5 id="词法分析">词法分析</h5>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515091211862.png" /></p>
+<h6 id="正规式">正规式</h6>
+<p>词法分析的工具</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515094004719.png" /></p>
 <p><code>a|b</code>表示a或b</p>
 <p><code>(a|b)*</code>，就是每一位可以是a，也可以是b</p>
-<h6 id="有限自动机"><a href="#有限自动机" class="headerlink" title="有限自动机"></a>有限自动机</h6><p>词法分析的工具</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515095139865.png" alt=""></p>
+<h6 id="有限自动机">有限自动机</h6>
+<p>词法分析的工具</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515095139865.png" /></p>
 <ul>
 <li>箭头所指的为初态，双圆圈为终态</li>
 <li>合法的字符识别后要到终态</li>
 <li>a,b表示a或b</li>
-<li>$\varepsilon$表示为空，就是可以直接转移到下一个状态</li>
+<li><span
+class="math inline">\(\varepsilon\)</span>表示为空，就是可以直接转移到下一个状态</li>
 </ul>
-<h5 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515091432415.png" alt=""></p>
-<h5 id="语义分析"><a href="#语义分析" class="headerlink" title="语义分析"></a>语义分析</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515091717716.png" alt=""></p>
-<h6 id="动态语义错误"><a href="#动态语义错误" class="headerlink" title="动态语义错误"></a>动态语义错误</h6><p>语义分析只能检测出程序的静态语义错误，不能检测出动态的语义错误，要到程序运行时才能检测出来。</p>
-<h5 id="中间代码生成"><a href="#中间代码生成" class="headerlink" title="中间代码生成"></a>中间代码生成</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515093440778.png" alt=""></p>
-<h5 id="目标代码生成"><a href="#目标代码生成" class="headerlink" title="目标代码生成"></a>目标代码生成</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515091847433.png" alt=""></p>
-<h5 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h5><p>1.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515090742256.png" alt=""></p>
-<p>2.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515092717779.png" alt=""></p>
-<p>注意：不要和语法分析中的未定义变量类型弄混了（a = 3）， 这个是未赋初值。</p>
-<p>3.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515092958276.png" alt=""></p>
+<h5 id="语法分析">语法分析</h5>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515091432415.png" /></p>
+<h5 id="语义分析">语义分析</h5>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515091717716.png" /></p>
+<h6 id="动态语义错误">动态语义错误</h6>
+<p>语义分析只能检测出程序的静态语义错误，不能检测出动态的语义错误，要到程序运行时才能检测出来。</p>
+<h5 id="中间代码生成">中间代码生成</h5>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515093440778.png" /></p>
+<h5 id="目标代码生成">目标代码生成</h5>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515091847433.png" /></p>
+<h5 id="题目-2">题目</h5>
+<ol type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515090742256.png" /></p>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515092717779.png" /></p>
+<p>注意：不要和语法分析中的未定义变量类型弄混了（a = 3），
+这个是未赋初值。</p>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515092958276.png" /></p>
 <p>除数为0是动态语义错误</p>
 <p>整除只能为整数是静态语义错误</p>
-<p>4.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515093219843.png" alt=""></p>
+<ol start="4" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515093219843.png" /></p>
 <p>死循环了，注意：循环体可以只有一个分号</p>
-<p>5.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515100721572.png" alt=""></p>
+<ol start="5" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515100721572.png" /></p>
 <p>M1在A处的如果为0转移状态是不确定的</p>
-<hr>
-<h4 id="上下文无关文法"><a href="#上下文无关文法" class="headerlink" title="上下文无关文法"></a>上下文无关文法</h4><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515101541725.png" alt=""></p>
-<h5 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h5><p>1.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515103344619.png" alt=""></p>
+<hr />
+<h4 id="上下文无关文法">上下文无关文法</h4>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515101541725.png" /></p>
+<h5 id="题目-3">题目</h5>
+<ol type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515103344619.png" /></p>
 <p>解析：S-&gt;A0|B1</p>
-<p>A-&gt;S1|1  , B-&gt;S0|0（则可以发现一定包含0和1）</p>
-<hr>
-<h4 id="中缀、后缀表达式转换"><a href="#中缀、后缀表达式转换" class="headerlink" title="中缀、后缀表达式转换"></a>中缀、后缀表达式转换</h4><p> 逆波兰式（后缀表达式）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515105105933.png" alt=""></p>
+<p>A-&gt;S1|1 , B-&gt;S0|0（则可以发现一定包含0和1）</p>
+<hr />
+<h4 id="中缀后缀表达式转换">中缀、后缀表达式转换</h4>
+<p>逆波兰式（后缀表达式）</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515105105933.png" /></p>
 <p>后缀转中缀，从左往右遍历，遇到两个数就看后面的运算符，把ab?转换成a?b</p>
 <p>优先级相同，从右向左</p>
 <p>比如：在（3+4）转换成34+之后，有乘除，先弄右边的除号，转成34+5/</p>
-<h5 id="语法树中、后序遍历"><a href="#语法树中、后序遍历" class="headerlink" title="语法树中、后序遍历"></a>语法树中、后序遍历</h5><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515105734026.png" alt=""></p>
+<h5 id="语法树中后序遍历">语法树中、后序遍历</h5>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515105734026.png" /></p>
 <p>中序遍历后，需判断要不要在某处加括号</p>
-<h5 id="题目-4"><a href="#题目-4" class="headerlink" title="题目"></a>题目</h5><p>1.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515110433591.png" alt=""></p>
+<h5 id="题目-4">题目</h5>
+<ol type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515110433591.png" /></p>
 <p>解析：</p>
 <p>优先级：与&gt;异或&gt;或</p>
-<p>算术（+ - * / %）&gt;关系（&gt; &lt; &gt;= == !=）&gt;逻辑（逻辑与 逻辑或）</p>
+<p>算术（+ - * / %）&gt;关系（&gt; &lt; &gt;= == !=）&gt;逻辑（逻辑与
+逻辑或）</p>
 <p><strong>逻辑非（!）比以上三中操作符优先级都高</strong></p>
-<hr>
-<h4 id="其他题目"><a href="#其他题目" class="headerlink" title="其他题目"></a>其他题目</h4><p>1.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515111329499.png" alt=""></p>
-<p>2.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515111641520.png" alt=""></p>
-<p>3.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515111901542.png" alt=""></p>
-<p>4.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112002660.png" alt=""></p>
-<p>5.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112220312.png" alt=""></p>
-<p>6.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112539476.png" alt=""></p>
-<p>7.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112730514.png" alt=""></p>
-<p>8.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112813619.png" alt=""></p>
-<p>9.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112933958.png" alt=""></p>
+<hr />
+<h4 id="其他题目">其他题目</h4>
+<ol type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515111329499.png" /></p>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515111641520.png" /></p>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515111901542.png" /></p>
+<ol start="4" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112002660.png" /></p>
+<ol start="5" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112220312.png" /></p>
+<ol start="6" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112539476.png" /></p>
+<ol start="7" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112730514.png" /></p>
+<ol start="8" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112813619.png" /></p>
+<ol start="9" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515112933958.png" /></p>
 <p>正规集可用正规式表示，用有限自动机识别</p>
-<p>10.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113025381.png" alt=""></p>
-<p>11.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113049618.png" alt=""></p>
-<p>12.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113112146.png" alt=""></p>
-<p>13.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113216040.png" alt=""></p>
-<p>14.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113255825.png" alt=""></p>
-<p>15.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113338857.png" alt=""></p>
-<p>16.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113440378.png" alt=""></p>
+<ol start="10" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113025381.png" /></p>
+<ol start="11" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113049618.png" /></p>
+<ol start="12" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113112146.png" /></p>
+<ol start="13" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113216040.png" /></p>
+<ol start="14" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113255825.png" /></p>
+<ol start="15" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113338857.png" /></p>
+<ol start="16" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113440378.png" /></p>
 <p>数据类型应该是数据结构体</p>
-<p>17.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113608520.png" alt=""></p>
-<p>18.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113649615.png" alt=""></p>
-<p>19.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113804312.png" alt=""></p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113844734.png" alt=""></p>
-<p>20.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113913796.png" alt=""></p>
-<p>21.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515114008994.png" alt=""></p>
-<p>22.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515114053568.png" alt=""></p>
-<p>23.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515114119015.png" alt=""></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://funnytorch.github.io">Torch</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://funnytorch.github.io/2023/05/14/%E4%B8%8A%E5%8D%88%E9%A2%98-2-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/">https://funnytorch.github.io/2023/05/14/%E4%B8%8A%E5%8D%88%E9%A2%98-2-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://funnytorch.github.io" target="_blank">Torch's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88/">软件设计师</a></div><div class="post_share"><div class="social-share" data-image="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/15/%E4%B8%8B%E5%8D%88%E9%A2%98-1-%E8%AF%95%E9%A2%98%E4%B8%80/" title="下午题-1-试题一"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">下午题-1-试题一</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/08/%E4%B8%8A%E5%8D%88%E9%A2%98-1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" title="上午题#1-计算机系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">上午题#1-计算机系统</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/05/08/%E4%B8%8A%E5%8D%88%E9%A2%98-1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" title="上午题#1-计算机系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-08</div><div class="title">上午题#1-计算机系统</div></div></a></div><div><a href="/2023/05/19/%E4%B8%8A%E5%8D%88%E9%A2%98-10-%E7%BB%93%E6%9E%84%E5%8C%96%E5%BC%80%E5%8F%91/" title="上午题-10-结构化开发"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-19</div><div class="title">上午题-10-结构化开发</div></div></a></div><div><a href="/2023/05/22/%E4%B8%8A%E5%8D%88%E9%A2%98-11-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" title="上午题-11-软件工程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-22</div><div class="title">上午题-11-软件工程</div></div></a></div><div><a href="/2023/05/22/%E4%B8%8A%E5%8D%88%E9%A2%98-12-%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" title="上午题-12-信息安全"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-22</div><div class="title">上午题-12-信息安全</div></div></a></div><div><a href="/2023/05/23/%E4%B8%8A%E5%8D%88%E9%A2%98-14-%E7%AE%97%E6%B3%95/" title="上午题-14-算法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-23</div><div class="title">上午题-14-算法</div></div></a></div><div><a href="/2023/05/22/%E4%B8%8A%E5%8D%88%E9%A2%98-13-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="上午题-13-计算机网络"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-22</div><div class="title">上午题-13-计算机网络</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Torch</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/funnytorch"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/funnytorch" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:torch2147483647@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog<div class="xpand" style="height:200px;"><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas></div></div><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
+<ol start="17" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113608520.png" /></p>
+<ol start="18" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113649615.png" /></p>
+<ol start="19" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113804312.png" /></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113844734.png" /></p>
+<ol start="20" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515113913796.png" /></p>
+<ol start="21" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515114008994.png" /></p>
+<ol start="22" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515114053568.png" /></p>
+<ol start="23" type="1">
+<li></li>
+</ol>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20230515114119015.png" /></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://funnytorch.github.io">Torch</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://funnytorch.github.io/2023/05/14/%E4%B8%8A%E5%8D%88%E9%A2%98-2-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/">https://funnytorch.github.io/2023/05/14/%E4%B8%8A%E5%8D%88%E9%A2%98-2-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://funnytorch.github.io" target="_blank">Torch's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88/">软件设计师</a></div><div class="post_share"><div class="social-share" data-image="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/15/%E4%B8%8B%E5%8D%88%E9%A2%98-1-%E8%AF%95%E9%A2%98%E4%B8%80/" title="下午题-1-试题一"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">下午题-1-试题一</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/08/%E4%B8%8A%E5%8D%88%E9%A2%98-1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" title="上午题#1-计算机系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">上午题#1-计算机系统</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/05/08/%E4%B8%8A%E5%8D%88%E9%A2%98-1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" title="上午题#1-计算机系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-08</div><div class="title">上午题#1-计算机系统</div></div></a></div><div><a href="/2023/05/19/%E4%B8%8A%E5%8D%88%E9%A2%98-10-%E7%BB%93%E6%9E%84%E5%8C%96%E5%BC%80%E5%8F%91/" title="上午题-10-结构化开发"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-19</div><div class="title">上午题-10-结构化开发</div></div></a></div><div><a href="/2023/05/22/%E4%B8%8A%E5%8D%88%E9%A2%98-11-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" title="上午题-11-软件工程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-22</div><div class="title">上午题-11-软件工程</div></div></a></div><div><a href="/2023/05/22/%E4%B8%8A%E5%8D%88%E9%A2%98-12-%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" title="上午题-12-信息安全"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-22</div><div class="title">上午题-12-信息安全</div></div></a></div><div><a href="/2023/05/22/%E4%B8%8A%E5%8D%88%E9%A2%98-13-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="上午题-13-计算机网络"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-22</div><div class="title">上午题-13-计算机网络</div></div></a></div><div><a href="/2023/05/23/%E4%B8%8A%E5%8D%88%E9%A2%98-14-%E7%AE%97%E6%B3%95/" title="上午题-14-算法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-23</div><div class="title">上午题-14-算法</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Torch</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/funnytorch"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/funnytorch" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:torch2147483647@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog<div class="xpand" style="height:200px;"><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas></div></div><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
 margin: 0;
 align-items: center;
 justify-content: center;
@@ -318,7 +449,7 @@ canvas {
 display: block;
 margin: 0 auto;
 cursor: move;
-}</style></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E5%92%8C%E8%A7%A3%E9%87%8A%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text">编译程序和解释程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E6%8E%A7%E5%88%B6%E6%88%90%E5%88%86"><span class="toc-number">2.</span> <span class="toc-text">程序设计语言的控制成分</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E3%80%81%E8%A7%A3%E9%87%8A%E7%A8%8B%E5%BA%8F%E7%BF%BB%E8%AF%91%E9%98%B6%E6%AE%B5"><span class="toc-number">4.</span> <span class="toc-text">编译、解释程序翻译阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E8%A1%A8"><span class="toc-number">4.1.</span> <span class="toc-text">符号表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">4.2.</span> <span class="toc-text">词法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E5%BC%8F"><span class="toc-number">4.2.1.</span> <span class="toc-text">正规式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">4.2.2.</span> <span class="toc-text">有限自动机</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">4.3.</span> <span class="toc-text">语法分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90"><span class="toc-number">4.4.</span> <span class="toc-text">语义分析</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%AF%AD%E4%B9%89%E9%94%99%E8%AF%AF"><span class="toc-number">4.4.1.</span> <span class="toc-text">动态语义错误</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="toc-number">4.5.</span> <span class="toc-text">中间代码生成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="toc-number">4.6.</span> <span class="toc-text">目标代码生成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">4.7.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">上下文无关文法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">5.1.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E7%BC%80%E3%80%81%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-number">6.</span> <span class="toc-text">中缀、后缀表达式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E6%A0%91%E4%B8%AD%E3%80%81%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">6.1.</span> <span class="toc-text">语法树中、后序遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-4"><span class="toc-number">6.2.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%A2%98%E7%9B%AE"><span class="toc-number">7.</span> <span class="toc-text">其他题目</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/07/Idea%E4%B8%AD%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E7%BD%AE%E5%88%97%E7%9A%84%E4%B8%BB%E9%94%AE%E3%80%81%E5%94%AF%E4%B8%80%E3%80%81%E9%9D%9E%E7%A9%BA%E3%80%81%E9%80%92%E5%A2%9E%E7%AD%89%E5%B1%9E%E6%80%A7/" title="Idea中操作数据库设置列的主键、唯一、非空、递增等属性">Idea中操作数据库设置列的主键、唯一、非空、递增等属性</a><time datetime="2023-12-07T09:00:10.000Z" title="发表于 2023-12-07 17:00:10">2023-12-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/05/Maven%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5%E5%8C%85%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" title="Maven项目导入包失败问题">Maven项目导入包失败问题</a><time datetime="2023-12-05T08:29:21.000Z" title="发表于 2023-12-05 16:29:21">2023-12-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/06/01/idea%E7%BB%93%E5%90%88git%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/" title="idea结合git使用流程">idea结合git使用流程</a><time datetime="2023-06-01T03:18:23.000Z" title="发表于 2023-06-01 11:18:23">2023-06-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/28/Markdown%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/" title="Markdown语法学习">Markdown语法学习</a><time datetime="2023-05-28T10:52:14.000Z" title="发表于 2023-05-28 18:52:14">2023-05-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/24/%E8%BD%AF%E8%80%83%E5%88%B7%E9%A2%98/" title="软考刷题">软考刷题</a><time datetime="2023-05-24T02:14:57.000Z" title="发表于 2023-05-24 10:14:57">2023-05-24</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">Welcome</p><div class="bg-ad"><div>--- torch ---</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://funnytorch.icu/about/">关于站长</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">博客导航</p><ul class="ft-links"><li><a target="_blank" rel="noopener" href="https://funnytorch.icu/categories/博客/">建站指南</a><a target="_blank" rel="noopener" href="https://funnytorch.icu/ToDoList/">待做清单</a></li><li><a target="_blank" rel="noopener" href="https://funnytorch.icu/categories/">文章分类</a><a target="_blank" rel="noopener" href="https://funnytorch.icu/tags/">文章标签</a></li><li><a target="_blank" rel="noopener" href="https://funnytorch.icu/archives/">时间轴</a><a target="_blank" rel="noopener" href="https://funnytorch.icu/about/">关于博主</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链</p><div class="ft-img-group"><div class="img-group-item"><a href=""><img src="https://s1.ax1x.com/2023/05/07/p9wAPit.jpg" alt="狗墙"/></a></div></div></div></div><div class="copyright">&copy;2020 - 2024  <i id="heartbeat" class="fa fas fa-heartbeat"></i> Torch</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+}</style></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E5%92%8C%E8%A7%A3%E9%87%8A%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text">编译程序和解释程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E6%8E%A7%E5%88%B6%E6%88%90%E5%88%86"><span class="toc-number">2.</span> <span class="toc-text">程序设计语言的控制成分</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E8%A7%A3%E9%87%8A%E7%A8%8B%E5%BA%8F%E7%BF%BB%E8%AF%91%E9%98%B6%E6%AE%B5"><span class="toc-number">4.</span> <span class="toc-text">编译、解释程序翻译阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E8%A1%A8"><span class="toc-number">4.1.</span> <span class="toc-text">符号表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">4.2.</span> <span class="toc-text">词法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E5%BC%8F"><span class="toc-number">4.2.1.</span> <span class="toc-text">正规式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">4.2.2.</span> <span class="toc-text">有限自动机</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">4.3.</span> <span class="toc-text">语法分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90"><span class="toc-number">4.4.</span> <span class="toc-text">语义分析</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%AF%AD%E4%B9%89%E9%94%99%E8%AF%AF"><span class="toc-number">4.4.1.</span> <span class="toc-text">动态语义错误</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="toc-number">4.5.</span> <span class="toc-text">中间代码生成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="toc-number">4.6.</span> <span class="toc-text">目标代码生成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">4.7.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">上下文无关文法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">5.1.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E7%BC%80%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-number">6.</span> <span class="toc-text">中缀、后缀表达式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E6%A0%91%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-number">6.1.</span> <span class="toc-text">语法树中、后序遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-4"><span class="toc-number">6.2.</span> <span class="toc-text">题目</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%A2%98%E7%9B%AE"><span class="toc-number">7.</span> <span class="toc-text">其他题目</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/07/Idea%E4%B8%AD%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E7%BD%AE%E5%88%97%E7%9A%84%E4%B8%BB%E9%94%AE%E3%80%81%E5%94%AF%E4%B8%80%E3%80%81%E9%9D%9E%E7%A9%BA%E3%80%81%E9%80%92%E5%A2%9E%E7%AD%89%E5%B1%9E%E6%80%A7/" title="Idea中操作数据库设置列的主键、唯一、非空、递增等属性">Idea中操作数据库设置列的主键、唯一、非空、递增等属性</a><time datetime="2023-12-07T09:00:10.000Z" title="发表于 2023-12-07 17:00:10">2023-12-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/05/Maven%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5%E5%8C%85%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" title="Maven项目导入包失败问题">Maven项目导入包失败问题</a><time datetime="2023-12-05T08:29:21.000Z" title="发表于 2023-12-05 16:29:21">2023-12-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/06/01/idea%E7%BB%93%E5%90%88git%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/" title="idea结合git使用流程">idea结合git使用流程</a><time datetime="2023-06-01T03:18:23.000Z" title="发表于 2023-06-01 11:18:23">2023-06-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/28/Markdown%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/" title="Markdown语法学习">Markdown语法学习</a><time datetime="2023-05-28T10:52:14.000Z" title="发表于 2023-05-28 18:52:14">2023-05-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/24/%E8%BD%AF%E8%80%83%E5%88%B7%E9%A2%98/" title="软考刷题">软考刷题</a><time datetime="2023-05-24T02:14:57.000Z" title="发表于 2023-05-24 10:14:57">2023-05-24</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/posts/eec9786.html">魔改指南</a><a href="/box/nav/">网址导航</a></li><li><a href="/social/link/">我的朋友</a><a href="/comments/">留点什么</a></li><li><a href="/personal/about/">关于作者</a><a href="/archives/">文章归档</a></li><li><a href="/categories/">文章分类</a><a href="/tags/">文章标签</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a target="_blank" rel="noopener" href="https://www.fomal.cc/" title="Fomalhaut🥝"><img src="https://lskypro.acozycotage.net/LightPicture/2022/12/60e5d4e39da7c077.webp" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://tzy1997.com/" title="唐志远の博客"><img src="https://lskypro.acozycotage.net/LightPicture/2022/12/4ab83cdce942463b.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://akilar.top/" title="Akilarの糖果屋"><img src="https://lskypro.acozycotage.net/LightPicture/2022/12/6bf1ed05796db59c.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://butterfly.js.org/" title="Butterfly"><img src="https://lskypro.acozycotage.net/LightPicture/2022/12/64cc6a7d508026e1.png" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://anzhiy.cn/" title="安知鱼"><img src="https://lskypro.acozycotage.net/LightPicture/2022/12/1b33fef8f5fb7e63.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://www.acozycotage.net/" title="Acozycotage"><img src="https://lskypro.acozycotage.net/LightPicture/2022/12/6a6fe6ebfd19c465.jpg" alt=""/></a></div><div class="img-group-item"><a target="_blank" rel="noopener" href="https://cdn.netdun.net/" title="网盾星球"><img src="https://lskypro.acozycotage.net/LightPicture/2022/12/70dee3f9d1ca10f3.webp" alt=""/></a></div><div class="img-group-item"><a href="javascript:void(0)" title="广告位招租"><img src="https://lskypro.acozycotage.net/LightPicture/2022/12/65307a5828af6790.webp" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2020 - 2024</b></span><span><b>&nbsp;&nbsp;By Torch</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v6.3.0"><img src="https://sourcebucket.s3.ladydaily.com/badge/Frame-Hexo-blue.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v4.3.1"><img src="https://sourcebucket.s3.ladydaily.com/badge/Theme-Butterfly-6513df.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用多线部署，主线路托管于Vercel"><img src="https://sourcebucket.s3.ladydaily.com/badge/Hosted-Vercel-brightgreen.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://user.51.la/" style="margin-inline:5px" title="本站数据分析得益于51la技术支持"><img src="https://sourcebucket.s3.ladydaily.com/badge/Analytics-51la-3db1eb.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://icp.gov.moe/?keyword=20226665" style="margin-inline:5px" title="本站已加入萌ICP豪华套餐，萌ICP备20226665号"><img src="https://sourcebucket.s3.ladydaily.com/badge/萌ICP备-20226665-fe1384.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://bitiful.dogecast.com/buckets" style="margin-inline:5px" title="本网站经Service Worker分流至缤纷云对象存储"><img src=" https://sourcebucket.s3.ladydaily.com/badge/Bucket-缤纷云-9c62da.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://www.netdun.net/" style="margin-inline:5px" title="本站使用网盾星球提供CDN加速与防护"><img src="https://sourcebucket.s3.ladydaily.com/badge/CDN-网盾星球-fff2cc.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本网站源码由Github提供存储仓库"><img src=" https://sourcebucket.s3.ladydaily.com/badge/Source-Github-d021d6.svg" alt=""/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
@@ -371,7 +502,7 @@ document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-
   MathJax.startup.document.state(0)
   MathJax.texReset()
   MathJax.typesetPromise()
-}</script></div><script async src="/js/title.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+}</script></div><script async src="/js/title.js"></script><script defer src="/js/runtime.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = true;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);

@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>密码学学习 | Torch's blog</title><meta name="author" content="Torch"><meta name="copyright" content="Torch"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="绪论IntroductionCourse Overview 安全通信：  网页流量使用HTTPS协议保护（SSL） 无线流量： 比如WI-FI使用WPA2保护 ，WPA2是802.11i的一部分 手机流量使用GSM加密机制保护 蓝牙流量也可以使用密码学保护    加密硬盘的文件：  EFS（Encrypting File System） TrueCrypt  保护内容：  DVD和蓝光碟，">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>密码学学习 | Torch's blog</title><meta name="author" content="Torch"><meta name="copyright" content="Torch"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="绪论 Introduction Course Overview  安全通信：  网页流量使用HTTPS协议保护（SSL） 无线流量：  比如WI-FI使用WPA2保护 ，WPA2是802.11i的一部分 手机流量使用GSM加密机制保护 蓝牙流量也可以使用密码学保护   加密硬盘的文件：  EFS（Encrypting File System） TrueCryp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="密码学学习">
 <meta property="og:url" content="https://funnytorch.github.io/2024/06/15/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Torch&#39;s blog">
-<meta property="og:description" content="绪论IntroductionCourse Overview 安全通信：  网页流量使用HTTPS协议保护（SSL） 无线流量： 比如WI-FI使用WPA2保护 ，WPA2是802.11i的一部分 手机流量使用GSM加密机制保护 蓝牙流量也可以使用密码学保护    加密硬盘的文件：  EFS（Encrypting File System） TrueCrypt  保护内容：  DVD和蓝光碟，">
+<meta property="og:description" content="绪论 Introduction Course Overview  安全通信：  网页流量使用HTTPS协议保护（SSL） 无线流量：  比如WI-FI使用WPA2保护 ，WPA2是802.11i的一部分 手机流量使用GSM加密机制保护 蓝牙流量也可以使用密码学保护   加密硬盘的文件：  EFS（Encrypting File System） TrueCryp">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://hbimg.huaban.com/3b0b8a7de9891d77c45285eab5bbd27830f15c15272b08-AYH4dJ">
 <meta property="article:published_time" content="2024-06-15T07:28:10.000Z">
-<meta property="article:modified_time" content="2024-07-26T10:00:28.657Z">
+<meta property="article:modified_time" content="2024-07-27T04:02:02.341Z">
 <meta property="article:author" content="Torch">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-07-26 18:00:28'
+  postUpdate: '2024-07-27 12:02:02'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -183,20 +183,21 @@
     document.addEventListener('pjax:send', () => { preloader.initLoading() })
     document.addEventListener('pjax:complete', () => { preloader.endLoading() })
   }
-})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('http://hbimg.huaban.com/3b0b8a7de9891d77c45285eab5bbd27830f15c15272b08-AYH4dJ')"><nav id="nav"><span id="blog-info"><a href="/" title="Torch's blog"><span class="site-name">Torch's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">密码学学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-15T07:28:10.000Z" title="发表于 2024-06-15 15:28:10">2024-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-26T10:00:28.657Z" title="更新于 2024-07-26 18:00:28">2024-07-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/">信息安全学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">14.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>48分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="密码学学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer">
-
-
-
-<h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="Course-Overview"><a href="#Course-Overview" class="headerlink" title="Course Overview"></a>Course Overview</h3><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615153310231.png" alt=""></p>
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('http://hbimg.huaban.com/3b0b8a7de9891d77c45285eab5bbd27830f15c15272b08-AYH4dJ')"><nav id="nav"><span id="blog-info"><a href="/" title="Torch's blog"><span class="site-name">Torch's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">密码学学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-15T07:28:10.000Z" title="发表于 2024-06-15 15:28:10">2024-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-27T04:02:02.341Z" title="更新于 2024-07-27 12:02:02">2024-07-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/">信息安全学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">14.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>48分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="密码学学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer">
+<h1 id="绪论">绪论</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="course-overview">Course Overview</h3>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615153310231.png" /></p>
 <p>安全通信：</p>
 <ul>
 <li>网页流量使用HTTPS协议保护（SSL）</li>
-<li>无线流量：<ul>
+<li>无线流量：
+<ul>
 <li>比如WI-FI使用WPA2保护 ，WPA2是802.11i的一部分</li>
 <li>手机流量使用GSM加密机制保护</li>
 <li>蓝牙流量也可以使用密码学保护</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p>加密硬盘的文件：</p>
 <ul>
@@ -207,76 +208,105 @@
 <ul>
 <li>DVD和蓝光碟，上面的电影是加密的</li>
 <li>DVD用的是CSS（Content Scramble System，内容混淆系统）</li>
-<li>蓝光碟用的是AACS（Advanced Access Content System，高级访问内容系统）</li>
+<li>蓝光碟用的是AACS（Advanced Access Content
+System，高级访问内容系统）</li>
 </ul>
 <p>用户认证</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615155416289.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615155416289.png" /></p>
 <p>HTTPS是HTTP协议的安全版本，它通过在HTTP下层使用SSL/TLS来加密数据传输。</p>
-<p>在SSL（Secure Socket Layer，安全套接字层）更新到3.0时，IETF对SSL3.0进行了标准化，并添加了少数机制，标准化后的IETF更名为TLS1.0（Transport Layer Security，安全传输层协议），可以说TLS就是SSL的新版本3.1。<strong>也可以将TLS看作SSL的升级版</strong></p>
+<p>在SSL（Secure Socket
+Layer，安全套接字层）更新到3.0时，IETF对SSL3.0进行了标准化，并添加了少数机制，标准化后的IETF更名为TLS1.0（Transport
+Layer
+Security，安全传输层协议），可以说TLS就是SSL的新版本3.1。<strong>也可以将TLS看作SSL的升级版</strong></p>
 <p>总结来说，SSL是TLS的前身，而HTTPS是使用SSL/TLS来加密HTTP通信的协议。随着网络安全的发展，TLS已经取代了SSL，并成为保护网络通信的主要安全协议。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615160042419.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615160042419.png" /></p>
 <p>握手协议（公钥加密）</p>
 <p>记录层</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615160550265.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615160550265.png" /></p>
 <p>no eavesdropping——无窃听</p>
 <p>no tampering——无篡改</p>
 <p>analogous——类似的</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615161204547.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615161204547.png" /></p>
 <p>sym.encryption（symmetric encryption）：对称加密</p>
 <p>cipher：指用于加解密的「密码算法」，有时也被直接翻译成「密码」</p>
 <p>plaintext：明文</p>
 <p>ciphertext：密文</p>
 <p>proprietary cipher：私有加密算法（对应公开的加密算法）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615162225149.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615162225149.png" /></p>
 <p>一次性密钥：加密电子邮件时，通常不同邮件使用不同秘钥加密</p>
-<p>多次密钥：加密文件时，同一密钥用来加密很多不同文件。需要更多机制保证加密系统是安全的。  </p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615163205277.png" alt=""></p>
+<p>多次密钥：加密文件时，同一密钥用来加密很多不同文件。需要更多机制保证加密系统是安全的。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615163205277.png" /></p>
 <p>密码学不能解决</p>
 <ul>
 <li>software bugs：软件bugs</li>
 <li>social attack：社会工程学攻击</li>
 </ul>
-<p>Reliable unless implemented and used properly：除非正确实施和使用，否则不可靠</p>
+<p>Reliable unless implemented and used
+properly：除非正确实施和使用，否则不可靠</p>
 <ul>
 <li>举例：老的加密标准WEP（加密WIFI流量）</li>
 </ul>
 <p>broken：有缺陷的，不完善的</p>
 <p>ad-hoc：临时的</p>
-<h3 id="What-is-cryptography"><a href="#What-is-cryptography" class="headerlink" title="What is cryptography?"></a>What is cryptography?</h3><p> <img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615164623849.png" alt=""></p>
-<p>encryption schemes provide both confidentiality and integrity.（加密机制、保密性和完整性）</p>
-<h4 id="Cryptography-Applications"><a href="#Cryptography-Applications" class="headerlink" title="Cryptography Applications"></a>Cryptography Applications</h4><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615165240499.png" alt=""></p>
+<h3 id="what-is-cryptography">What is cryptography?</h3>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615164623849.png" /></p>
+<p>encryption schemes provide both confidentiality and
+integrity.（加密机制、保密性和完整性）</p>
+<h4 id="cryptography-applications">Cryptography Applications</h4>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615165240499.png" /></p>
 <p>Digital signatures：数字签名</p>
 <p>Anonymous communication：匿名通信</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615171211407.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615171211407.png" /></p>
 <p>Anonymous digital cash：匿名数字现金</p>
-<p>double spending：是数字货币和加密货币领域中的一个术语，指的是同一笔数字货币被花费两次或多次的情况。</p>
-<p>一种可行的方法：making sure that if Alice spends the coin once then no one knows who she is. but if she spends the coin more than once, all of a sudden, her identity is completely exposed.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615173703168.png" alt=""></p>
+<p>double
+spending：是数字货币和加密货币领域中的一个术语，指的是同一笔数字货币被花费两次或多次的情况。</p>
+<p>一种可行的方法：making sure that if Alice spends the coin once then
+no one knows who she is. but if she spends the coin more than once, all
+of a sudden, her identity is completely exposed.</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615173703168.png" /></p>
 <p>Election（选举）</p>
 <ul>
 <li>问题：计算出多数投票结果，不过却不用知道每个人的投票结果</li>
-<li>解决：引入一个election center，用来计算大多数票，不过保密投票结果，各派将他们的投票加密后送给选举中心，投票结束后，election center计算出胜者，election center还需验证投票者是否能投票以及只能投一次。</li>
+<li>解决：引入一个election
+center，用来计算大多数票，不过保密投票结果，各派将他们的投票加密后送给选举中心，投票结束后，election
+center计算出胜者，election
+center还需验证投票者是否能投票以及只能投一次。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615174435915.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615174435915.png" /></p>
 <p>private auctions（私密拍卖）</p>
 <ul>
 <li>问题：让参与者能计算最高出价者以及他该付的金额，除了这些，其他关于个人投票信息保密</li>
 <li>解决：最高出价数额保密，为公众所知的只有第二高价的数额和最高出价者是谁。</li>
 </ul>
 <p>扩展：Vickrey拍卖是指所有竞拍者通过密封投标的方式竞价，出价最高的竞拍者获得拍品，并支付第二高的报价。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615175130900.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615175130900.png" /></p>
 <p>引出更广泛的问题：secure multi-party computation（安全多方计算）</p>
 <p>如前面的election center、auction center相当于trusted authority</p>
 <p>密码学一个核心的定理：一个任何你想做的计算，只要你能用可信任方计算，你也一定可以不借助可信任方完成。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615180221197.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615180221197.png" /></p>
 <p>去掉可信任方，取而代之，各参与者使用某些协议互相通信。（个人信息依然保密，且没有可信任方）</p>
-<p> <img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615182335006.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240615182335006.png" /></p>
 <p>privately outsourcing computation（私有外包计算）</p>
 <p>用户搜索请求加密后交给Google，Google扎起加密的请求上运行庞大的搜索算法，然后将加密后的结果给用户，用户进行解密后就会得到搜索结果了。（整个过程中，Google只看到了请求加密的方式，却不知道用户搜索的内容，用户得到了搜索的结果）</p>
 <p>zero knowledge（proof of knowledge）零知识证明</p>
 <p>数N为两个大质数p和q的积，现给出N，求质数分解结果。</p>
-<p> 零知识证明的神奇之处：Alic能向Bob证明她知道N的因子分解，这个证明能给Bob，Bob检查后确信Alice知道如何分解，但是Bob不知道因子P和Q。（举例子理解，你解出了一个数独谜题，你可以将其给Bob，Bob可以证明你解决了，但不知道你是怎么解出来的）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616164244337.png" alt=""></p>
+<p>零知识证明的神奇之处：Alic能向Bob证明她知道N的因子分解，这个证明能给Bob，Bob检查后确信Alice知道如何分解，但是Bob不知道因子P和Q。（举例子理解，你解出了一个数独谜题，你可以将其给Bob，Bob可以证明你解决了，但不知道你是怎么解出来的）</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616164244337.png" /></p>
 <p>rigorous：严格的</p>
 <p>forge：伪造</p>
 <p>三步（下面以数字签名为例）：</p>
@@ -285,20 +315,30 @@
 <li>提出架构</li>
 <li>证明任何攻击者在这个威胁模型下可以攻击这个架构的，这个攻击者也可以用来解决根本性难题。（如果问题很难，实际上就证明了攻击者无法在威胁模型下，破解这个架构）</li>
 </ul>
-<h3 id="Symmetric-Encryption"><a href="#Symmetric-Encryption" class="headerlink" title="Symmetric Encryption"></a>Symmetric Encryption</h3><h3 id="History"><a href="#History" class="headerlink" title="History"></a>History</h3><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616170058521.png" alt=""></p>
+<h3 id="symmetric-encryption">Symmetric Encryption</h3>
+<h3 id="history">History</h3>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616170058521.png" /></p>
 <p>图中老师使用符号的意义：</p>
 <p><code>-&gt;&gt;</code>表示密钥输入</p>
 <p><code>:=</code>定义变量C代表了什么</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616170304347.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616170304347.png" /></p>
 <p>替换加密</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616170509514.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616170509514.png" /></p>
 <p>替换加密的一个例子：凯撒密码</p>
 <p>字母移动三位，可以说它不是cipher，因为没有密钥，或者说密钥固定。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616171600294.png" alt=""></p>
-<p>替换加密的密钥空间是26！，约为$2^{88}$</p>
-<p>密钥空间（Key Space）是密码学中的一个概念，指的是在特定加密算法中所有可能密钥的集合。(密钥空间是所有可能的密钥组成的集合，每个密钥都是该空间中的一个元素。)</p>
-<p>密钥空间的大小通常由密钥的位数和可能的字符（通常是2的幂）决定。例如，一个8位的密钥空间大小为$2^8$个可能的密钥。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616172914454.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616171600294.png" /></p>
+<p>替换加密的密钥空间是26！，约为<span
+class="math inline">\(2^{88}\)</span></p>
+<p>密钥空间（Key
+Space）是密码学中的一个概念，指的是在特定加密算法中所有可能密钥的集合。(密钥空间是所有可能的密钥组成的集合，每个密钥都是该空间中的一个元素。)</p>
+<p>密钥空间的大小通常由密钥的位数和可能的字符（通常是2的幂）决定。例如，一个8位的密钥空间大小为<span
+class="math inline">\(2^8\)</span>个可能的密钥。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616172914454.png" /></p>
 <p>破解替换加密：</p>
 <ul>
 <li>字母的频率</li>
@@ -306,7 +346,8 @@
 </ul>
 <p>替换加密对于唯密文攻击是脆弱的。</p>
 <p>唯密文攻击：仅对截获的密文进行分析，求解明文或密钥的密码分析方法。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616174518049.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616174518049.png" /></p>
 <p>步骤：</p>
 <ul>
 <li>先将密钥重复写，以至于每个明文都能对应一个密钥的字母，如图中的k=CRYPTO，重复写。</li>
@@ -318,86 +359,127 @@
 <li>分组，每组的同一个位置用的是同一个密钥字母加密</li>
 <li>观察每组该位置出现最频繁的密文字母，则很可能其是E加密过来的（如图中的假设是H，则H-E=C，C则是密钥的一个字母）</li>
 <li>继续找下一个位置，如上述步骤找的是第一个，后面接着继续，直到将密钥完整破解出</li>
-<li>以上的步骤是基于知道密钥长度的情况下，如果不知道密钥长度，可以先假设密钥长度是1，开始解密，接着假设为2，解密……直到得到一个说得通的信息。</li>
+<li>以上的步骤是基于知道密钥长度的情况下，如果不知道密钥长度，可以先假设密钥长度是1，开始解密，接着假设为2，解密......直到得到一个说得通的信息。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616174907027.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616174907027.png" /></p>
 <p>rotor machines：转轮机</p>
 <p>输入一个字母，碟片旋转。如图中，输入三次C，分别是T、S、K。</p>
 <p>该机器一经提出，很快就被破解，使用字母频率、配对频率、三合字母频率。（唯密文攻击）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616175504404.png" alt=""></p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616175807793.png" alt=""></p>
-<p>DES（Data Encryption Standard）：密钥空间$2^{56}$</p>
-<h3 id="Discrete-Probability"><a href="#Discrete-Probability" class="headerlink" title="Discrete Probability"></a>Discrete Probability</h3><p>finite set：有限集</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616175504404.png" /></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240616175807793.png" /></p>
+<p>DES（Data Encryption Standard）：密钥空间<span
+class="math inline">\(2^{56}\)</span></p>
+<h3 id="discrete-probability">Discrete Probability</h3>
+<p>finite set：有限集</p>
 <p>全局U上的概率分布为一函数记为P，该函数为全局中的每一个元素赋值，范围在0到1之间，这个数称为全局中特定元素的权重或概率。所有权重和为1。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617161719058.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617161719058.png" /></p>
 <p>uniform distribution：均匀分布</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617160258303.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617160258303.png" /></p>
 <p>point distribution：点分布</p>
 <p>将所有权重放在一个点上。</p>
 <p>distribution vector：分布向量</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617162814854.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617162814854.png" /></p>
 <p>每个字符串的概率符合均匀分布。</p>
-<p>$lsb_2(x)=11$​，x的低两位是11</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617164339129.png" alt=""></p>
+<p><span class="math inline">\(lsb_2(x)=11\)</span>​，x的低两位是11</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617164339129.png" /></p>
 <p>the union bound：并集上界</p>
-<p>$msb_2(x)=11$，x的开头两位是11</p>
+<p><span class="math inline">\(msb_2(x)=11\)</span>，x的开头两位是11</p>
 <p>使用并集上界来估算概率的上界。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617165105126.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617165105126.png" /></p>
 <p>Random Variables：随机变量</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617171720201.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617171720201.png" /></p>
 <p>the uniform random variable：均匀随机变量</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617172023878.png" alt=""></p>
-<p>$r_1$和$r_2$​是r的第一位和第二位</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617172449015.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617172023878.png" /></p>
+<p><span class="math inline">\(r_1\)</span>和<span
+class="math inline">\(r_2\)</span>​是r的第一位和第二位</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240617172449015.png" /></p>
 <p>Deterministic algorithm：确定算法</p>
 <p>不同的输入，输出总是一致的。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240618162744646.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240618162744646.png" /></p>
 <p>independence：独立性</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240618162939439.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240618162939439.png" /></p>
 <p>the XOR is basically just the addition modular two.（模2和）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240618163351262.png" alt=""></p>
-<p>随机变量Y随机分布于${0,1}^n$，另一独立的随机变量X在${0,1}^n$上均匀分布。随机变量Z为X和Y的异或和，不管Y怎么分布，Z总是均匀分布的随机变量。</p>
-<p>证明$n = 1$的情况。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240618164500198.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240618163351262.png" /></p>
+<p>随机变量Y随机分布于<span
+class="math inline">\(\{0,1\}^n\)</span>，另一独立的随机变量X在<span
+class="math inline">\(\{0,1\}^n\)</span>上均匀分布。随机变量Z为X和Y的异或和，不管Y怎么分布，Z总是均匀分布的随机变量。</p>
+<p>证明<span class="math inline">\(n = 1\)</span>的情况。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240618164500198.png" /></p>
 <p>the birthday paradox：生日悖论</p>
 <p>从全局U中选择n个随机变量，这些随机变量是相互独立的，它们不一定是均匀分布的，只需假设它们同分布。</p>
-<p>两次取样相等的概率$\ge \frac{1}{2}$。</p>
-<h1 id="流密码"><a href="#流密码" class="headerlink" title="流密码"></a>流密码</h1><h2 id="The-One-Time-Pad"><a href="#The-One-Time-Pad" class="headerlink" title="The One Time Pad"></a>The One Time Pad</h2><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619160132539.png" alt=""></p>
+<p>两次取样相等的概率<span class="math inline">\(\ge
+\frac{1}{2}\)</span>。</p>
+<h1 id="流密码">流密码</h1>
+<h2 id="the-one-time-pad">The One Time Pad</h2>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619160132539.png" /></p>
 <p>a cipher is defined:</p>
 <ul>
-<li>key  space：the set of all possible keys</li>
-<li><p>the set of all possible messages（明文）</p>
-</li>
-<li><p>the set of all possible ciphertexts</p>
-</li>
+<li><p>key space：the set of all possible keys</p></li>
+<li><p>the set of all possible messages（明文）</p></li>
+<li><p>the set of all possible ciphertexts</p></li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619160543749.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619160543749.png" /></p>
 <p>the one time pad：一次性密码本</p>
 <p>密钥空间和明文空间和密文空间是一样的</p>
 <p>密钥、明文、密文等长。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619161206030.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619161206030.png" /></p>
 <p>加密解密原理的证明</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619161926138.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619161926138.png" /></p>
 <p>密钥要和明文一样长，而且是一次性的，这就导致了Alice和Bob要安全通信，Alice要发送一条消息给Bob，在她发送信息的第一位之前，她需要给Bob传送一个密钥。如果她有办法安全地传送给Bob一个密钥，她就可以用这个办法直接传送明文了（密钥和明文一样长）。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619162909313.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619162909313.png" /></p>
 <p>perfect secrecy的定义</p>
-<p>where k is uniform $\mathcal{K}$：密钥是均匀分布在密钥空间上（老师的符号表示：$k\overset{r}\leftarrow\mathcal{K}$​，k是均匀分布在密钥空间上的随机变量）</p>
-<p>意思：如果我是攻击者，我截获了一段密文c，密文是$m_0$的加密结果和是$m_1$的加密结果的概率相等。</p>
+<p>where k is uniform <span
+class="math inline">\(\mathcal{K}\)</span>：密钥是均匀分布在密钥空间上（老师的符号表示：<span
+class="math inline">\(k\overset{r}\leftarrow\mathcal{K}\)</span>​，k是均匀分布在密钥空间上的随机变量）</p>
+<p>意思：如果我是攻击者，我截获了一段密文c，密文是<span
+class="math inline">\(m_0\)</span>的加密结果和是<span
+class="math inline">\(m_1\)</span>的加密结果的概率相等。</p>
 <p>对于具有perfect secrecy（完美安全）的密码，任何唯密文攻击无效。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619165240845.png" alt=""></p>
-<p>对于任意给定的密文，其加密成明文c的密钥数量是常量，又因为分母是密钥空间数量，所以概率相等。（这样更好理解点）<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KZ4y1d7Hu/?spm_id_from=333.788&amp;vd_source=114167832b9258dafe31d11d208c4b25">参考</a></p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619165728403.png" alt=""></p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619173921912.png" alt=""></p>
-<h2 id="Stream-ciphers"><a href="#Stream-ciphers" class="headerlink" title="Stream ciphers"></a>Stream ciphers</h2><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626162351317.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619165240845.png" /></p>
+<p>对于任意给定的密文，其加密成明文c的密钥数量是常量，又因为分母是密钥空间数量，所以概率相等。（这样更好理解点）<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KZ4y1d7Hu/?spm_id_from=333.788&amp;vd_source=114167832b9258dafe31d11d208c4b25">参考</a></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619165728403.png" /></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240619173921912.png" /></p>
+<h2 id="stream-ciphers">Stream ciphers</h2>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626162351317.png" /></p>
 <p>PRG(pseudo-random generator)：伪随机发生器</p>
 <p>PRG is a func（图中用G符号表示）</p>
-<p>这个函数取一个种子（${0,1}^s$为seed space，种子空间）作为输入，它将一个s位的种子映射到长得多的字符串（图中为n位）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626163237285.png" alt=""></p>
+<p>这个函数取一个种子（<span
+class="math inline">\(\{0,1\}^s\)</span>为seed
+space，种子空间）作为输入，它将一个s位的种子映射到长得多的字符串（图中为n位）</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626163237285.png" /></p>
 <p>用种子作为密钥，使用发生器将其扩展成长得多看起来很随机的序列，或称为伪随机序列。（即图中G(K)）然后进行异或操作。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626163445993.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626163445993.png" /></p>
 <p><strong>流密码中是完美安全的吗？</strong></p>
 <p>不是，因为密钥长度远远小于明文长度。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626165537903.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626165537903.png" /></p>
 <p>unpredictable：不可预测性</p>
 <p>定理：存在一个数i，如果我们给出PRG输出的前i位，存在某种有效的算法，可以计算余下的字符串。如果是这种情况，那么这个流密码是不安全的。</p>
 <p>因为基于一些预知的知识，攻击者知道信息的某些部分最初的明文内容</p>
@@ -406,93 +488,148 @@
 <li>由于该例子是基于如果一个流密码是可预测的（PRG可预测），则可以预测到伪随机序列的剩余部分，也可以预测到明文的额剩余部分。</li>
 <li>even：能预测一位也会造成问题，因为依次预测下去，就相当于都能预测。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626175522606.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626175522606.png" /></p>
 <p>存在一个有效算法A，还有一个位置i（位于0到n-1之间）</p>
-<p>$k\overset{r}\leftarrow\mathcal{K}$：表示从$\mathcal{k}$这个密钥空间随机选取一个密钥k。</p>
+<p><span
+class="math inline">\(k\overset{r}\leftarrow\mathcal{K}\)</span>：表示从<span
+class="math inline">\(\mathcal{k}\)</span>这个密钥空间随机选取一个密钥k。</p>
 <p>Pr[]：表示概率。</p>
-<p>将G(k)输出的前缀（这里给前i位 ）输入给算法A，算法能预测下一位的概率。</p>
-<p>for some non-negligible, denote them as $\epsilon$​.对于一些不可忽略的量，用$\epsilon$表示。</p>
-<p>$\frac{1}{2}$：下一位要么是0要么是1，所以预测准确的概率是$\frac{1}{2}$,如果再加上一个不忽略的量$\epsilon$，就表示大于$\frac{1}{2}$。</p>
+<p>将G(k)输出的前缀（这里给前i位
+）输入给算法A，算法能预测下一位的概率。</p>
+<p>for some non-negligible, denote them as <span
+class="math inline">\(\epsilon\)</span>​.对于一些不可忽略的量，用<span
+class="math inline">\(\epsilon\)</span>表示。</p>
+<p><span
+class="math inline">\(\frac{1}{2}\)</span>：下一位要么是0要么是1，所以预测准确的概率是<span
+class="math inline">\(\frac{1}{2}\)</span>,如果再加上一个不忽略的量<span
+class="math inline">\(\epsilon\)</span>，就表示大于<span
+class="math inline">\(\frac{1}{2}\)</span>。</p>
 <p>（最下面的定义：通俗的来讲就是不管给什么样的前缀，也无法预测出前缀的下一位。）</p>
 <p><strong>例子：</strong></p>
 <p>（1）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626175859348.png" alt=""></p>
-<p>$XOR(G(k))=1$：所有位异或为1。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626175859348.png" /></p>
+<p><span class="math inline">\(XOR(G(k))=1\)</span>：所有位异或为1。</p>
 <p>是可预测的，因为如果给了前n-1位，可以预测第n位。不满足任意i的定义。</p>
 <p>（2）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626181923573.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240626181923573.png" /></p>
 <p><strong>linear congruential generator：线性同余生成器</strong></p>
 <p>it has three parameters：a,b,p.(a和b是整数，p是质数)</p>
-<p>以$r[0]$为生成器的种子，然后迭代运算下面的式子。</p>
-<p>$r[i] \leftarrow (a\cdot r[i-1]+b )\ mod \ p$</p>
-<p> 然后输出几位关于目前状态i的数$r[i]$，然后i+1</p>
+<p>以<span
+class="math inline">\(r[0]\)</span>为生成器的种子，然后迭代运算下面的式子。</p>
+<p><span class="math inline">\(r[i] \leftarrow (a\cdot r[i-1]+b )\ mod \
+p\)</span></p>
+<p>然后输出几位关于目前状态i的数<span
+class="math inline">\(r[i]\)</span>，然后i+1</p>
 <p>这个生成器具有良好的统计学性质，很容易被预测。</p>
 <p><strong>glibc：GNU C Library函数库</strong></p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240705115827253.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240705115827253.png" /></p>
 <p>the definition of Negligible and non-negligible</p>
 <ul>
 <li>实用派</li>
 <li>密码学理论</li>
 </ul>
-<p>实用派认为，如果一个值比$\frac{1}{2^{30}}$（约为十亿分之一）大，那么就不可忽略的。（原因是你用密钥加密一个G的数据，约为$2^{30}$字节，$2^{33}$位，那么$\frac{1}{2^{30}}$概率的事件就会很有可能发生。）反之，当一个值小于$\frac{1}{2^{80}}$，那么就是忽略的。</p>
+<p>实用派认为，如果一个值比<span
+class="math inline">\(\frac{1}{2^{30}}\)</span>（约为十亿分之一）大，那么就不可忽略的。（原因是你用密钥加密一个G的数据，约为<span
+class="math inline">\(2^{30}\)</span>字节，<span
+class="math inline">\(2^{33}\)</span>位，那么<span
+class="math inline">\(\frac{1}{2^{30}}\)</span>概率的事件就会很有可能发生。）反之，当一个值小于<span
+class="math inline">\(\frac{1}{2^{80}}\)</span>，那么就是忽略的。</p>
 <p>函数值大于1除以某个多项式的值，则说是不可忽略的。如果函数值小于1除以所有多项式对应的值，就说它是可忽略的。</p>
-<p>（$\lambda_d$可以理解为，对于$\forall d$​，与其对应的下界）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240709115342721.png" alt=""></p>
+<p>（<span class="math inline">\(\lambda_d\)</span>可以理解为，对于<span
+class="math inline">\(\forall d\)</span>​，与其对应的下界）</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240709115342721.png" /></p>
 <p>例子</p>
-<p>$\epsilon(\lambda)=\frac{1}{2^\lambda}$</p>
+<p><span
+class="math inline">\(\epsilon(\lambda)=\frac{1}{2^\lambda}\)</span></p>
 <ul>
-<li>对于$\forall d$，总存在一个足够大的$\lambda$满足$\frac{1}{2^\lambda}&lt;\frac{1}{\lambda^d}$​。一个是指数级别的，一个是幂指数。</li>
+<li>对于<span class="math inline">\(\forall
+d\)</span>，总存在一个足够大的<span
+class="math inline">\(\lambda\)</span>满足<span
+class="math inline">\(\frac{1}{2^\lambda}&lt;\frac{1}{\lambda^d}\)</span>​。一个是指数级别的，一个是幂指数。</li>
 </ul>
-<p>$\epsilon(\lambda)=\frac{1}{\lambda^{1000}}$</p>
+<p><span
+class="math inline">\(\epsilon(\lambda)=\frac{1}{\lambda^{1000}}\)</span></p>
 <ul>
-<li>显然，如果d取10000，$\frac{1}{\lambda^{1000}}&gt;\frac{1}{\lambda^{10000}}$​。</li>
+<li>显然，如果d取10000，<span
+class="math inline">\(\frac{1}{\lambda^{1000}}&gt;\frac{1}{\lambda^{10000}}\)</span>​。</li>
 </ul>
-<p>$\epsilon(\lambda)=\begin{cases}\frac{1}{2^\lambda} &amp; \text{for odd } \lambda,\\frac{1}{\lambda^{1000}} &amp; \text{for even }\lambda\end{cases}$​</p>
+<p><span
+class="math inline">\(\epsilon(\lambda)=\begin{cases}\frac{1}{2^\lambda}
+&amp; \text{for odd } \lambda,\\\frac{1}{\lambda^{1000}} &amp; \text{for
+even }\lambda\end{cases}\)</span>​</p>
 <ul>
 <li>满足non-negligible的定义</li>
 </ul>
-<h2 id="Attacks-on-OTP-and-stream-ciphers"><a href="#Attacks-on-OTP-and-stream-ciphers" class="headerlink" title="Attacks on OTP and stream ciphers"></a>Attacks on OTP and stream ciphers</h2><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240709174251066.png" alt=""></p>
+<h2 id="attacks-on-otp-and-stream-ciphers">Attacks on OTP and stream
+ciphers</h2>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240709174251066.png" /></p>
 <p>two time pad attack：两次密码本攻击</p>
 <p>一次性密码本之所以叫一次是因为密码本只能加密单个信息。接下来将展示，如果同样的密码本为不同的明文加密，就不再安全。</p>
 <p>eavesdropper：窃听者</p>
-<p>密文$C_1$与$C_2$异或等价于$m_1$与$m_2$​异或，因为密码本被异或抵消了。</p>
-<p>Enough redundancy in English and ASCII encoding that：英语实际上有者足够的冗余（如某些字符出现频率高，某些低），用ASCII码编码，本身就有足够的冗余了（ASCII码中有很多用不上的，控制字符）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240709180409957.png" alt=""></p>
-<p>Project Venona：苏联靠人工掷骰子生成密码本，由于生成密码本颇费人工，用来加密一条信息显得浪费，所以最后用来加密多条信息。美国最后仅凭截获密文破解了。</p>
-<p>MS-PPTP（point-to-point tunneling protocol）：它是关于客户端希望与服务端安全通信的。客户端与服务端共享一个密钥。将双方的整个互动当做一个流</p>
+<p>密文<span class="math inline">\(C_1\)</span>与<span
+class="math inline">\(C_2\)</span>异或等价于<span
+class="math inline">\(m_1\)</span>与<span
+class="math inline">\(m_2\)</span>​异或，因为密码本被异或抵消了。</p>
+<p>Enough redundancy in English and ASCII encoding
+that：英语实际上有者足够的冗余（如某些字符出现频率高，某些低），用ASCII码编码，本身就有足够的冗余了（ASCII码中有很多用不上的，控制字符）</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240709180409957.png" /></p>
+<p>Project
+Venona：苏联靠人工掷骰子生成密码本，由于生成密码本颇费人工，用来加密一条信息显得浪费，所以最后用来加密多条信息。美国最后仅凭截获密文破解了。</p>
+<p>MS-PPTP（point-to-point tunneling
+protocol）：它是关于客户端希望与服务端安全通信的。客户端与服务端共享一个密钥。将双方的整个互动当做一个流</p>
 <p>图中双竖线代表联结，本质上将客户端和服务端的信息全部联结成一个长流。整个长流用流密钥K来加密。服务端也在发送同样的事（也是使用流密钥K）。所以发生的与二次密码本别无二致。</p>
 <ul>
 <li>解决：可以用两个密钥，一个是服务端到客户端，一个是客户端到服务端，双方都保有这对密钥。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240709181802397.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240709181802397.png" /></p>
 <p>图中有一个客户端和一个接入点，它们共享一个密钥k。</p>
 <p>比如客户端想发送一个包含明文m的帧给接入点，CRC(m)是校验和。明文m和校验和要用流密钥加密。（这里的流密钥是一个值IV（为24位字符串，从0开始取值，可以是一个数据包的计数器，这样每个数据报的IV不同，于是每个数据包的IV加一）和一个长期的密钥K的联结）</p>
-<p>problem：IV是24位，也就只有$2^{24}$​个，经过1600万帧的传输后，IV又要从0开始了。于是就有了二次密码本。</p>
-<p>on some 802.11cards：IV resets to 0 after power cycle.:在一些802.11的网卡上，在重启系统后，IV会重置为0。（所以会造成同样的密码本用来加密许多不同的信息）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710172123412.png" alt=""></p>
+<p>problem：IV是24位，也就只有<span
+class="math inline">\(2^{24}\)</span>​个，经过1600万帧的传输后，IV又要从0开始了。于是就有了二次密码本。</p>
+<p>on some 802.11cards：IV resets to 0 after power
+cycle.:在一些802.11的网卡上，在重启系统后，IV会重置为0。（所以会造成同样的密码本用来加密许多不同的信息）</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710172123412.png" /></p>
 <p>第一帧的密钥是1和k的联结，第二帧是2和k的联结，以此类推。</p>
 <p>k是104位，所以PRG生成密钥是104+24=128位。</p>
 <p>它们的后缀104位都是一样的，大部分密钥都是相近的。</p>
-<p>WEP中使用的PRG叫做RC4，FMS（三个人，Fluhrer，Mantin，Shamir）于2001年发现，证实经过$10^6$​，约一百万帧后，就可以还原密钥了。</p>
+<p>WEP中使用的PRG叫做RC4，FMS（三个人，Fluhrer，Mantin，Shamir）于2001年发现，证实经过<span
+class="math inline">\(10^6\)</span>​，约一百万帧后，就可以还原密钥了。</p>
 <p>办法：</p>
 <ul>
-<li>1.对帧进行处理， 将所有客户端发向服务端的帧当做一个长流处理，对长流使用伪随机数发生器（PRG）来进行异或操作。（比如密码本的第一节用来加密M1，密码本的第二节用来加密M2，以此类推）</li>
-<li>2.再次使用PRG，获得一个长期密钥，然后把密钥输入给PRG，得到一个长流。（可以用第一段来加密第一帧，第二段加密第二帧，以此类推。）<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710172504162.png" alt=""></li>
+<li>1.对帧进行处理，
+将所有客户端发向服务端的帧当做一个长流处理，对长流使用伪随机数发生器（PRG）来进行异或操作。（比如密码本的第一节用来加密M1，密码本的第二节用来加密M2，以此类推）</li>
+<li>2.再次使用PRG，获得一个长期密钥，然后把密钥输入给PRG，得到一个长流。（可以用第一段来加密第一帧，第二段加密第二帧，以此类推。）<img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710172504162.png" /></li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710173348949.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710173348949.png" /></p>
 <p>disk enccryption：硬盘加密</p>
 <p>老师用红色的斜线表示这被加密了。</p>
 <p>原始文件是（1），过一段时间后，用户修改了文件，现在不是给Bob了，而是要给Eve了，但文件其余内容不变。攻击者查看了修改前硬盘的内容，现在又来查看修改后硬盘的内容。他会发现改变的仅仅是一小段不一样了，其他都是一模一样的。</p>
 <p>所以在硬盘上使用流密码加密是不明智的，本质上是二次密码本攻击的又一个例子，相同的密码本被用来加密两条不同大的信息。</p>
-<p>总结<img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710174521890.png" alt=""></p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710175053335.png" alt=""></p>
+<p>总结<img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710174521890.png" /></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710175053335.png" /></p>
 <p>一次性密码本和流密码不提供完整性保护，只提供私密性保护。</p>
-<p>malleable：在密码学中，”malleable”（可塑的或可变形的）这个术语通常与某些加密算法的弱点有关，特别是那些允许攻击者在某种程度上修改密文，从而影响解密结果的算法。这种类型的攻击被称为”可塑性攻击”（malleability attack）。</p>
+<p>malleable：在密码学中，"malleable"（可塑的或可变形的）这个术语通常与某些加密算法的弱点有关，特别是那些允许攻击者在某种程度上修改密文，从而影响解密结果的算法。这种类型的攻击被称为"可塑性攻击"（malleability
+attack）。</p>
 <p>假设攻击者将密文与一特定值P异或，P叫做子置换密钥。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710175753891.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710175753891.png" /></p>
 <p>攻击者想修改这封信，让它来自于另外某个人（比如Eve），他可以用异或特定的三个字母。（前提假设是他知道这信来自Bob，以及知道在密文正确位置异或这三个字母。）</p>
 <p>将Bob和Eve进行异或（ASCII），得到07 19 07。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710184614387.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240710184614387.png" /></p>
 <p>RC4种子大小可变，例如可以是128位的，它将被用作流密码的密钥。</p>
 <p>步骤：</p>
 <ul>
@@ -500,27 +637,32 @@
 <li>执行一个非常简单的循环，每一轮输出一个字节。</li>
 </ul>
 <p>Weaknesses：</p>
-<p>Bias in initial output: $Pr[2^{nd}byte=0]=\frac{2}{256}$</p>
+<p>Bias in initial output: <span
+class="math inline">\(Pr[2^{nd}byte=0]=\frac{2}{256}\)</span></p>
 <ul>
-<li>第二个字节有点不均匀。<ul>
-<li>如果是完全随机的，第二个字节为0的概率应该是$\frac{1}{256}$。（也就是说如果用来加密一段信息，第二个字节就更有可能不会被加密，换句话说，它比正常多一倍的概率和0异或。）</li>
+<li>第二个字节有点不均匀。
+<ul>
+<li>如果是完全随机的，第二个字节为0的概率应该是<span
+class="math inline">\(\frac{1}{256}\)</span>。（也就是说如果用来加密一段信息，第二个字节就更有可能不会被加密，换句话说，它比正常多一倍的概率和0异或。）</li>
 <li>事实上，第一个字节和第三个字节也是不均匀的。</li>
 <li>解决：RC4-drop，忽略发生器的前256个字节，从发生器产生的第257个字节开始。（前面的字节是不均匀的）</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p>Prob.of (0,0) is $\frac{1}{256^{2}} + \frac{1}{256^{3}}$</p>
+<p>Prob.of (0,0) is <span class="math inline">\(\frac{1}{256^{2}} +
+\frac{1}{256^{3}}\)</span></p>
 <ul>
-<li>如果看RC4一段很长的输出，会发现出现序列00的可能性更大。<ul>
-<li>如果是完全随机的，那么出现序列00的可能性是$\frac{1}{256^{2}}$</li>
-</ul>
-</li>
+<li>如果看RC4一段很长的输出，会发现出现序列00的可能性更大。
+<ul>
+<li>如果是完全随机的，那么出现序列00的可能性是<span
+class="math inline">\(\frac{1}{256^{2}}\)</span></li>
+</ul></li>
 </ul>
 <p>Related key attacks</p>
 <ul>
 <li>使用的密钥之间紧密联系，实际上是可能还原根密钥的</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240711113742184.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240711113742184.png" /></p>
 <p>CSS（content scrambling system）：内容混淆系统</p>
 <p>用于加密DVD电影的</p>
 <p>它是基于线性反馈移位寄存器（LFSR）设计的。</p>
@@ -529,7 +671,8 @@
 <li>在每一个时钟周期，寄存器向右移一位。（最右位被丢弃，而异或结果被当做第一位）</li>
 <li>LSFR的种子就是寄存器的初始状态。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240711182937665.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240711182937665.png" /></p>
 <p>CSS的密钥是5个字节，40位。</p>
 <ul>
 <li>40位的原因：是因为涉及DVD加密算法时，美国出口法规定，出口的加密算法密钥只能是40位。</li>
@@ -540,118 +683,171 @@
 <p>破解：</p>
 <ul>
 <li>由于DVD加密使用的MPEG文件，如果你知道明文的前缀（比如前20个字节），然后异或明文前缀与密文，就能得到PRG最初输出（即CSS输出的前20个字节）的分段。</li>
-<li>对于$2^{17}$的一种猜测，运行第一个LSFR生成20个字节，再用PRG最初输出（CSS输出的前20个字节）减去第一股LSFR输出的20个字节。</li>
+<li>对于<span
+class="math inline">\(2^{17}\)</span>的一种猜测，运行第一个LSFR生成20个字节，再用PRG最初输出（CSS输出的前20个字节）减去第一股LSFR输出的20个字节。</li>
 <li>如果猜测对的话，得到应该是第二个寄存器的前20字节的输出。</li>
 <li>判断：实际上看20字节序列，很容易判断这20个字节是否来之一个25位LSFR的输出。如果不是，证明对17位寄存器的猜测错误。</li>
 <li>最后一直尝试，不仅能得到17位寄存器的初始状态，也能得到25位寄存器的初始状态。</li>
 <li>然后就能解密出CSS的剩余输出，从而能解密整个电影了。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240711183618882.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240711183618882.png" /></p>
 <p>输出长度是远大于输入的。</p>
-<p>Nonce：在密码学中，Nonce是一个缩写词，它代表”Number used once”或”Number once”。Nonce是一个随机或伪随机生成的值，用于确保加密的唯一性，防止重放攻击（replay attacks）和其他类型的攻击。</p>
+<p>Nonce：在密码学中，Nonce是一个缩写词，它代表"Number used
+once"或"Number
+once"。Nonce是一个随机或伪随机生成的值，用于确保加密的唯一性，防止重放攻击（replay
+attacks）和其他类型的攻击。</p>
 <p>the nonce makes the pair（指的是(k,r)有序对） unique.</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240711190028070.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240711190028070.png" /></p>
 <p>Salsa 20：是一个同时面向硬件和软件设计的流密码。</p>
 <p>Salsa输入128位或256位的密钥。r是nonce。</p>
-<p>H函数有3个输入，密钥k，nonce r，以及步骤计数器就是图中的0,1…</p>
+<p>H函数有3个输入，密钥k，nonce r，以及步骤计数器就是图中的0,1...</p>
 <p>函数H的工作过程：</p>
 <ul>
-<li>先把状态扩充至64字节长，定一个4字节的常数，记作$\tau_0$。<ul>
-<li>然后取16字节的密钥k，然后还要定另外一个4字节的常数，记作$\tau_1$。</li>
+<li>先把状态扩充至64字节长，定一个4字节的常数，记作<span
+class="math inline">\(\tau_0\)</span>。
+<ul>
+<li>然后取16字节的密钥k，然后还要定另外一个4字节的常数，记作<span
+class="math inline">\(\tau_1\)</span>。</li>
 <li>然后取8字节的nonce，然后再取索引，也就是计数器，也是8字节长。</li>
-<li>然后还要去另外一个4字节的常数$\tau_2$，然后再次取密钥（16字节）。</li>
-<li>最后取一个4字节的常数$\tau_3$。</li>
+<li>然后还要去另外一个4字节的常数<span
+class="math inline">\(\tau_2\)</span>，然后再次取密钥（16字节）。</li>
+<li>最后取一个4字节的常数<span
+class="math inline">\(\tau_3\)</span>。</li>
 <li>以上总和就是64字节长。</li>
-</ul>
-</li>
+</ul></li>
 <li>然后应用函数h，h是一个一一对应的双射函数，由64字节映射到64字节，完全可逆。</li>
 <li>然后反复应用函数h，基本上要来10次。（由于h是可逆的，从输出可以一直逆推到输入）</li>
 <li>将输入和输出逐字相加（这里是64字节，4字节一次地加），最终得到64字节的输出。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240711190232550.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240711190232550.png" /></p>
 <p>2.2GHz的x86机上的性能参数。</p>
-<h2 id="PRG-Security-Defs"><a href="#PRG-Security-Defs" class="headerlink" title="PRG Security Defs"></a>PRG Security Defs</h2><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712110257210.png" alt=""></p>
+<h2 id="prg-security-defs">PRG Security Defs</h2>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712110257210.png" /></p>
 <p>令PRG有密钥空间K，即N位字符串的集合。</p>
 <p>我们的目标是定义发生器的输出和随机序列无法区分的意义。（换句话说，我们要定义一个分布，从密钥空间里选择密钥时的分布）。带R的箭头意思是从集合K里均匀地随机选取，然后发生器输出。</p>
 <p>蓝圈代表所有N位0，1的字符串，那么均匀分布会以同等概率输出这些字符串。不过这个发生器G生成的伪随机分布，因为种子空间太小，可能输出结果的集合是很小很小的。红色区域是N位0,1字符串集合中一个很小的子集，这是发生器所能产生的一切。</p>
 <ul>
 <li>我们说，有个攻击者在观测发生器的输出，也就是这个小集合的元素，它与均匀分布的输出无法区分。这个性质就是我们想要的。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712115435952.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712115435952.png" /></p>
 <p>为了理解如何定义这个与真随机不可区分的概念，我们需要引入统计测试的概念。我来定义N位0,1字符串的统计测试，我用字母A来表示这些统计测试。</p>
 <p>统计测试是一个算法，以N位字符串为输入，输出0或1。当结果为0时，表示输入的字符串不是随机的；当结果为1时，表示输入的字符串是随机的。（所以，统计测试所做的就是取输入x，即给定的n位字符串，然后判断它是否看起来像是随机的）</p>
 <p>例子：</p>
 <ul>
-<li>(1)对于一个随机字符串，0的个数和1的个数大体相等。（换句话说，统计测试输出1，当且仅当字符串x里0的个数减去1的个数不会差太多。比如说，0个数和1个数的差别小于$10\sqrt{n}$）</li>
-<li>(2)出现连续两个0，对于一个随机字符串，我们期望00的概率应该是$\frac{1}{4}$，对于一个随机字符串，我们期望大于有$\frac{n}{4}$个00。</li>
+<li>(1)对于一个随机字符串，0的个数和1的个数大体相等。（换句话说，统计测试输出1，当且仅当字符串x里0的个数减去1的个数不会差太多。比如说，0个数和1个数的差别小于<span
+class="math inline">\(10\sqrt{n}\)</span>）</li>
+<li>(2)出现连续两个0，对于一个随机字符串，我们期望00的概率应该是<span
+class="math inline">\(\frac{1}{4}\)</span>，对于一个随机字符串，我们期望大于有<span
+class="math inline">\(\frac{n}{4}\)</span>个00。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712160323558.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712160323558.png" /></p>
 <ul>
 <li>(3)我们说统计测试输出1，当且仅当最大的块，我们叫0的最大游程，在字符串x中最长的连续的0。在随机字符串里，我们有一个期望0的最长游程，如果小于则是随机的，如果远远大于，则是不随机的。（对于全1的字符串，这个统计测试也会认为是随机的，因为符合，所以说，统计测试不一定是对的。）</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712161336631.png" alt=""></p>
-<p>在我们讨论安全性定义前，我们还需讨论如何评估一个统计测试。为此，我们定义优势的概念。</p>
-<script type="math/tex; mode=display">
-ADV_{PRG}[A,G]=|Pr_{k\overset{R}\leftarrow\mathcal{K}}[A(G(k))=1]=Pr_{r\overset{R}\leftarrow{\{0,1\}^n}}[A(r)=1]|\le[0,1]</script><p>我们有一个生成N位字符串的发生器，有N位字符串的统计测试。统计测试A相对于发生器G的优势，定义为两个量的差，第一个量是统计测试输出1的可能性（当输入是由发生器生成的伪随机输出），同时我们还要看输入是真随机字符串时输出1的可能性。两个量的差（由于是概率的差，差的区间在[0,1]里）</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712161336631.png" /></p>
+<p>在我们讨论安全性定义前，我们还需讨论如何评估一个统计测试。为此，我们定义优势的概念。
+<span class="math display">\[
+ADV_{PRG}[A,G]=|Pr_{k\overset{R}\leftarrow\mathcal{K}}[A(G(k))=1]=Pr_{r\overset{R}\leftarrow{\{0,1\}^n}}[A(r)=1]|\le[0,1]
+\]</span>
+我们有一个生成N位字符串的发生器，有N位字符串的统计测试。统计测试A相对于发生器G的优势，定义为两个量的差，第一个量是统计测试输出1的可能性（当输入是由发生器生成的伪随机输出），同时我们还要看输入是真随机字符串时输出1的可能性。两个量的差（由于是概率的差，差的区间在[0,1]里）</p>
 <p>我们定义这个发生器的优势，记为优势子PRG。</p>
 <p>讨论：</p>
 <ul>
 <li>如果这个优势接近于1，意味着我们输入伪随机数和输入真随机数时统计测试A表现得完全不同。（统计测试能将这个发生器的输出和真随机区分开来。从某种意义上说，这个统计测试破解了发生器G。）</li>
-<li>如果这个优势跟0很近，意味着统计测试在两种情况下表现地基本一致。（这个统计测试无法区分发生器输出和真随机。 ）</li>
+<li>如果这个优势跟0很近，意味着统计测试在两种情况下表现地基本一致。（这个统计测试无法区分发生器输出和真随机。
+）</li>
 </ul>
 <p>例子：</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712164742028.png" alt=""></p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712174214506.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712164742028.png" /></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712174214506.png" /></p>
 <p>定义什么是安全的伪随机数发生器。</p>
 <ul>
-<li>如果不存在有效的统计测试，可以区分发生器G的输出和真随机序列。（对所有有效的统计测试，统计测试A对发生器G的优势基本上可忽略，换句话说，它很接近于0。）<ul>
+<li>如果不存在有效的统计测试，可以区分发生器G的输出和真随机序列。（对所有有效的统计测试，统计测试A对发生器G的优势基本上可忽略，换句话说，它很接近于0。）
+<ul>
 <li>有效是说，测试算法总在有限步内终止并返回结果。</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p>能否构建这么一个发生器，然后证明它是个安全的PRG，换句话说，证明没有一个有效测试能够区分发生器的输出和真随机。答案是：不能。</p>
 <ul>
-<li>原因：如果能证明一个特定的发生器是安全的，那就意味着$P\neq NP$。如果$P=NP$,那么就很容易证明不存在安全的PRG。（后句和前句是逆否命题）</li>
-<li>理解：<ul>
-<li>$P$是指可以在多项式时间内解决的问题，$NP$是指可以在多项式时间内验证解答的问题。如果$P \neq NP$，说明有些问题在多项式时间内是无法解决的，但它们的解可以在多项式时间内验证。</li>
+<li>原因：如果能证明一个特定的发生器是安全的，那就意味着<span
+class="math inline">\(P\neq NP\)</span>。如果<span
+class="math inline">\(P=NP\)</span>,那么就很容易证明不存在安全的PRG。（后句和前句是逆否命题）</li>
+<li>理解：
+<ul>
+<li><span
+class="math inline">\(P\)</span>是指可以在多项式时间内解决的问题，<span
+class="math inline">\(NP\)</span>是指可以在多项式时间内验证解答的问题。如果<span
+class="math inline">\(P \neq
+NP\)</span>，说明有些问题在多项式时间内是无法解决的，但它们的解可以在多项式时间内验证。</li>
 <li>安全的PRG：一个安全的PRG意味着它不能在多项式时间内被破解。换句话说，如果你能证明一个PRG是安全的，就说明没有多项式时间算法能够破解它。这意味着存在一些问题无法在多项式时间内解决。</li>
-<li>如果$P = NP$，所有NP问题都可以在多项式时间内解决。这意味着所有通过NP问题构建的PRG都可以在多项式时间内被破解，因为这些问题现在变得容易解决了。</li>
-</ul>
-</li>
+<li>如果<span class="math inline">\(P =
+NP\)</span>，所有NP问题都可以在多项式时间内解决。这意味着所有通过NP问题构建的PRG都可以在多项式时间内被破解，因为这些问题现在变得容易解决了。</li>
+</ul></li>
 </ul>
 <p><strong>P和NP问题</strong>：</p>
 <ul>
 <li>P问题相当于很容易找出一个解（比如求公约数），NP问题相当于很容易验证一个解是否正确（比如拼图）。可以看出，NP问题是包含P问题的，那么P问题是否也包含NP问题。（即P问题和NP问题是否是一回事）</li>
-<li>“简单”不是一个严格的数学术语，更精确的定义：所谓简单的问题，指的是能在多项式时间内找到答案的问题。如果存在一个多项式时间的算法来解拼图，那么这个问题也就属于P类。</li>
+<li>"简单"不是一个严格的数学术语，更精确的定义：所谓简单的问题，指的是能在多项式时间内找到答案的问题。如果存在一个多项式时间的算法来解拼图，那么这个问题也就属于P类。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712175330958.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712175330958.png" /></p>
 <p>unpredictable：给定发生器输出的前缀是不可能预测出输出的下一位是什么。</p>
 <p>相当于必要条件一样，逆否命题：如果一个PRG是可预测的，说明它就是不安全的。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712175907813.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712175907813.png" /></p>
 <p>定义统计测试B：给定字符串x，B在前i位运行算法A，统计测试问算法A是否成功地预测了第i+1位，如果成功了，返回1；如果不成功，返回0。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712180540116.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712180540116.png" /></p>
 <p>姚期智证明了：逆命题也成立。</p>
 <p>对任何位置i，不可能根据前i位预测输出的第i+1位，那么这个发生器就是安全的。</p>
 <p>解读：这些下一位预测算法试图预测第i+1位，给定前i位，如果它们不能把G的输出和真随机区分开来，那么就没有统计测试可以区分G和真随机。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712182037370.png" alt=""></p>
-<p>由题设条件，容易构造出一个统计测试来区分G的输出和均匀分布的序列，意味着G不安全—&gt;由姚定理，得到G是可以预测的。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712182925484.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712182037370.png" /></p>
+<p>由题设条件，容易构造出一个统计测试来区分G的输出和均匀分布的序列，意味着G不安全--&gt;由姚定理，得到G是可以预测的。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712182925484.png" /></p>
 <p>符号定义：</p>
 <p>均匀分布不可区分到两个一般分布间的不可区分。</p>
-<p>给出两个分布$P_1$和$P_2$，然后问这两个分布可区分吗？</p>
-<p>我们说这两个分布计算上不可区分，记为$P_1\approx P_2$</p>
-<p>从分布$P_1$里取样，将结果交由A进行测试，作为对比，从$P_2$取样，也交给A，那么基本上A对两种情况表现一直，换句话说，两概率的差别是可以忽略的。</p>
-<h2 id="Semantic-security"><a href="#Semantic-security" class="headerlink" title="Semantic security"></a>Semantic security</h2><p>Semantic security：语义安全</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712183934036.png" alt=""></p>
+<p>给出两个分布<span class="math inline">\(P_1\)</span>和<span
+class="math inline">\(P_2\)</span>，然后问这两个分布可区分吗？</p>
+<p>我们说这两个分布计算上不可区分，记为<span
+class="math inline">\(P_1\approx P_2\)</span></p>
+<p>从分布<span
+class="math inline">\(P_1\)</span>里取样，将结果交由A进行测试，作为对比，从<span
+class="math inline">\(P_2\)</span>取样，也交给A，那么基本上A对两种情况表现一直，换句话说，两概率的差别是可以忽略的。</p>
+<h2 id="semantic-security">Semantic security</h2>
+<p>Semantic security：语义安全</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712183934036.png" /></p>
 <ul>
 <li>给定密文，攻击者无法还原密钥。（当然，这是一个不好的定义。比如，想想一个聪明但失败了的密码，使用密钥k，但直接输出明文作为密文，攻击者也不能还原密钥）</li>
-<li>给定密文，攻击者无法还原明文。$M_0||M_1$表示联结$M_0$和$M_1$。图中显然满足这一条，但是这是个不安全的定义，因为泄漏了一半的明文内容。</li>
+<li>给定密文，攻击者无法还原明文。<span
+class="math inline">\(M_0||M_1\)</span>表示联结<span
+class="math inline">\(M_0\)</span>和<span
+class="math inline">\(M_1\)</span>。图中显然满足这一条，但是这是个不安全的定义，因为泄漏了一半的明文内容。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712184731834.png" alt=""></p>
-<p>$|m_0|=|m_1|$表示两个相同长度的信息。</p>
-<p>攻击者无法知道来自哪种分布，是加密$M_0$的，还是加密$M_1$的。</p>
-<p>香农的完美安全定义太强了，需要很长的密钥，如果密钥太短，不可能满足这一定义。特别地，流密码不可能满足这个定义，然后，我们试图减弱这个定义，先不要求两个分布绝对相同，我们可以要求两个分布在计算上不可区分。但它还是有点太强了，无法被满足，不是说对所有的$m_0$和$m_1$满足，而是只对攻击者能想到的明文$(m_0,m_1)$成立。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712190737997.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712184731834.png" /></p>
+<p><span
+class="math inline">\(|m_0|=|m_1|\)</span>表示两个相同长度的信息。</p>
+<p>攻击者无法知道来自哪种分布，是加密<span
+class="math inline">\(M_0\)</span>的，还是加密<span
+class="math inline">\(M_1\)</span>的。</p>
+<p>香农的完美安全定义太强了，需要很长的密钥，如果密钥太短，不可能满足这一定义。特别地，流密码不可能满足这个定义，然后，我们试图减弱这个定义，先不要求两个分布绝对相同，我们可以要求两个分布在计算上不可区分。但它还是有点太强了，无法被满足，不是说对所有的<span
+class="math inline">\(m_0\)</span>和<span
+class="math inline">\(m_1\)</span>满足，而是只对攻击者能想到的明文<span
+class="math inline">\((m_0,m_1)\)</span>成立。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712190737997.png" /></p>
 <p>我们定义语义安全的方式通过两个实验，分别是实验0和实验1 。</p>
 <p>b是0或1。</p>
 <p>攻击者A所做的类似于对伪随机数发生器的统计测试。</p>
@@ -659,55 +855,93 @@ ADV_{PRG}[A,G]=|Pr_{k\overset{R}\leftarrow\mathcal{K}}[A(G(k))=1]=Pr_{r\overset{
 <p>流程：</p>
 <ul>
 <li>首先，挑战者选取一个随机密钥。</li>
-<li>攻击者输出两个信息$M_0$和$M_1$。</li>
-<li>然后挑战者输出$M_0$的加密结果（或$M_1$的加密结果）。（在实验0里挑战者会输出$M_0$的加密，在实验1里挑战者会输出$M_1$的加密。）</li>
-<li>然后攻击者试图去猜，他得到的是$M_0$的加密还是$M_1$的加密。</li>
+<li>攻击者输出两个信息<span class="math inline">\(M_0\)</span>和<span
+class="math inline">\(M_1\)</span>。</li>
+<li>然后挑战者输出<span
+class="math inline">\(M_0\)</span>的加密结果（或<span
+class="math inline">\(M_1\)</span>的加密结果）。（在实验0里挑战者会输出<span
+class="math inline">\(M_0\)</span>的加密，在实验1里挑战者会输出<span
+class="math inline">\(M_1\)</span>的加密。）</li>
+<li>然后攻击者试图去猜，他得到的是<span
+class="math inline">\(M_0\)</span>的加密还是<span
+class="math inline">\(M_1\)</span>的加密。</li>
 </ul>
-<p>定义事件$W_b$为在实验b中，攻击者输出1的所有事件。所以$W_0$中的事件意为在实验0中攻击者输出1，$W_1$意为在实验1中输出1。</p>
-<p>优势解读：换句话说，我们看攻击者的行为是否有所不同，当给他$M_0$的加密，和给他$M_1$的加密。</p>
+<p>定义事件<span
+class="math inline">\(W_b\)</span>为在实验b中，攻击者输出1的所有事件。所以<span
+class="math inline">\(W_0\)</span>中的事件意为在实验0中攻击者输出1，<span
+class="math inline">\(W_1\)</span>意为在实验1中输出1。</p>
+<p>优势解读：换句话说，我们看攻击者的行为是否有所不同，当给他<span
+class="math inline">\(M_0\)</span>的加密，和给他<span
+class="math inline">\(M_1\)</span>的加密。</p>
 <p>在这些实验中，如果在两个实验中，攻击者以同样的概率输出1，就意味着攻击者无法区分两个实验。（优势是概率差，如果优势接近0，意味着攻击者无法区分实验0和实验，如果优势接近于1，意味着攻击者能很好地区分实验0和实验1）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712190859253.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712190859253.png" /></p>
 <p>如果对于所有有效的攻击者，优势可忽略。</p>
 <p>现在假设有个被破解的加密机制。即对于攻击者A来说，给定密文，他总能推断出明文的最低位。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712195221914.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712195221914.png" /></p>
 <p>我们看为什么这个系统不是语义安全的。</p>
 <p>我们是算法B，算法B里面用到了算法A。</p>
 <ul>
 <li>首先是挑战者随机选取了一个密钥，我们首先需要输出两个明文，一个明文以0结尾，一个明文以1结尾。</li>
-<li>挑战者将为我们加密$M_0$或$M_1$，这取决于是实验0还是实验1。</li>
-<li>然后我们就把得到的密文给攻击者A。对于攻击者A来说，给定密文，攻击者A可以算出明文最低位。（攻击者会输出$M_0$或$M_1$的最低位，即图中的位b）然后我们输出我们的猜测，记为$b’$。</li>
+<li>挑战者将为我们加密<span class="math inline">\(M_0\)</span>或<span
+class="math inline">\(M_1\)</span>，这取决于是实验0还是实验1。</li>
+<li>然后我们就把得到的密文给攻击者A。对于攻击者A来说，给定密文，攻击者A可以算出明文最低位。（攻击者会输出<span
+class="math inline">\(M_0\)</span>或<span
+class="math inline">\(M_1\)</span>的最低位，即图中的位b）然后我们输出我们的猜测，记为<span
+class="math inline">\(b&#39;\)</span>。</li>
 </ul>
 <p>优势是1，那么意味着攻击者完全破解了这个系统。</p>
 <p>对于语义安全的密码，任一有效攻击者都无法揭露明文的一丁点信息，这就是完美安全的严格概念。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712195447777.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712195447777.png" /></p>
 <p>OTP是语义安全的，更甚至，它对任何攻击者都是语义安全的。</p>
-<h2 id="Stream-ciphers-are-semantically-secure"><a href="#Stream-ciphers-are-semantically-secure" class="headerlink" title="Stream ciphers are semantically secure"></a>Stream ciphers are semantically secure</h2><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712200321153.png" alt=""></p>
+<h2 id="stream-ciphers-are-semantically-secure">Stream ciphers are
+semantically secure</h2>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712200321153.png" /></p>
 <p>方法是证明它的逆否命题。</p>
 <p>假设有一威胁语义安全的攻击者A，我们将构造一个PRG攻击者B以满足图中的不等式。</p>
 <p>证明：由对于一个安全的发生器来说，一切有效统计测试都有可忽略的优势，所以右边是开忽略的，从而可以推出左边也是可忽略的。</p>
 <p>即对于任一攻击者A，我们都能构造出一个攻击者B，我们知道攻击者B对发生器只有可忽略的优势，这就意味着A对流密码的优势也是可忽略的。（更自然地，如果A优势不可忽略，则我们能构造出B来破解PRG，即PRG不安全。）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712200740494.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712200740494.png" /></p>
 <p>攻击者也无法区分密钥是否从PRG换成了r（即伪随机换成了真随机），一次性密码本是无条件地安全的，因此攻击者无法赢，这也意味着他不能赢下这个伪随机游戏。因此，最初的流密码一定是安全的。</p>
 <p>W事件对应的伪随机，R事件对应的是真随机（一次性密码本）。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712201536737.png" alt=""></p>
-<p>$R_b$即$R_0$或$R_1$。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712201536737.png" /></p>
+<p><span class="math inline">\(R_b\)</span>即<span
+class="math inline">\(R_0\)</span>或<span
+class="math inline">\(R_1\)</span>。</p>
 <p>存在攻击者B，使得这两个概率的差别就是B对发生器G的优势。（对这两个b都成立）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712202425509.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240712202425509.png" /></p>
 <p>统计测试b：外部用n位字符串输入，输出判断随机或不随机（0或1）。</p>
 <ul>
-<li>运行攻击者A，攻击者A输出两个信息$M_0$和$M_1$。</li>
-<li>然后攻击者B回应，用$M_0$异或输入的字符串。</li>
+<li>运行攻击者A，攻击者A输出两个信息<span
+class="math inline">\(M_0\)</span>和<span
+class="math inline">\(M_1\)</span>。</li>
+<li>然后攻击者B回应，用<span
+class="math inline">\(M_0\)</span>异或输入的字符串。</li>
 </ul>
-<h1 id="分组密码"><a href="#分组密码" class="headerlink" title="分组密码"></a>分组密码</h1><h2 id="What-is-a-block-cipher"><a href="#What-is-a-block-cipher" class="headerlink" title="What is a block cipher?"></a>What is a block cipher?</h2><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240713160157886.png" alt=""></p>
+<h1 id="分组密码">分组密码</h1>
+<h2 id="what-is-a-block-cipher">What is a block cipher?</h2>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240713160157886.png" /></p>
 <p>分组密码由加密和解密算法组成。它取n位明文作为输入，它的输出与输入具有严格相同的位数。</p>
 <p>密钥越长，密码工作的速度越慢，但是也越安全。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240713162416158.png" alt=""></p>
-<p>将密钥k扩展成一系列的回合密钥$k_1$和$k_n$。然后回合函数使用这些回合密钥一次又一次地迭代加密明文信息。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240713162416158.png" /></p>
+<p>将密钥k扩展成一系列的回合密钥<span
+class="math inline">\(k_1\)</span>和<span
+class="math inline">\(k_n\)</span>。然后回合函数使用这些回合密钥一次又一次地迭代加密明文信息。</p>
 <p>round function：回合函数。</p>
 <p>3DES的回合数有48，而AES的回合数只有10。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240713162727885.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240713162727885.png" /></p>
 <p>可以看出分组密码比流密码慢，但是分组密码能做很多事情。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240713170207096.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240713170207096.png" /></p>
 <p>Pseudo Random Function（PRF）：伪随机函数</p>
 <p>一个伪随机函数定义在密钥空间，输入空间和输出空间上，伪随机函数取一个密钥、输入，输出输出空间中的某个元素。（即它从K和X中各取一个元素，输出Y中的一个元素）</p>
 <p>Pseudo Random Permutation（PRP）：伪随机置换</p>
@@ -715,159 +949,261 @@ ADV_{PRG}[A,G]=|Pr_{k\overset{R}\leftarrow\mathcal{K}}[A(G(k))=1]=Pr_{r\overset{
 <p>deterministic：确定的</p>
 <p>一旦固定密钥k，函数E是一一对应的，所以也是可逆的。</p>
 <p>要求有一个有效的逆向算法D，输入特定输出，会输出特定输出的原像。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240720103127152.png" alt=""></p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240720111131439.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240720103127152.png" /></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240720111131439.png" /></p>
 <p>Funs[X, Y]是所有从集合X映射到集合Y的函数的集合。</p>
-<p>Size$|Y|^{|X|}$的由来：对于每一个$|X|$的元素，映射到$|Y|$的方法有Y种，故大小即是将所有Y相乘。</p>
+<p>Size<span
+class="math inline">\(|Y|^{|X|}\)</span>的由来：对于每一个<span
+class="math inline">\(|X|\)</span>的元素，映射到<span
+class="math inline">\(|Y|\)</span>的方法有Y种，故大小即是将所有Y相乘。</p>
 <p>让k不动，第二个参数浮动。</p>
-<p>Size$|K|$的由来：由上面的Funcs[X, Y]的定义可知，我们具体分析其中的一个映射函数，它的每一个$|X|$的元素对应一个$|Y|$的元素，不然就不符合定义了。对于一个密钥k有一种映射方案，那么现在有$|K|$多个密钥，所以size是$|K|$。（举例：对于AES来说，$Size_{AES}=2^{128}$）</p>
+<p>Size<span class="math inline">\(|K|\)</span>的由来：由上面的Funcs[X,
+Y]的定义可知，我们具体分析其中的一个映射函数，它的每一个<span
+class="math inline">\(|X|\)</span>的元素对应一个<span
+class="math inline">\(|Y|\)</span>的元素，不然就不符合定义了。对于一个密钥k有一种映射方案，那么现在有<span
+class="math inline">\(|K|\)</span>多个密钥，所以size是<span
+class="math inline">\(|K|\)</span>。（举例：对于AES来说，<span
+class="math inline">\(Size_{AES}=2^{128}\)</span>）</p>
 <p>PRF安全定义：</p>
-<p>一个从X到Y的随机函数（这里指从Funs[X,Y]中任取一个函数）和从X到Y的伪随机函数（图中的$S_F$）不可区分。</p>
+<p>一个从X到Y的随机函数（这里指从Funs[X,Y]中任取一个函数）和从X到Y的伪随机函数（图中的<span
+class="math inline">\(S_F\)</span>）不可区分。</p>
 <p>换句话说：伪随机函数集合上的均匀分布和全体函数上的均匀分布不可区分。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723112915089.png" alt=""></p>
-<p>上面的云是一个随机函数。我们选择一个随机密钥，计算底端的伪随机函数。现在这个攻击者上传一些X中的点，对于他的每一个询问，会给他随机函数在点X处的值或是为随机函数在点x处的值，攻击者无法区分是哪一种。 </p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723112915089.png" /></p>
+<p>上面的云是一个随机函数。我们选择一个随机密钥，计算底端的伪随机函数。现在这个攻击者上传一些X中的点，对于他的每一个询问，会给他随机函数在点X处的值或是为随机函数在点x处的值，攻击者无法区分是哪一种。</p>
 <p><strong>例子：</strong></p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723113706034.png" alt=""></p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723175247523.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723113706034.png" /></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723175247523.png" /></p>
 <p>parallelizable：可并行计算的</p>
 <ul>
-<li>比如有两个处理器，让一个计算偶数位置（如图中的t=0、2……）的输出，另一个计算奇数位（如图中的t=1、3……）的输出。</li>
+<li>比如有两个处理器，让一个计算偶数位置（如图中的t=0、2......）的输出，另一个计算奇数位（如图中的t=1、3......）的输出。</li>
 <li>很多流密码，比如RC4，是先天串行的。</li>
 </ul>
-<p>安全性是由PRF的安全性得来的，（$G(K)=F(0)||F(1)||…||F(t)$是真随机函数的发生器。）</p>
-<h2 id="The-data-encryption-standard（DES）"><a href="#The-data-encryption-standard（DES）" class="headerlink" title="The data encryption standard（DES）"></a>The data encryption standard（DES）</h2><p>之前是讲解了key expansion的部分，这部分讲round function。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723184113131.png" alt=""></p>
-<p>$f_1$和$f_d$是任意的函数，它们不一定是可逆的，我们要做的是根据这D个函数构造处一个可逆的函数。 </p>
-<p>$R_0$输入被被复制了一份，为$f_1$的输入（$f_1(K_0,R_0)$），结果和$L_0$异或，成了新的$R_1$。</p>
-<script type="math/tex; mode=display">
+<p>安全性是由PRF的安全性得来的，（<span
+class="math inline">\(G(K)=F(0)||F(1)||...||F(t)\)</span>是真随机函数的发生器。）</p>
+<h2 id="the-data-encryption-standarddes">The data encryption
+standard（DES）</h2>
+<p>之前是讲解了key expansion的部分，这部分讲round function。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723184113131.png" /></p>
+<p><span class="math inline">\(f_1\)</span>和<span
+class="math inline">\(f_d\)</span>是任意的函数，它们不一定是可逆的，我们要做的是根据这D个函数构造处一个可逆的函数。</p>
+<p><span class="math inline">\(R_0\)</span>输入被被复制了一份，为<span
+class="math inline">\(f_1\)</span>的输入（<span
+class="math inline">\(f_1(K_0,R_0)\)</span>），结果和<span
+class="math inline">\(L_0\)</span>异或，成了新的<span
+class="math inline">\(R_1\)</span>。 <span class="math display">\[
 R_i=f_i(or\ R_{i-1})\oplus L_i\ ,i=1,2,..,d\\
-L_i=R_{i-1}</script><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723184613687.png" alt=""></p>
-<p>事实上，与给的函数$f_1$到$f_d$无关，最后构造出的函数是可逆的。</p>
+L_i=R_{i-1}
+\]</span></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723184613687.png" /></p>
+<p>事实上，与给的函数<span class="math inline">\(f_1\)</span>到<span
+class="math inline">\(f_d\)</span>无关，最后构造出的函数是可逆的。</p>
 <p><strong>证明可逆：</strong></p>
-<p>先来看一回合的Feistel网络，这里输入$R<em>i$和$L<em>i$，得到$R<em>{i+1}$和$L</em>{i+1}$，然后问题是如何求逆。假设我们的输入是$R</em>{i+1}$和$L</em>{i+1}$，想计算$R_i$和$L_i$。</p>
-<script type="math/tex; mode=display">
+<p>先来看一回合的Feistel网络，这里输入<span
+class="math inline">\(R_i\)</span>和<span
+class="math inline">\(L_i\)</span>，得到<span
+class="math inline">\(R_{i+1}\)</span>和<span
+class="math inline">\(L_{i+1}\)</span>，然后问题是如何求逆。假设我们的输入是<span
+class="math inline">\(R_{i+1}\)</span>和<span
+class="math inline">\(L_{i+1}\)</span>，想计算<span
+class="math inline">\(R_i\)</span>和<span
+class="math inline">\(L_i\)</span>。 <span class="math display">\[
 R_i=L_{i+1}\\
-L_i=f_{i+1}(or\ L_{i+1})\oplus R_{i+1}</script><p>可以发现左边和右边是镜像的，</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723184840831.png" alt=""></p>
+L_i=f_{i+1}(or\ L_{i+1})\oplus R_{i+1}
+\]</span> 可以发现左边和右边是镜像的，</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723184840831.png" /></p>
 <p>函数应用的顺序相反。</p>
-<p>可以看到顺序也调换了，原先输入$R_0$是要被复制的，逆运算输入的$R_d$不用被复制。</p>
+<p>可以看到顺序也调换了，原先输入<span
+class="math inline">\(R_0\)</span>是要被复制的，逆运算输入的<span
+class="math inline">\(R_d\)</span>不用被复制。</p>
 <p><strong>chatgpt的解释：</strong></p>
 <p>实际应用中的处理</p>
 <p>在实际应用中，顺序调换可以通过以下几种方式处理：</p>
-<ol>
-<li><strong>明确协议或标准：</strong> 在设计加密协议或标准时，明确规定输入和输出的顺序。解密时，接收方知道需要交换顺序才能得到正确的明文。</li>
-<li><strong>自动交换：</strong> 在实现加密算法的库中，自动处理顺序调换。例如，在解密函数中最后一步自动交换得到的左右部分。</li>
-<li><strong>文档说明：</strong> 在算法实现的文档中明确说明这一点，使用者在调用加密和解密函数时需要注意顺序问题。</li>
+<ol type="1">
+<li><strong>明确协议或标准：</strong>
+在设计加密协议或标准时，明确规定输入和输出的顺序。解密时，接收方知道需要交换顺序才能得到正确的明文。</li>
+<li><strong>自动交换：</strong>
+在实现加密算法的库中，自动处理顺序调换。例如，在解密函数中最后一步自动交换得到的左右部分。</li>
+<li><strong>文档说明：</strong>
+在算法实现的文档中明确说明这一点，使用者在调用加密和解密函数时需要注意顺序问题。</li>
 </ol>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723190554310.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240723190554310.png" /></p>
 <p>一个关于Feistel网络的重要定理，用来证明Feistel网络是个好办法。</p>
-<p>$K_0$、$K_1$、$K_2$是独立的三个密钥。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724114443660.png" alt=""></p>
+<p><span class="math inline">\(K_0\)</span>、<span
+class="math inline">\(K_1\)</span>、<span
+class="math inline">\(K_2\)</span>是独立的三个密钥。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724114443660.png" /></p>
 <p>DES有16回合的Feistel网络。</p>
-<p>IP（initial permutation）：初始置换，置换这64位，比如将第0位置换到第6位，第2位置换到第18位等。</p>
-<p>$IP^{-1}$：初始置换的逆置换。</p>
+<p>IP（initial
+permutation）：初始置换，置换这64位，比如将第0位置换到第6位，第2位置换到第18位等。</p>
+<p><span class="math inline">\(IP^{-1}\)</span>：初始置换的逆置换。</p>
 <p>56位的DES密钥k被扩张成了这些回合密钥。（16个48位的回合密钥）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724115608965.png" alt=""></p>
-<p>$F(k_i,x)$，x是$R_0,R_1,R_2,R_3$等，有32位，密钥$k_i$有48位。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724115608965.png" /></p>
+<p><span class="math inline">\(F(k_i,x)\)</span>，x是<span
+class="math inline">\(R_0,R_1,R_2,R_3\)</span>等，有32位，密钥<span
+class="math inline">\(k_i\)</span>有48位。</p>
 <p>过程：</p>
 <ul>
 <li>x先进去一个扩张盒子，映射搭配48位字符串。（扩展盒子干的事情是复制某些位，移动其他位）</li>
-<li>扩张后的x和$k_i$异或。</li>
-<li>异或后的结果被分解成8组，每组6位，然后分别进入S盒（$S_1…S_8$，S盒是一个6位到4位的映射）。</li>
+<li>扩张后的x和<span class="math inline">\(k_i\)</span>异或。</li>
+<li>异或后的结果被分解成8组，每组6位，然后分别进入S盒（<span
+class="math inline">\(S_1...S_8\)</span>，S盒是一个6位到4位的映射）。</li>
 <li>每个S盒输出的4位最后被收集起来，形成了32位，然后再经历一个置换，最终得到了函数F的输出32位。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724115815686.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724115815686.png" /></p>
 <p>S盒：取两边作为一个索引，其余中间四位作为一个索引。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724151107513.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724151107513.png" /></p>
 <p>要弄明白S盒为什么要这样设计？</p>
 <p>假设S盒是一种线性的方式，仅仅是将6位输入以不同方式进行异或，然后输出4位。另一种表示方法是可以将S盒写成矩阵向量积的形式，那么可以表示成该矩阵向量与一个6位的向量内积再模2的形式。（异或就等于每一位相加模2）</p>
 <p>我们仅仅做的是将矩阵A应用到向量X上，所以我们说，这时S盒是完全线性的。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724154649624.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724154649624.png" /></p>
 <p>如果S盒是线性的，DES将一点都不安全。</p>
 <p>原因：</p>
 <ul>
-<li>那么DES所做的就是异或和置换，因此所有DES都只是一个线性函数。那么存在一个矩阵B使得与$m、k<em>1、k_2…k</em>{16}$所组成的向量的向量积是密文的各个位的值。（$64 + 16\times48=832$）</li>
+<li>那么DES所做的就是异或和置换，因此所有DES都只是一个线性函数。那么存在一个矩阵B使得与<span
+class="math inline">\(m、k_1、k_2...k_{16}\)</span>所组成的向量的向量积是密文的各个位的值。（<span
+class="math inline">\(64 + 16\times48=832\)</span>）</li>
 </ul>
 <p>一个简单的例子：</p>
 <p>计算3个DES的输出的异或。得到了三个明文异或的加密结果。一个随机函数是不应该满足这个等式的。（或者说，以极小概率成立）</p>
-<p>如果给出足够的输入、输出对，是可以还原出整个密钥的。比如，本例如果给出832个输入、输出对，就可以还原出整个密钥。 </p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724155320905.png" alt=""></p>
+<p>如果给出足够的输入、输出对，是可以还原出整个密钥的。比如，本例如果给出832个输入、输出对，就可以还原出整个密钥。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724155320905.png" /></p>
 <p>实际上，如果DES和线性相近，也足以破解DES了。特别的，如果你随机地选择S盒子里的值，实际上结果还是有些接近于线性函数的。这样还是可以破解DES，还原密钥的。</p>
 <p>S-boxes are 4-to-1 maps：每个输出都有4个原像。</p>
-<h2 id="Exhaustive-Search-Attacks"><a href="#Exhaustive-Search-Attacks" class="headerlink" title="Exhaustive Search Attacks"></a>Exhaustive Search Attacks</h2><p>Exhaustive Search Attacks：穷举攻击</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724173710089.png" alt=""></p>
-<p>目标是对给出的输入输出对（$m_i,\ c_i$）,找出完成这些映射的密钥。</p>
+<h2 id="exhaustive-search-attacks">Exhaustive Search Attacks</h2>
+<p>Exhaustive Search Attacks：穷举攻击</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724173710089.png" /></p>
+<p>目标是对给出的输入输出对（<span class="math inline">\(m_i,\
+c_i\)</span>）,找出完成这些映射的密钥。</p>
 <p><strong>Question 1：</strong></p>
 <p>how do we know that this key is unique?</p>
-<p>in fact just one pair is enough to completely constrain a DES key.</p>
+<p>in fact just one pair is enough to completely constrain a DES
+key.</p>
 <p>proof:</p>
-<p>引理：假设DES是一个理想的密码（对于每一个密钥，DES都实现了一个随机可逆函数，由于DES有$2^{56}$个可能的密钥，我们假定DES是$2^{56}$个函数的集合，它们在64位字符串上可逆。）</p>
+<p>引理：假设DES是一个理想的密码（对于每一个密钥，DES都实现了一个随机可逆函数，由于DES有<span
+class="math inline">\(2^{56}\)</span>个可能的密钥，我们假定DES是<span
+class="math inline">\(2^{56}\)</span>个函数的集合，它们在64位字符串上可逆。）</p>
 <p>我们知道c=DES(k, m)的可能性有多大，但我们要问</p>
-<p>$Pr[\exist k^\prime\neq k:c=DES(k,m)=DES(k^\prime,m)]$</p>
-<p>如果存在这样的$k^{\prime}$，那么对给定的m和c，我们无法确定正确的密钥是k还是$k^{\prime}$。</p>
+<p><span class="math inline">\(Pr[\exist k^\prime\neq
+k:c=DES(k,m)=DES(k^\prime,m)]\)</span></p>
+<p>如果存在这样的<span
+class="math inline">\(k^{\prime}\)</span>，那么对给定的m和c，我们无法确定正确的密钥是k还是<span
+class="math inline">\(k^{\prime}\)</span>。</p>
 <p>可以通过遍历所有密钥来看满足它的可能性有多大（从第一个密钥，全0密钥，一直往后）</p>
 <p>由联合边界，显然这个概率是小于每个密钥的概率相加的。</p>
 <ul>
-<li><em>联合边界</em>(The union bound)引理：令A1, A2, …, Ak为k个不同的随机事件，那么：</li>
+<li><em>联合边界</em>(The union bound)引理：令A1, A2, ...,
+Ak为k个不同的随机事件，那么：</li>
 </ul>
-<script type="math/tex; mode=display">
-P(A_1 \bigcup...\bigcup A_k)\le P(A_1)+...+P(A_k)</script><p>比如抛三枚硬币都是正面的概率是小于等于1的（概率小于等于1），而概率相加可能大于1。</p>
-<p>即：</p>
-<script type="math/tex; mode=display">
-Pr[\exist k^\prime\neq k:c=DES(k,m)=DES(k^\prime,m)]\le\sum_{k^\prime\in\{0,1\}^{56}}Pr[DES(k,m)=DES(k^\prime,m)]</script><p>假设固定$k^\prime$，则概率最多为$\frac{1}{2^{64}}$（排列有$2^{64}$个可能的输出），由于有$2^{56}$个可能的密钥，所以再与其相乘。</p>
-<script type="math/tex; mode=display">
- Pr[\exist k^\prime\neq k:c=DES(k,m)=DES(k^\prime,m)]\le\sum_{k^\prime\in\{0,1\}^{56}}Pr[DES(k,m)=DES(k^\prime,m)]\\\le2^{56}\cdot\frac{1}{2^{64}}=\frac{1}{2^8}=\frac{1}{256}</script><p>所以密钥不是唯一性的概率是$\le\frac{1}{256}$的概率，因此其唯一性的概率是$\ge1-\frac{1}{256}\approx99.5\%$</p>
+<p><span class="math display">\[
+P(A_1 \bigcup...\bigcup A_k)\le P(A_1)+...+P(A_k)
+\]</span></p>
+<p>比如抛三枚硬币都是正面的概率是小于等于1的（概率小于等于1），而概率相加可能大于1。</p>
+<p>即： <span class="math display">\[
+Pr[\exist k^\prime\neq
+k:c=DES(k,m)=DES(k^\prime,m)]\le\sum_{k^\prime\in\{0,1\}^{56}}Pr[DES(k,m)=DES(k^\prime,m)]
+\]</span> 假设固定<span
+class="math inline">\(k^\prime\)</span>，则概率最多为<span
+class="math inline">\(\frac{1}{2^{64}}\)</span>（排列有<span
+class="math inline">\(2^{64}\)</span>个可能的输出），由于有<span
+class="math inline">\(2^{56}\)</span>个可能的密钥，所以再与其相乘。
+<span class="math display">\[
+ Pr[\exist k^\prime\neq
+k:c=DES(k,m)=DES(k^\prime,m)]\le\sum_{k^\prime\in\{0,1\}^{56}}Pr[DES(k,m)=DES(k^\prime,m)]\\\le2^{56}\cdot\frac{1}{2^{64}}=\frac{1}{2^8}=\frac{1}{256}
+\]</span> 所以密钥不是唯一性的概率是<span
+class="math inline">\(\le\frac{1}{256}\)</span>的概率，因此其唯一性的概率是<span
+class="math inline">\(\ge1-\frac{1}{256}\approx99.5\%\)</span></p>
 <p><strong>Question 2：</strong></p>
-<p>There’s only one key that will map that plaintext to that ciphertext, and the question is just, can you find that key?</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724174123521.png" alt=""></p>
-<p>unicity prob. ：“Unicity probability” 是一个概率论中的概念，用于描述某一特定事件在特定条件下是唯一发生的概率。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724175513935.png" alt=""></p>
-<p>DES challenge：一个针对DES的挑战赛，主办方给了给了三对明文密文对（如图，$c_1、c_2、c_3$），以及若干密文（如图，$c_4、c_5、c_6…$）。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724182700208.png" alt=""></p>
+<p>There's only one key that will map that plaintext to that ciphertext,
+and the question is just, can you find that key?</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724174123521.png" /></p>
+<p>unicity prob. ：“Unicity probability”
+是一个概率论中的概念，用于描述某一特定事件在特定条件下是唯一发生的概率。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724175513935.png" /></p>
+<p>DES
+challenge：一个针对DES的挑战赛，主办方给了给了三对明文密文对（如图，<span
+class="math inline">\(c_1、c_2、c_3\)</span>），以及若干密文（如图，<span
+class="math inline">\(c_4、c_5、c_6...\)</span>）。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724182700208.png" /></p>
 <p>3DES，三重结构使用三个独立的密钥，三个独立的密钥加密三次。</p>
-<p>$3E((k_1,k_2,k_3),m)=E(k_1,D(k_2,E(k_3, m)))$</p>
+<p><span class="math inline">\(3E((k_1,k_2,k_3),m)=E(k_1,D(k_2,E(k_3,
+m)))\)</span></p>
 <p>为什么使用EDE，不用EEE ？</p>
 <ul>
-<li>兼容DES<ul>
+<li>兼容DES
+<ul>
 <li>采用EDE主要为了与被广泛应用的DES算法保持兼容性，让3DES使用者能够解密原来单纯DES使用者加密的数据，即实现3DES与单密钥DES系统的通信，在实现过程中只需要令K1=K2。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p>3DES破解需要的时间$2^{168}$（但事实上，有一个简单的攻击可以在$2^{118}$时间内运行），实际上，大于$2^{90}$已经足够安全了。</p>
+<p>3DES破解需要的时间<span
+class="math inline">\(2^{168}\)</span>（但事实上，有一个简单的攻击可以在<span
+class="math inline">\(2^{118}\)</span>时间内运行），实际上，大于<span
+class="math inline">\(2^{90}\)</span>已经足够安全了。</p>
 <p>缺点：速度太慢，是DES的三倍慢。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724184827753.png" alt=""></p>
-<p>Question: why not repeat the cipher just two times? or in particular, the question is, what’s wrong with the double DES?</p>
-<script type="math/tex; mode=display">
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724184827753.png" /></p>
+<p>Question: why not repeat the cipher just two times? or in particular,
+the question is, what's wrong with the double DES?</p>
+<p><span class="math display">\[
 E(k_1,E(k_2,m))=C\\
 \Rightarrow
-E(k_2,m)=D(k_1,c)</script><p>Meet-in-the-middl attack：中间相遇攻击。</p>
+E(k_2,m)=D(k_1,c)
+\]</span></p>
+<p>Meet-in-the-middl attack：中间相遇攻击。</p>
 <p>我们将变量分成两边，两边同时开始。这样意味着攻击比详尽搜索（穷举搜索）更快，这种攻击被称为中间相遇攻击。</p>
 <p>攻击步骤：</p>
 <ul>
-<li>对于每一个密钥（总共有$2^{56}$），计算出加密结果，然后排序（时间nlogn），建立一张表。<ul>
+<li>对于每一个密钥（总共有<span
+class="math inline">\(2^{56}\)</span>），计算出加密结果，然后排序（时间nlogn），建立一张表。
+<ul>
 <li>总时间是nlogn，因为计算的步骤可以放在排序里面完成。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724185333829.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724185333829.png" /></p>
 <ul>
 <li>然后对表中左列的每个密钥，依次实行解密，判断结果是否在右边那列中（时间nlogn）。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724185826952.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724185826952.png" /></p>
 <p>nlogn+nlogn（加密排序制表的时间+解密查找的时间）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724190309850.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240724190309850.png" /></p>
 <p>防范详尽搜索的改造：DESX（但是无法防范对DES更微妙的攻击）</p>
 <p>定义EX结构</p>
 <p>有两个密钥和区块大小一样长（64位），还有一个和密钥大小（56位）一样长。</p>
-<p>实际上，已知最好的攻击需要$2^{120}$时间。（通用的攻击，微妙的攻击不知道）</p>
+<p>实际上，已知最好的攻击需要<span
+class="math inline">\(2^{120}\)</span>时间。（通用的攻击，微妙的攻击不知道）</p>
 <p>只在外面做异或或只在里面做异或，对保护密码无济于事。</p>
-<h2 id="More-attacks-on-block-ciphers"><a href="#More-attacks-on-block-ciphers" class="headerlink" title="More attacks on block ciphers"></a>More attacks on block ciphers</h2><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725111213277.png" alt=""></p>
+<h2 id="more-attacks-on-block-ciphers">More attacks on block
+ciphers</h2>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725111213277.png" /></p>
 <p>side channel attack：旁路攻击（侧信道攻击、边信道攻击、旁道攻击）</p>
 <p>基于分组密码实现上的攻击。</p>
 <p>设想你有一个智能卡，上面实现了一个分组密码，可以用来支付。当你把卡插入支付终端里，如果一个攻击者获得了你的智能卡，他可以将这张卡拿到实验室里，然后运行这张卡，非常精确地测量这张卡加密和解密的时间。（加密和解密的时间取决于密钥的内容。）通过测量时间，攻击者可以学习到你的密钥内容。事实上，他可能可以完全提取出你的密钥。</p>
 <p>有很多例子是通过非常精确地测量加密算法的时间来提取密钥的。</p>
-<p>另一个例子不是测量时间，而是测量功耗，当卡运行时的功耗。可以联结一个设备，用来测量智能卡需要的电流，然后非常精确地记录电流，这些智能卡不是非常快，   因此你可以测量每个时钟周期内的精确功耗。比如得到上图中的图表。</p>
-<p> 前面和后面分别是初始置换和最终置换的时候，中间有14个峰值和谷，分别对应16轮回合函数。（甚至发大这张图，你可以一位一位读出来）</p>
+<p>另一个例子不是测量时间，而是测量功耗，当卡运行时的功耗。可以联结一个设备，用来测量智能卡需要的电流，然后非常精确地记录电流，这些智能卡不是非常快，
+因此你可以测量每个时钟周期内的精确功耗。比如得到上图中的图表。</p>
+<p>前面和后面分别是初始置换和最终置换的时候，中间有14个峰值和谷，分别对应16轮回合函数。（甚至发大这张图，你可以一位一位读出来）</p>
 <p>实际上，即使智能卡采取措施来屏蔽这种信息，它依然是脆弱的，有一种攻击叫做差分功耗分析，运行加密算法很多次，测量智能卡功耗，只要有电流上的小差异，密钥各位的依赖性，在经过足够多的加密算法运行次数就能显现出来。</p>
 <p>设想一个多核处理器，其中一核运行加密算法，而攻击者代码却同时在另一核上运行。现在这些代码共享同一缓存，于是攻击者可以管理观测加密算法带来的缓存缺失。实际上通过观察这些缓存缺失，可以完全解出算法使用的密钥。</p>
 <p>fault attacks：错误攻击</p>
@@ -875,78 +1211,127 @@ E(k_2,m)=D(k_1,c)</script><p>Meet-in-the-middl attack：中间相遇攻击。</p
 <ul>
 <li>抵抗这种攻击，意味着在暑促算法结果前，应当检查以确保计算结果的正确性。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725112452674.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725112452674.png" /></p>
 <p>给很多很多输入输出对，能否比穷举攻击更好地还原出密钥？</p>
 <p>Linear cryptanalysis：线性密码分析</p>
-<p>逐位异或一组明文比特，异或特定的一组密文比特，然后和相应密钥比特的异或进行对比。如果两者严格独立，那么概率是$\frac{1}{2}$。（因为所有异或要么是0，要么就是1，所以概率是$\frac{1}{2}$）</p>
-<p>设想有一点不均匀导致这个等式以概率$\frac{1}{2}+\epsilon$成立。（事实上，对于DES来说有这么个关系，因为第5个S盒子的设计有点太接近线性函数了）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725120103377.png" alt=""></p>
-<p>可以使用像这样的一个方程来决定某些位。假设你有$\frac{1}{\epsilon^{2}}$那么多个明文密文对，这些必须是互相独立的随机明文和对应密文，应用这上面的公式，因为有$\frac{1}{2}+\epsilon$的概率，明文和密文各比特异或再异或的结果等于密钥各比特异或的结果。我们可以取全部明文和密文对计算值中的大多数，这个结果和密钥各比特异或相等的结果的概率是$\ge97.7\%$的。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725161205189.png" alt=""></p>
+<p>逐位异或一组明文比特，异或特定的一组密文比特，然后和相应密钥比特的异或进行对比。如果两者严格独立，那么概率是<span
+class="math inline">\(\frac{1}{2}\)</span>。（因为所有异或要么是0，要么就是1，所以概率是<span
+class="math inline">\(\frac{1}{2}\)</span>）</p>
+<p>设想有一点不均匀导致这个等式以概率<span
+class="math inline">\(\frac{1}{2}+\epsilon\)</span>成立。（事实上，对于DES来说有这么个关系，因为第5个S盒子的设计有点太接近线性函数了）</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725120103377.png" /></p>
+<p>可以使用像这样的一个方程来决定某些位。假设你有<span
+class="math inline">\(\frac{1}{\epsilon^{2}}\)</span>那么多个明文密文对，这些必须是互相独立的随机明文和对应密文，应用这上面的公式，因为有<span
+class="math inline">\(\frac{1}{2}+\epsilon\)</span>的概率，明文和密文各比特异或再异或的结果等于密钥各比特异或的结果。我们可以取全部明文和密文对计算值中的大多数，这个结果和密钥各比特异或相等的结果的概率是<span
+class="math inline">\(\ge97.7\%\)</span>的。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725161205189.png" /></p>
 <p>应用到DES上，使用这个方法，你不仅仅只得到密钥中的一位，事实上，你得到两位。一个往前，一个往后，这样就给你密钥这两位的异或值了。实际上，还能获得其余12位，因为可以解出第5个S盒子的输入。</p>
-<p>接下来需要做的就是穷举密钥中剩下的位即可。（攻击的第一步，确定14位需要$2^{42}$的时间，剩下位的穷举需要另一个$2^{42}$的时间）</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725162230070.png" alt=""></p>
+<p>接下来需要做的就是穷举密钥中剩下的位即可。（攻击的第一步，确定14位需要<span
+class="math inline">\(2^{42}\)</span>的时间，剩下位的穷举需要另一个<span
+class="math inline">\(2^{42}\)</span>的时间）</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725162230070.png" /></p>
 <p>教训：任一细微的线性关系都会引入线性攻击。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725163204142.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725163204142.png" /></p>
 <p>Quantum attacks：量子攻击（它对分组密码是通用的）</p>
 <p>假设有一个定义在大集合X上的函数，输出有两种值，0或1，这个函数的值大部分都是0，目标是找出这些输入，满足函数值为1。</p>
-<p>用量子计算机，解决这搜索问题，用不着|X|的时间，而是|X|的平方根的时间即可。 </p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725164506431.png" alt=""></p>
-<p>其实把攻击DES的过程看做f(k)，那么使用量子计算机则只需要花费$O(|x|^{\frac{1}{2}})$的时间就能破解DES。</p>
-<p>如果有量子计算机，破解AES-128只需要$2^{64}$的时间，也是不安全的。那么应该使用256位密钥大的算法了，比如AES-56</p>
+<p>用量子计算机，解决这搜索问题，用不着|X|的时间，而是|X|的平方根的时间即可。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725164506431.png" /></p>
+<p>其实把攻击DES的过程看做f(k)，那么使用量子计算机则只需要花费<span
+class="math inline">\(O(|x|^{\frac{1}{2}})\)</span>的时间就能破解DES。</p>
+<p>如果有量子计算机，破解AES-128只需要<span
+class="math inline">\(2^{64}\)</span>的时间，也是不安全的。那么应该使用256位密钥大的算法了，比如AES-56</p>
 <p>。</p>
-<h2 id="The-AES-block-cipher"><a href="#The-AES-block-cipher" class="headerlink" title="The AES block cipher"></a>The AES block cipher</h2><p>AES(Advanced Encryption Standard)：高级加密标准</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725165557010.png" alt=""></p>
+<h2 id="the-aes-block-cipher">The AES block cipher</h2>
+<p>AES(Advanced Encryption Standard)：高级加密标准</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725165557010.png" /></p>
 <p>有3钟密钥长度：128、192、256，分组大小是128。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725170445531.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725170445531.png" /></p>
 <p>AES网络的每一步都可逆，所以整个过程都是可逆的。</p>
 <p>AES的代换层是可逆的，这和DES非常不同，DES的代换完全是不可逆的，它们将6位映射到4位。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725170637695.png" alt=""></p>
-<p>$4\times4$矩阵，16个字节，128位。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725170637695.png" /></p>
+<p><span
+class="math inline">\(4\times4\)</span>矩阵，16个字节，128位。</p>
 <p>密钥扩展。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725172315994.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725172315994.png" /></p>
 <ul>
-<li>ByteSub：字节代换ByteSub是一个包含256个字节的S盒。对当前状态里的每一个字节应用S盒（或者说，A表）。$\forall i,j, \ A[i,j]\leftarrow S[A[i,j]]$。</li>
+<li>ByteSub：字节代换ByteSub是一个包含256个字节的S盒。对当前状态里的每一个字节应用S盒（或者说，A表）。<span
+class="math inline">\(\forall i,j, \ A[i,j]\leftarrow
+S[A[i,j]]\)</span>。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725172842395.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725172842395.png" /></p>
 <ul>
 <li>ShiftRow：对每一行的四个字节整体移动。（比如图中，第二行被平移了一位。）</li>
 <li>MixColumns：一个线性变换，对每一列进行变换。将一特定的矩阵乘以每一列的向量，得到新的列。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725173111264.png" alt=""></p>
-<p>Pre-compute round functions(24KB or 4KB)：比如可以将上面三步转换成代换表，或者更长的。（由于只需要查表和异或，不需要进行复杂的数值计算，因此速度会很快）</p>
-<p>Pre-compute S-box only(256 bytes)：预先计算好S盒，S盒大小是$16\times16=256$字节。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725173111264.png" /></p>
+<p>Pre-compute round functions(24KB or
+4KB)：比如可以将上面三步转换成代换表，或者更长的。（由于只需要查表和异或，不需要进行复杂的数值计算，因此速度会很快）</p>
+<p>Pre-compute S-box only(256 bytes)：预先计算好S盒，S盒大小是<span
+class="math inline">\(16\times16=256\)</span>字节。</p>
 <p>No pre-computation：全部即时计算。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725174704234.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725174704234.png" /></p>
 <p>一个不同的例子。假设用JavaScript实现AES，将AES库发给浏览器，这样浏览器就能使用AES，目标是要减少代码大小，使得发给浏览器的网络传输的流量较小，同时又要让浏览器的性能尽可能地快。</p>
 <p>解决办法是发送给浏览器的代码不包含任何预先计算的表，代码体积较小，但当代码到达浏览器时，浏览器会预先计算所有的表，然后表可以存在电脑上。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725175426301.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725175426301.png" /></p>
 <p>在硬件上实现AES</p>
 <p>aesnc实现了AES的一轮加密，用回合密钥和明文异或，再应用三个函数；aesenclast实现了AES的最后一回合加密，最后一回合不含MixColumn，只有ByteSub和ShiftRows。</p>
 <ul>
 <li>这些指令使用128位寄存器，对应AES的状态，会有一个寄存器包含状态值，另一个寄存器包含当前回合密钥，当调用AES时，使用这两寄存器，运行一回合的AES，然后把结果存到这个XMM里面的一个状态寄存器中。</li>
 <li>如果需要实现整个AES，需要调用aesnc9次，再调用一次aesnclast。</li>
 </ul>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725180151578.png" alt=""></p>
-<p>最好的还原密钥攻击：比穷举快4倍，需要$2^{126}$时间。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725180151578.png" /></p>
+<p>最好的还原密钥攻击：比穷举快4倍，需要<span
+class="math inline">\(2^{126}\)</span>时间。</p>
 <p>实际上，AES256的密钥扩张的设计有弱点，会导致相关密钥攻击。</p>
-<p>相关密钥攻击：如果给我大约$2^{100}$个AES的输入输出对，但是是有4个相关联的密钥得来的，这些密钥之间关系密切（海明距离非常短）,那么需要$2^{99}$时间。（比穷举攻击的时间好太多了）</p>
-<h2 id="Block-ciphers-from-PRGs"><a href="#Block-ciphers-from-PRGs" class="headerlink" title="Block ciphers from PRGs"></a>Block ciphers from PRGs</h2><p>本节研究是否能从更简单的原型，比如伪随机数发生器，来构建分组密码。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725180809277.png" alt=""></p>
-<p>首先，我们研究是否可以从伪随机数发生器构建伪随机函数， 而不是伪随机置换。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725180958900.png" alt=""></p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725181502841.png" alt=""></p>
-<p>证明：用真随机来替换第一层，（由PRG的定义，它的输出和真随机的输出不可区分。） </p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725181423367.png" alt=""></p>
+<p>相关密钥攻击：如果给我大约<span
+class="math inline">\(2^{100}\)</span>个AES的输入输出对，但是是有4个相关联的密钥得来的，这些密钥之间关系密切（海明距离非常短）,那么需要<span
+class="math inline">\(2^{99}\)</span>时间。（比穷举攻击的时间好太多了）</p>
+<h2 id="block-ciphers-from-prgs">Block ciphers from PRGs</h2>
+<p>本节研究是否能从更简单的原型，比如伪随机数发生器，来构建分组密码。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725180809277.png" /></p>
+<p>首先，我们研究是否可以从伪随机数发生器构建伪随机函数，
+而不是伪随机置换。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725180958900.png" /></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725181502841.png" /></p>
+<p>证明：用真随机来替换第一层，（由PRG的定义，它的输出和真随机的输出不可区分。）</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725181423367.png" /></p>
 <p>比如我们获得了3为PRF，假设我们想计算PRF在101处的值，我们从这个初始密钥k出发，应用发生器G，但只关心G输出的右边，然后再应用发生器G，只关心左边，以此类推。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725182351744.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725182351744.png" /></p>
 <p>GGM是这个PRF三个发明者的缩写，但这个在实际中没有被使用，因为速度很慢，设想一下，使用Salsa发生器，现在来计算这个PRF在某个128位输入的值，我们必须运行Salsa发生器128次，然后就得到了一个PRF，但是其运行时间却是原版Salsa的128倍。</p>
-<p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725182445060.png" alt=""></p>
-<h1 id="使用分组密码"><a href="#使用分组密码" class="headerlink" title="使用分组密码"></a>使用分组密码</h1><h2 id="Modes-of-operation-one-time-key"><a href="#Modes-of-operation-one-time-key" class="headerlink" title="Modes of operation: one time key"></a>Modes of operation: one time key</h2><p><img src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240726171348376.png" alt=""></p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240725182445060.png" /></p>
+<h1 id="使用分组密码">使用分组密码</h1>
+<h2 id="modes-of-operation-one-time-key">Modes of operation: one time
+key</h2>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240726171348376.png" /></p>
 <p>本节将使用分组密码来机密，并使用一次性的密钥。</p>
+<p><img
+src="http://typora-imagehost.oss-cn-guangzhou.aliyuncs.com/img/image-20240727110918417.png" /></p>
 <p>Electronic Code Book：电子密码本</p>
-<p>将明文信息分成若干分组，每个分组大小与密码分组大小一样。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://funnytorch.github.io">Torch</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://funnytorch.github.io/2024/06/15/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0/">https://funnytorch.github.io/2024/06/15/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://funnytorch.github.io" target="_blank">Torch's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></div><div class="post_share"><div class="social-share" data-image="http://hbimg.huaban.com/3b0b8a7de9891d77c45285eab5bbd27830f15c15272b08-AYH4dJ" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/19/kali%E5%AE%89%E8%A3%85/" title="kali安装"><img class="cover" src="http://hbimg.huaban.com/418c33b0a77d27b06c6a3afee8bef80c1969a00222246f-RUqzBX" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">kali安装</div></div></a></div><div class="next-post pull-right"><a href="/2024/04/26/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0/" title="微服务学习"><img class="cover" src="https://hbimg.huaban.com/c19805508ba63ba503c79d5dd49ae37766a75f677db91-9gYRnN" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">微服务学习</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Torch</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/funnytorch"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/funnytorch" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:torch2147483647@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog<div class="xpand" style="height:200px;"><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas></div></div><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
+<p>将明文信息分成若干分组，每个分组大小与密码分组大小一样。
+然后对每个分组单独加密，这种加密方式是不安全的，因为如果两个分组一样，那么他们的密文也一样。因此，攻击者可以学到关于明文的一些信息。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://funnytorch.github.io">Torch</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://funnytorch.github.io/2024/06/15/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0/">https://funnytorch.github.io/2024/06/15/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://funnytorch.github.io" target="_blank">Torch's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></div><div class="post_share"><div class="social-share" data-image="http://hbimg.huaban.com/3b0b8a7de9891d77c45285eab5bbd27830f15c15272b08-AYH4dJ" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/19/kali%E5%AE%89%E8%A3%85/" title="kali安装"><img class="cover" src="http://hbimg.huaban.com/418c33b0a77d27b06c6a3afee8bef80c1969a00222246f-RUqzBX" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">kali安装</div></div></a></div><div class="next-post pull-right"><a href="/2024/04/26/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0/" title="微服务学习"><img class="cover" src="https://hbimg.huaban.com/c19805508ba63ba503c79d5dd49ae37766a75f677db91-9gYRnN" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">微服务学习</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Torch</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/funnytorch"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/funnytorch" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:torch2147483647@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog<div class="xpand" style="height:200px;"><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas></div></div><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
 margin: 0;
 align-items: center;
 justify-content: center;
@@ -956,7 +1341,12 @@ canvas {
 display: block;
 margin: 0 auto;
 cursor: move;
-}</style></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%AA%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Course-Overview"><span class="toc-number">1.1.1.</span> <span class="toc-text">Course Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-cryptography"><span class="toc-number">1.1.2.</span> <span class="toc-text">What is cryptography?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cryptography-Applications"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">Cryptography Applications</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Symmetric-Encryption"><span class="toc-number">1.1.3.</span> <span class="toc-text">Symmetric Encryption</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#History"><span class="toc-number">1.1.4.</span> <span class="toc-text">History</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Discrete-Probability"><span class="toc-number">1.1.5.</span> <span class="toc-text">Discrete Probability</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">流密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-One-Time-Pad"><span class="toc-number">2.1.</span> <span class="toc-text">The One Time Pad</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream-ciphers"><span class="toc-number">2.2.</span> <span class="toc-text">Stream ciphers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Attacks-on-OTP-and-stream-ciphers"><span class="toc-number">2.3.</span> <span class="toc-text">Attacks on OTP and stream ciphers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PRG-Security-Defs"><span class="toc-number">2.4.</span> <span class="toc-text">PRG Security Defs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Semantic-security"><span class="toc-number">2.5.</span> <span class="toc-text">Semantic security</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream-ciphers-are-semantically-secure"><span class="toc-number">2.6.</span> <span class="toc-text">Stream ciphers are semantically secure</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">分组密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-a-block-cipher"><span class="toc-number">3.1.</span> <span class="toc-text">What is a block cipher?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-data-encryption-standard%EF%BC%88DES%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">The data encryption standard（DES）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exhaustive-Search-Attacks"><span class="toc-number">3.3.</span> <span class="toc-text">Exhaustive Search Attacks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More-attacks-on-block-ciphers"><span class="toc-number">3.4.</span> <span class="toc-text">More attacks on block ciphers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-AES-block-cipher"><span class="toc-number">3.5.</span> <span class="toc-text">The AES block cipher</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Block-ciphers-from-PRGs"><span class="toc-number">3.6.</span> <span class="toc-text">Block ciphers from PRGs</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">使用分组密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Modes-of-operation-one-time-key"><span class="toc-number">4.1.</span> <span class="toc-text">Modes of operation: one time key</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/26/CTF%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A01/" title="CTF课程学习1"><img src="https://i1.hdslb.com/bfs/archive/40c67abf141fa33aae7e4a60797c559348f26ef8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTF课程学习1"/></a><div class="content"><a class="title" href="/2024/07/26/CTF%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A01/" title="CTF课程学习1">CTF课程学习1</a><time datetime="2024-07-26T10:14:11.000Z" title="发表于 2024-07-26 18:14:11">2024-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/19/kali%E5%AE%89%E8%A3%85/" title="kali安装"><img src="http://hbimg.huaban.com/418c33b0a77d27b06c6a3afee8bef80c1969a00222246f-RUqzBX" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="kali安装"/></a><div class="content"><a class="title" href="/2024/07/19/kali%E5%AE%89%E8%A3%85/" title="kali安装">kali安装</a><time datetime="2024-07-19T09:33:49.000Z" title="发表于 2024-07-19 17:33:49">2024-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/15/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0/" title="密码学学习"><img src="http://hbimg.huaban.com/3b0b8a7de9891d77c45285eab5bbd27830f15c15272b08-AYH4dJ" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="密码学学习"/></a><div class="content"><a class="title" href="/2024/06/15/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0/" title="密码学学习">密码学学习</a><time datetime="2024-06-15T07:28:10.000Z" title="发表于 2024-06-15 15:28:10">2024-06-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/26/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0/" title="微服务学习"><img src="https://hbimg.huaban.com/c19805508ba63ba503c79d5dd49ae37766a75f677db91-9gYRnN" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微服务学习"/></a><div class="content"><a class="title" href="/2024/04/26/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0/" title="微服务学习">微服务学习</a><time datetime="2024-04-26T03:08:45.000Z" title="发表于 2024-04-26 11:08:45">2024-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/26/basePackages%E5%92%8CbasePackageClasses/" title="basePackages和basePackageClasses"><img src="https://hbimg.huaban.com/a7dfd7a8e65299dfcceb07f0a2c00224d9fc76d6204d89-L9deUL" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="basePackages和basePackageClasses"/></a><div class="content"><a class="title" href="/2024/04/26/basePackages%E5%92%8CbasePackageClasses/" title="basePackages和basePackageClasses">basePackages和basePackageClasses</a><time datetime="2024-04-26T02:30:04.000Z" title="发表于 2024-04-26 10:30:04">2024-04-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/about/">关于作者</a><a href="/comments/">留点什么</a></li><li><a href="/categories/">文章分类</a><a href="/tags/">文章标签</a></li><li><a href="/archives/">文章归档</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"></div></div></div><div class="copyright"><span><b>&copy;2020 - 2024</b></span><span><b>&nbsp;&nbsp;By Torch</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="https://img.shields.io/badge/Frame-Hexo-blue?logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="https://img.shields.io/badge/Theme-Butterfly-purple?logo=bitcoin" alt=""/></a><a class="github-badge" target="_blank" href="https://icp.gov.moe/?keyword=20226665" style="margin-inline:5px" title="本站已加入萌ICP豪华套餐，萌ICP备20226665号"><img src="https://sourcebucket.s3.ladydaily.com/badge/萌ICP备-20226665-fe1384.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://cn.aliyun.com/" style="margin-inline:5px" title="本网站大部分图片在阿里云对象存储"><img src="https://img.shields.io/badge/Bucket-%E9%98%BF%E9%87%8C%E4%BA%91-orange?logo=academia" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本网站源码由Github提供存储仓库"><img src="https://img.shields.io/badge/Source-Github-black?logo=github" alt=""/></a><a class="github-badge" target="_blank" href="https://icp.gov.moe/?keyword=20240421" style="margin-inline:5px" title="本站已加入萌ICP豪华套餐，萌ICP备20240421号"><img src="https://img.shields.io/badge/%E8%90%8CICP%E5%A4%87-20240421-F2218A?logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAABHOSURBVHic7ZtpmFTF1cd%2FdXuf6VmYnhlAdiQsGkEWAQEVNb4KGsW8btGAxo1FFAIuBAyLa1BQUFGRqCB5RY3mSWIUI0beyCaLgKjI4gayjszWPT3T6618OLfn9gzTyMCgXzzP00%2FfW1Vd95z%2FPVudqoaf6Cf6iX4M0lo79P%2Fvv09vLL1fa%2B34sfhw%2FtAP1Fo7uHf1dJo9kk9F6U2goUXLfP3g2kom952mlEr%2BkPyoH%2BIhWmtlzv9slvHEyuZs%2FdLA5R5GtseHw5ABCRPC0RoS8b%2BZvbuYxvhBB%2FlN5zuVUvpE83bCANBaK5bufdR8%2FINWxrJPweBi%2FJ4cXA5QKjXI4iLtPpaAUDQEjre4rCdMHLSPs4pPGBhNDoD%2BtPI%2Bc87KLsaijyBecxHZ7ly8LutpSoQ0NVTHIJqQdq8LfC4wlD1GA5E4VEeD%2BHLe4Za%2BmOPP2u3o6L2rKfltMgCS01fPMOatPoXvDg7G6ys8XCANkQRUR9HZOaiRA9B3D0JVJ9AzP0C9sBbi1ZDtITNgkUratllmjh2w1XF3n2lNwfdxAaBf%2BHwqT67qwaYd4HSdhd9ThMM4XKWrYqANuKIPjD8TPbAYhbzkdAb0u3tRc1fD25vBQMBw1zOZRBKqYt%2BRTKzQA09F3T7wY3XNyfcdqwyNBkC%2Ft28cc1cP5s2PQDEAv6cYt%2FNwJqvjEI9D%2F1Pg9n5wbRdb4J1hmLsG5q0Evxs9eiBq3JnQyi1TAOpPW%2BHJ1bBlJ7jdkOXmMHCjCaiKlIBztb66L%2BqO%2Fh%2BpgcUPNDkA%2BovqsfrxlReoBWshFu5JlqcNXpf8Ol1Na2IQiUKrVujb%2B6PG9wWPNUkUmLse5q6CfQfAcECXIthZKqYSi8HJbWD8IPTYHrXM6QoNj61GzVsNZYfA5xV%2FoeqZV00camIHycldy%2BgB%2F1aPDH7iuAHQL24dw6R3hnLwwGl4PW3xuTM5KvBmw0390BPOgo5eW8Vf3oF%2BfBVqwzZwWW9SKaioAv1HGPZ%2FsHQH5LghnoRwDJIJOOc09PgBqGEdhBeAT4Lw2ErU4vWQjEK2uwF%2FYUJ17FuisS20bQNP%2FHKpGtZ%2B3rEBkDvzGczqUXhch9t1OAamQl%2FaEzV%2BAJzb0mZ05UHUnDXwxkZQSfC7wW3lXKVhwICnfwmj%2B0FlBNo8AqFqyMsGlyNNvaNguOG6vjC%2BP%2FQqqDUj%2Fc%2FdqLmr4L0t4HAIGPVDbHUU2rWer7aNHHVsADD5GQJZo2rRDUUgFkP37Iy6YyD6hq61E%2BhdNai5a2HBGqgKQpYHvE5bVQEOheG7yVCY3fADT5kL%2B4IiSEqIWvWOQkEARg9EjzsDVeSyAX96C%2BrJNbDtK%2FB6BQylRBvCzFfRPzQeAP1F9V10um8iAX9zAEIR9F1DUJMGoP21CMGcjahp70HoIHiyRcWNNKHTKZqAkwtg09jD%2B55dB6P%2FAQFfw7%2FVGpKmhMNYHN2tPWrcIPTIn9svoSSBmr4cFq4UPgBKQ%2FMVMzMCYGTqYHtJezCa1779uAP1wADwg3r9S9SgxSjjHtSEl2DDjXBZLzAzzibkccLm%2FTBlWd32kjCMfiWz8CDtTgfkeMHnRX2%2BG8YsQanfw4WvwNI9UOxEP32BaEvqN3C53lw2qfEAfFMOTosZU0OLPAD0W7vgyqdgw07pCxRB50J449fQKhdiSYibdppbnxwGdGxWt604G3BlZAWQ9UJ5DZSGYEhnKJkifAX8sGobDH0UtlSINrj9aWm2o9j8urxtowEwvw2CYXUnTWhdIPPtqQS80LcNfD0JDk2xBfv6TqiaJgIlMwCgEB%2Fw0iZwT4URr4tpeLxHFr6FH16%2BCuZcCm9cC0XZQAwqo1Yk8Fu8AYU5Ak6Kr92VGafOuBw29lWBI00Dii3HdaAKnE74aF%2FD6jr5XfiqHAp8DU%2Bc74MrXpZrvwde%2FxQWb4RAdmb1dyjYfgiuOq1uu54Fs1bAve%2BBQ6H3BiVCtMhGfWEJbSiM76oyiXkEEyivEmcGYGp0sQikS6rAaYDHAe0byEAfXg55nsPb0ynfJx%2BnIR670J9ZeJA%2BtwOufe3wvlyvvCBDoUrCMrwwRyIAiAyHqjNOnRmAYMRmytSoPAFAVVRLu8Ogjt2W1cj30G7iA5qa4kkY1q1u221vwsjXIc8rglZEpD3HYztkBQQTGafNXBGqTthBUgM%2BK6xUJW3YDDes%2FAb%2BdwmUlMKlp8PBKtt5NiVpoFMAHlslWjPyDPj0APgt01Sqdnmt%2FU5UWq3BrM5sApkBqF%2BYSgkVT3NuBT4453lJYwPN4P2vZJzzBJT4AlnQ52nxB4k4rP0WdlWAK02JLd5UepsCzMyKnhmAw16ibrg93dl5T3CJMZBlseKFVz8RP%2BSoJyygta7HZuYyY2aOnfUmjlvXblWLxY9GSkFWvbxBa3CltDS9HXBlzjEyA%2BB32YIqhQ7XCKq5bjvJCEUlR8hvIOTFkhCsgYJsO5rUp0hC6gam9YZSixp3AyYUikI0mkEKl5iGT6KPCkbtZ2qN4c%2FKKGZmAPJ8djKhQJXJw3WBH2VqYejus%2BC05nD1q7Z6poTvWADv3witZtr1vhSZGspCMOhkGNsferWEhIb1e2DmCth6oG5eEIrCXWfB%2Fb9omNclH8O1f4YCAUBX1KBqIxiQm9knZQTALM7CSM%2BmSsSTqpZZIkA8Ab%2FtDR2awfDXRRNS9hiKwtRzoZkPep8EHx%2BQdQBIfC4Lw39Gwtkd6j60WxGM6AmLN8GIVyCQa3n3JAxuL2O%2BrbQSNEvALJcV%2FjScJOk6B9NzGBMKcxsPAK2biVAgk%2B0JAqBb5aGSGjChtfXAG3vDix9JZqc16CRcfor0dSyQrNGD9JWFYOtE6FYMH%2B%2BH6%2F4Cn%2B0Vgfq1h79eB8N7SoIzbBEEcmSeqGUmbe9D8o80jXK5ADe0E0HVgZCdxSY1tPOTiTLHh%2Fb5dj7vMGB3qVx3LbZs1mGHoFF9IRKT60gCLk5LWH4WkFwepDg64RwR%2Fp0dcPos2F0hbzqQA58ehFYzYMchuKwbDD1F5ksntx8KciTfT31yPfJCfhYQt1VeKesYDZhmjPZFkUYDYHQtimAmRSpDQVg0QHUvAJKy8gMIRqF7C8jxicaEYzCmnz1R5yJbk6IRmD1Uroc8DwUFYhqpoonPBXl50PMpGfPoRRCu5%2FjiSfExsYT9SZqAC1q4Ufvj2GFAA%2BafOaf57xsNAL0LJoNejNa2M9pcJtrnzJGsDODOpfJ9Ux8IxwEThnYRO%2F6qDLoWih0mTGhhLYOf3wDK1XB0cDmklLXiGzilWMBOj7udC6WocnJAPp0Lpb2d1G30xn2grNKYBnDFlVIZwscRAFBKRcnKj9dGAqcTvXq3XPdoDe0s%2B3%2F1E6nd3d4fYlVwRXdpX7BBlqFdCgUUU0NLy54%2F%2F84uezXIlRO%2BsEwuL6cuANvGw%2BaxsPE2%2BawfA%2BV%2FEDAAtXqXPXcyCe1bZH4O37c73LsVbPpKfIDbgVr%2BNYw5HQZ3AI9l88EgPL1OQiJuuOUMaV%2BxFXb1kbEgPqva%2Bk0gyw6xDZFpygIHoLKGOg5vzmrxPSmtdDvg7e1w%2Balyv%2FwbyRBBTOXMtvDNMQJgnt8RY%2B1OKTh4HPCuVQUa2hl2fGuN0rBgvQBwaz%2F4n07w1nbAYb%2FFolxZIW4%2FKPfX9oDJ%2FwTtOXwZrDUQg1%2BdKkkSybps%2Fu7vYKSZjwaSYXjuGqkYr9kJBRZ40USUc9tXsySzjJl9AGBc3LWSWCyM1uJVg4dgfwLOOwkGdIIDIcAFXxyEsmqYP0x%2B%2BOw6UF7Y9p3cnxwQR2U44bVPoF0%2BXNVbSuTppTOtoTQIM4bI%2FawVsiuUTm6vXU%2FI90nJvWUbKHSg1pYCCQFHazBjL3PLafccUcYjddInMAXcS2odocsjpSyA7gEJWxjS%2Fsw6%2B3f%2F%2FEwY23FI7js2EyeY54Ub3pC2V6%2BBEb2gtELK5YfCcn3vBTD1PAl%2F05ZJbpFOsRqpPZRVy6cyCMP7SN%2BfN4HXAixpQl5hQikV5wh0RBNQSiX1kNdMPvhM6gFZLpi%2FFu6x7HxHqSyaslxiBlMGw5vbZFqXIf0gjjCVKRoKOj8GOybAoitEa5bukPGXdLUfftIfITfLVvVUYrPwGmsDxBoXScBl3UX9F66XUJpqH94PFhxJwqM5InNz73KWbqrC5%2FbjdMDXe%2BDrKHTwwKZ9AoDTgL0hmPQvWLIF8r2iMRGrFNU6z3bkPhfsC0HWdHj%2Bcvh1DztrBJj3IYx9UzLB1KLIoSSJAri%2BV4NsqhUlsiETsCrCkUiYm3uVfx8A31u60VobqKkLKHDfiGFIYnJlP1g0FP3UFtTtr0hNT2txWh6nvZROmlIjqIiIlqQ7vKQpFV0zBs1yxElWhcHpFuHTcwStJeFqnQuxtHJbSQj%2BfisMaYM%2Bfwlq7XbR1EQStPtFKu65WSl1xPrckX0AoJQyuWngIcLRECAPeGmV9I3tLpuiyaQIl%2B2uW0dwGKKK9YVP9RX4JA0GMYFArji2%2BgmSUpLultdIphmOQUW1ZJJD2kBJAvX%2Bx%2FZGaVWsigmDD32f8EcFAAB%2FunAS0egbEg2UhMSx70vfC1dDeT1vXl%2FQ76v4OoyjG%2Bd0CMAOBeFqeP066bvlTdmLTO1iJZJvMLXfEb1%2Fio4KAKWU5tyeJURiogV%2BD8x7F0LArztBtw72eZ8fgqpjcF5PGFQshy3%2BsSataBsJMWJQydEeqjrq8q3WWqHuXkggb4Q4uBi6WzvUut%2BigxqVNwUKsuzdpBNFSRMqEmhzujDf%2FkkoL5ftd62hNLwY%2FdD1RwvAUXOrlNLmVYN2EYqWAeBxodZvR7%2BwDZWr0K%2FeBGXBzKbQFKQ1lAdh1VgRfvoa2L3fPntQURM0J160qzFH6hpdwNfc%2BxIFnuEYhlXaCqMPzIDmLtTED%2BCxt2VtfyR7PhbSGkor0HOHo%2B7oDlsqocdDdtUokYSo8ZaqufeSxkzbeH39y43fUBasrHWIeV5Up1nSN%2Fts9PWDZAe3KTXBEp7JvxLhI0CP2RI%2BU46vIlhpLh%2F1RWOnbjQA6sqOU7m0%2F4tU1lQA4HKCjqJazZH%2BhZfAhKFQWmnvzx0PJU0R%2FrHfwINnyo5X8cOQ65TIIXZfwdghCx39C8c3Wp5j5Uu3fHwOoYrr8brzASli5DeDvRYPr30JVz8vESNV9WnUA6yjMdVJWD4WBjeHKOjih1FmzI75oWgFXVovUltubbTwcLwHJZ0z5pDFDbidUh2piQFu2HkXtHRBhQl958POXdDMX3cXJ%2BOk1lGYiio4oxt8eIPo6WchOG0W5DhspxeJVuLOXqTK7hl3rDIcV8xSiWnjCSYWEUvIZrzPDc4EnDQVFmyFfAN2jEYvvAFCVjk8kWzYP6QOWJaG0QkH%2Bm9jYN0NaAN4aD38%2FAHId9YVPul56XiEhyY6K6y99z2II3krXlehnM6S8rfu3Rm1%2FEawKmHM2QxT34FQpRyD9bgAbZ81LCpCz7wYfmudPtsThfNegJ27ZZGTcnjhSCnZOc%2Bp0nsmHy%2FvTRardIcnHmTX%2FpE0yw7UMhpNQFUNjLoAnjlfxgEs24uauwbe2gw40Ff2gt8NgDOLhKkw6JvfRL2yEnKyLKCwHF5VKb1%2BNl9tvGlKU%2FDdpME6OfztB4zFy0fRLCeAI%2B2sX1VUNjZGDETffz6qbcMnSPTnIbj336i%2Ffij7fKlTpSDmUREMMvHSp9Tss5tEeGhiAAD0vw88wJD5XUnGLiDfl1v35GYMaqLoTm1RY%2Fqhb%2BkNNUnUcxvg2Q9hz37ISjsLDBJKy2uC5OYs4z9jdqvT8yY0Jb8n4CiH9ReZce%2FPNp5Y1hqP60L8nrpAxK3T5AlrAeVyytt2GnUPQIeiQeLmv5j%2Byz1M6z%2FxRPxr5IQAkCKttWLE27NZvOIknI6h%2BD05hx15h7r3SROCkRCmepvbBu%2FnqV9MOJH%2FHTqhAKRIa63MGR%2FONh7%2FoAWVpZfg9ebgc9Y9h1gTh2ikhubN%2F85d5%2B5nYq8T8sbr0w8CQIq01op1h2abz28oMl752CBYdjGYb1HY0uTa0zFv7VNpnJo77of%2B69yPQlprh%2F6yatKP%2BafJn%2Bgn%2Bon4L4cd%2F2hQhc%2BBAAAAAElFTkSuQmCC" alt=""/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script>function panguFn () {
+}</style></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%AA%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#course-overview"><span class="toc-number">1.1.1.</span> <span class="toc-text">Course Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#what-is-cryptography"><span class="toc-number">1.1.2.</span> <span class="toc-text">What is cryptography?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cryptography-applications"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">Cryptography Applications</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#symmetric-encryption"><span class="toc-number">1.1.3.</span> <span class="toc-text">Symmetric Encryption</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#history"><span class="toc-number">1.1.4.</span> <span class="toc-text">History</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#discrete-probability"><span class="toc-number">1.1.5.</span> <span class="toc-text">Discrete Probability</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">流密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#the-one-time-pad"><span class="toc-number">2.1.</span> <span class="toc-text">The One Time Pad</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stream-ciphers"><span class="toc-number">2.2.</span> <span class="toc-text">Stream ciphers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#attacks-on-otp-and-stream-ciphers"><span class="toc-number">2.3.</span> <span class="toc-text">Attacks on OTP and stream
+ciphers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prg-security-defs"><span class="toc-number">2.4.</span> <span class="toc-text">PRG Security Defs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#semantic-security"><span class="toc-number">2.5.</span> <span class="toc-text">Semantic security</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stream-ciphers-are-semantically-secure"><span class="toc-number">2.6.</span> <span class="toc-text">Stream ciphers are
+semantically secure</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">分组密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-a-block-cipher"><span class="toc-number">3.1.</span> <span class="toc-text">What is a block cipher?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-data-encryption-standarddes"><span class="toc-number">3.2.</span> <span class="toc-text">The data encryption
+standard（DES）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exhaustive-search-attacks"><span class="toc-number">3.3.</span> <span class="toc-text">Exhaustive Search Attacks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#more-attacks-on-block-ciphers"><span class="toc-number">3.4.</span> <span class="toc-text">More attacks on block
+ciphers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-aes-block-cipher"><span class="toc-number">3.5.</span> <span class="toc-text">The AES block cipher</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#block-ciphers-from-prgs"><span class="toc-number">3.6.</span> <span class="toc-text">Block ciphers from PRGs</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">使用分组密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#modes-of-operation-one-time-key"><span class="toc-number">4.1.</span> <span class="toc-text">Modes of operation: one time
+key</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/29/PS%E6%89%A9%E5%B1%95%E5%9B%BE%E7%89%87%E8%83%8C%E6%99%AF/" title="PS扩展图片背景"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fphotoblog%2F1107%2F31%2Fc5%2F8500595_8500595_1312087067546.jpg&amp;refer=http%3A%2F%2Fimg.pconline.com.cn&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1662559701&amp;t=40c9794ff65805c755ac02e203449cd7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PS扩展图片背景"/></a><div class="content"><a class="title" href="/2024/07/29/PS%E6%89%A9%E5%B1%95%E5%9B%BE%E7%89%87%E8%83%8C%E6%99%AF/" title="PS扩展图片背景">PS扩展图片背景</a><time datetime="2024-07-29T02:11:37.000Z" title="发表于 2024-07-29 10:11:37">2024-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/26/CTF%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A01/" title="CTF课程学习1"><img src="https://i1.hdslb.com/bfs/archive/40c67abf141fa33aae7e4a60797c559348f26ef8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTF课程学习1"/></a><div class="content"><a class="title" href="/2024/07/26/CTF%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A01/" title="CTF课程学习1">CTF课程学习1</a><time datetime="2024-07-26T10:14:11.000Z" title="发表于 2024-07-26 18:14:11">2024-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/19/kali%E5%AE%89%E8%A3%85/" title="kali安装"><img src="http://hbimg.huaban.com/418c33b0a77d27b06c6a3afee8bef80c1969a00222246f-RUqzBX" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="kali安装"/></a><div class="content"><a class="title" href="/2024/07/19/kali%E5%AE%89%E8%A3%85/" title="kali安装">kali安装</a><time datetime="2024-07-19T09:33:49.000Z" title="发表于 2024-07-19 17:33:49">2024-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/15/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0/" title="密码学学习"><img src="http://hbimg.huaban.com/3b0b8a7de9891d77c45285eab5bbd27830f15c15272b08-AYH4dJ" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="密码学学习"/></a><div class="content"><a class="title" href="/2024/06/15/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0/" title="密码学学习">密码学学习</a><time datetime="2024-06-15T07:28:10.000Z" title="发表于 2024-06-15 15:28:10">2024-06-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/26/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0/" title="微服务学习"><img src="https://hbimg.huaban.com/c19805508ba63ba503c79d5dd49ae37766a75f677db91-9gYRnN" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微服务学习"/></a><div class="content"><a class="title" href="/2024/04/26/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0/" title="微服务学习">微服务学习</a><time datetime="2024-04-26T03:08:45.000Z" title="发表于 2024-04-26 11:08:45">2024-04-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/about/">关于作者</a><a href="/comments/">留点什么</a></li><li><a href="/categories/">文章分类</a><a href="/tags/">文章标签</a></li><li><a href="/archives/">文章归档</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"></div></div></div><div class="copyright"><span><b>&copy;2020 - 2024</b></span><span><b>&nbsp;&nbsp;By Torch</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="https://img.shields.io/badge/Frame-Hexo-blue?logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="https://img.shields.io/badge/Theme-Butterfly-purple?logo=bitcoin" alt=""/></a><a class="github-badge" target="_blank" href="https://icp.gov.moe/?keyword=20226665" style="margin-inline:5px" title="本站已加入萌ICP豪华套餐，萌ICP备20226665号"><img src="https://sourcebucket.s3.ladydaily.com/badge/萌ICP备-20226665-fe1384.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://cn.aliyun.com/" style="margin-inline:5px" title="本网站大部分图片在阿里云对象存储"><img src="https://img.shields.io/badge/Bucket-%E9%98%BF%E9%87%8C%E4%BA%91-orange?logo=academia" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本网站源码由Github提供存储仓库"><img src="https://img.shields.io/badge/Source-Github-black?logo=github" alt=""/></a><a class="github-badge" target="_blank" href="https://icp.gov.moe/?keyword=20240421" style="margin-inline:5px" title="本站已加入萌ICP豪华套餐，萌ICP备20240421号"><img src="https://img.shields.io/badge/%E8%90%8CICP%E5%A4%87-20240421-F2218A?logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAABHOSURBVHic7ZtpmFTF1cd%2FdXuf6VmYnhlAdiQsGkEWAQEVNb4KGsW8btGAxo1FFAIuBAyLa1BQUFGRqCB5RY3mSWIUI0beyCaLgKjI4gayjszWPT3T6618OLfn9gzTyMCgXzzP00%2FfW1Vd95z%2FPVudqoaf6Cf6iX4M0lo79P%2Fvv09vLL1fa%2B34sfhw%2FtAP1Fo7uHf1dJo9kk9F6U2goUXLfP3g2kom952mlEr%2BkPyoH%2BIhWmtlzv9slvHEyuZs%2FdLA5R5GtseHw5ABCRPC0RoS8b%2BZvbuYxvhBB%2FlN5zuVUvpE83bCANBaK5bufdR8%2FINWxrJPweBi%2FJ4cXA5QKjXI4iLtPpaAUDQEjre4rCdMHLSPs4pPGBhNDoD%2BtPI%2Bc87KLsaijyBecxHZ7ly8LutpSoQ0NVTHIJqQdq8LfC4wlD1GA5E4VEeD%2BHLe4Za%2BmOPP2u3o6L2rKfltMgCS01fPMOatPoXvDg7G6ys8XCANkQRUR9HZOaiRA9B3D0JVJ9AzP0C9sBbi1ZDtITNgkUratllmjh2w1XF3n2lNwfdxAaBf%2BHwqT67qwaYd4HSdhd9ThMM4XKWrYqANuKIPjD8TPbAYhbzkdAb0u3tRc1fD25vBQMBw1zOZRBKqYt%2BRTKzQA09F3T7wY3XNyfcdqwyNBkC%2Ft28cc1cP5s2PQDEAv6cYt%2FNwJqvjEI9D%2F1Pg9n5wbRdb4J1hmLsG5q0Evxs9eiBq3JnQyi1TAOpPW%2BHJ1bBlJ7jdkOXmMHCjCaiKlIBztb66L%2BqO%2Fh%2BpgcUPNDkA%2BovqsfrxlReoBWshFu5JlqcNXpf8Ol1Na2IQiUKrVujb%2B6PG9wWPNUkUmLse5q6CfQfAcECXIthZKqYSi8HJbWD8IPTYHrXM6QoNj61GzVsNZYfA5xV%2FoeqZV00camIHycldy%2BgB%2F1aPDH7iuAHQL24dw6R3hnLwwGl4PW3xuTM5KvBmw0390BPOgo5eW8Vf3oF%2BfBVqwzZwWW9SKaioAv1HGPZ%2FsHQH5LghnoRwDJIJOOc09PgBqGEdhBeAT4Lw2ErU4vWQjEK2uwF%2FYUJ17FuisS20bQNP%2FHKpGtZ%2B3rEBkDvzGczqUXhch9t1OAamQl%2FaEzV%2BAJzb0mZ05UHUnDXwxkZQSfC7wW3lXKVhwICnfwmj%2B0FlBNo8AqFqyMsGlyNNvaNguOG6vjC%2BP%2FQqqDUj%2Fc%2FdqLmr4L0t4HAIGPVDbHUU2rWer7aNHHVsADD5GQJZo2rRDUUgFkP37Iy6YyD6hq61E%2BhdNai5a2HBGqgKQpYHvE5bVQEOheG7yVCY3fADT5kL%2B4IiSEqIWvWOQkEARg9EjzsDVeSyAX96C%2BrJNbDtK%2FB6BQylRBvCzFfRPzQeAP1F9V10um8iAX9zAEIR9F1DUJMGoP21CMGcjahp70HoIHiyRcWNNKHTKZqAkwtg09jD%2B55dB6P%2FAQFfw7%2FVGpKmhMNYHN2tPWrcIPTIn9svoSSBmr4cFq4UPgBKQ%2FMVMzMCYGTqYHtJezCa1779uAP1wADwg3r9S9SgxSjjHtSEl2DDjXBZLzAzzibkccLm%2FTBlWd32kjCMfiWz8CDtTgfkeMHnRX2%2BG8YsQanfw4WvwNI9UOxEP32BaEvqN3C53lw2qfEAfFMOTosZU0OLPAD0W7vgyqdgw07pCxRB50J449fQKhdiSYibdppbnxwGdGxWt604G3BlZAWQ9UJ5DZSGYEhnKJkifAX8sGobDH0UtlSINrj9aWm2o9j8urxtowEwvw2CYXUnTWhdIPPtqQS80LcNfD0JDk2xBfv6TqiaJgIlMwCgEB%2Fw0iZwT4URr4tpeLxHFr6FH16%2BCuZcCm9cC0XZQAwqo1Yk8Fu8AYU5Ak6Kr92VGafOuBw29lWBI00Dii3HdaAKnE74aF%2FD6jr5XfiqHAp8DU%2Bc74MrXpZrvwde%2FxQWb4RAdmb1dyjYfgiuOq1uu54Fs1bAve%2BBQ6H3BiVCtMhGfWEJbSiM76oyiXkEEyivEmcGYGp0sQikS6rAaYDHAe0byEAfXg55nsPb0ynfJx%2BnIR670J9ZeJA%2BtwOufe3wvlyvvCBDoUrCMrwwRyIAiAyHqjNOnRmAYMRmytSoPAFAVVRLu8Ogjt2W1cj30G7iA5qa4kkY1q1u221vwsjXIc8rglZEpD3HYztkBQQTGafNXBGqTthBUgM%2BK6xUJW3YDDes%2FAb%2BdwmUlMKlp8PBKtt5NiVpoFMAHlslWjPyDPj0APgt01Sqdnmt%2FU5UWq3BrM5sApkBqF%2BYSgkVT3NuBT4453lJYwPN4P2vZJzzBJT4AlnQ52nxB4k4rP0WdlWAK02JLd5UepsCzMyKnhmAw16ibrg93dl5T3CJMZBlseKFVz8RP%2BSoJyygta7HZuYyY2aOnfUmjlvXblWLxY9GSkFWvbxBa3CltDS9HXBlzjEyA%2BB32YIqhQ7XCKq5bjvJCEUlR8hvIOTFkhCsgYJsO5rUp0hC6gam9YZSixp3AyYUikI0mkEKl5iGT6KPCkbtZ2qN4c%2FKKGZmAPJ8djKhQJXJw3WBH2VqYejus%2BC05nD1q7Z6poTvWADv3witZtr1vhSZGspCMOhkGNsferWEhIb1e2DmCth6oG5eEIrCXWfB%2Fb9omNclH8O1f4YCAUBX1KBqIxiQm9knZQTALM7CSM%2BmSsSTqpZZIkA8Ab%2FtDR2awfDXRRNS9hiKwtRzoZkPep8EHx%2BQdQBIfC4Lw39Gwtkd6j60WxGM6AmLN8GIVyCQa3n3JAxuL2O%2BrbQSNEvALJcV%2FjScJOk6B9NzGBMKcxsPAK2biVAgk%2B0JAqBb5aGSGjChtfXAG3vDix9JZqc16CRcfor0dSyQrNGD9JWFYOtE6FYMH%2B%2BH6%2F4Cn%2B0Vgfq1h79eB8N7SoIzbBEEcmSeqGUmbe9D8o80jXK5ADe0E0HVgZCdxSY1tPOTiTLHh%2Fb5dj7vMGB3qVx3LbZs1mGHoFF9IRKT60gCLk5LWH4WkFwepDg64RwR%2Fp0dcPos2F0hbzqQA58ehFYzYMchuKwbDD1F5ksntx8KciTfT31yPfJCfhYQt1VeKesYDZhmjPZFkUYDYHQtimAmRSpDQVg0QHUvAJKy8gMIRqF7C8jxicaEYzCmnz1R5yJbk6IRmD1Uroc8DwUFYhqpoonPBXl50PMpGfPoRRCu5%2FjiSfExsYT9SZqAC1q4Ufvj2GFAA%2BafOaf57xsNAL0LJoNejNa2M9pcJtrnzJGsDODOpfJ9Ux8IxwEThnYRO%2F6qDLoWih0mTGhhLYOf3wDK1XB0cDmklLXiGzilWMBOj7udC6WocnJAPp0Lpb2d1G30xn2grNKYBnDFlVIZwscRAFBKRcnKj9dGAqcTvXq3XPdoDe0s%2B3%2F1E6nd3d4fYlVwRXdpX7BBlqFdCgUUU0NLy54%2F%2F84uezXIlRO%2BsEwuL6cuANvGw%2BaxsPE2%2BawfA%2BV%2FEDAAtXqXPXcyCe1bZH4O37c73LsVbPpKfIDbgVr%2BNYw5HQZ3AI9l88EgPL1OQiJuuOUMaV%2BxFXb1kbEgPqva%2Bk0gyw6xDZFpygIHoLKGOg5vzmrxPSmtdDvg7e1w%2Balyv%2FwbyRBBTOXMtvDNMQJgnt8RY%2B1OKTh4HPCuVQUa2hl2fGuN0rBgvQBwaz%2F4n07w1nbAYb%2FFolxZIW4%2FKPfX9oDJ%2FwTtOXwZrDUQg1%2BdKkkSybps%2Fu7vYKSZjwaSYXjuGqkYr9kJBRZ40USUc9tXsySzjJl9AGBc3LWSWCyM1uJVg4dgfwLOOwkGdIIDIcAFXxyEsmqYP0x%2B%2BOw6UF7Y9p3cnxwQR2U44bVPoF0%2BXNVbSuTppTOtoTQIM4bI%2FawVsiuUTm6vXU%2FI90nJvWUbKHSg1pYCCQFHazBjL3PLafccUcYjddInMAXcS2odocsjpSyA7gEJWxjS%2Fsw6%2B3f%2F%2FEwY23FI7js2EyeY54Ub3pC2V6%2BBEb2gtELK5YfCcn3vBTD1PAl%2F05ZJbpFOsRqpPZRVy6cyCMP7SN%2BfN4HXAixpQl5hQikV5wh0RBNQSiX1kNdMPvhM6gFZLpi%2FFu6x7HxHqSyaslxiBlMGw5vbZFqXIf0gjjCVKRoKOj8GOybAoitEa5bukPGXdLUfftIfITfLVvVUYrPwGmsDxBoXScBl3UX9F66XUJpqH94PFhxJwqM5InNz73KWbqrC5%2FbjdMDXe%2BDrKHTwwKZ9AoDTgL0hmPQvWLIF8r2iMRGrFNU6z3bkPhfsC0HWdHj%2Bcvh1DztrBJj3IYx9UzLB1KLIoSSJAri%2BV4NsqhUlsiETsCrCkUiYm3uVfx8A31u60VobqKkLKHDfiGFIYnJlP1g0FP3UFtTtr0hNT2txWh6nvZROmlIjqIiIlqQ7vKQpFV0zBs1yxElWhcHpFuHTcwStJeFqnQuxtHJbSQj%2BfisMaYM%2Bfwlq7XbR1EQStPtFKu65WSl1xPrckX0AoJQyuWngIcLRECAPeGmV9I3tLpuiyaQIl%2B2uW0dwGKKK9YVP9RX4JA0GMYFArji2%2BgmSUpLultdIphmOQUW1ZJJD2kBJAvX%2Bx%2FZGaVWsigmDD32f8EcFAAB%2FunAS0egbEg2UhMSx70vfC1dDeT1vXl%2FQ76v4OoyjG%2Bd0CMAOBeFqeP066bvlTdmLTO1iJZJvMLXfEb1%2Fio4KAKWU5tyeJURiogV%2BD8x7F0LArztBtw72eZ8fgqpjcF5PGFQshy3%2BsSataBsJMWJQydEeqjrq8q3WWqHuXkggb4Q4uBi6WzvUut%2BigxqVNwUKsuzdpBNFSRMqEmhzujDf%2FkkoL5ftd62hNLwY%2FdD1RwvAUXOrlNLmVYN2EYqWAeBxodZvR7%2BwDZWr0K%2FeBGXBzKbQFKQ1lAdh1VgRfvoa2L3fPntQURM0J160qzFH6hpdwNfc%2BxIFnuEYhlXaCqMPzIDmLtTED%2BCxt2VtfyR7PhbSGkor0HOHo%2B7oDlsqocdDdtUokYSo8ZaqufeSxkzbeH39y43fUBasrHWIeV5Up1nSN%2Fts9PWDZAe3KTXBEp7JvxLhI0CP2RI%2BU46vIlhpLh%2F1RWOnbjQA6sqOU7m0%2F4tU1lQA4HKCjqJazZH%2BhZfAhKFQWmnvzx0PJU0R%2FrHfwINnyo5X8cOQ65TIIXZfwdghCx39C8c3Wp5j5Uu3fHwOoYrr8brzASli5DeDvRYPr30JVz8vESNV9WnUA6yjMdVJWD4WBjeHKOjih1FmzI75oWgFXVovUltubbTwcLwHJZ0z5pDFDbidUh2piQFu2HkXtHRBhQl958POXdDMX3cXJ%2BOk1lGYiio4oxt8eIPo6WchOG0W5DhspxeJVuLOXqTK7hl3rDIcV8xSiWnjCSYWEUvIZrzPDc4EnDQVFmyFfAN2jEYvvAFCVjk8kWzYP6QOWJaG0QkH%2Bm9jYN0NaAN4aD38%2FAHId9YVPul56XiEhyY6K6y99z2II3krXlehnM6S8rfu3Rm1%2FEawKmHM2QxT34FQpRyD9bgAbZ81LCpCz7wYfmudPtsThfNegJ27ZZGTcnjhSCnZOc%2Bp0nsmHy%2FvTRardIcnHmTX%2FpE0yw7UMhpNQFUNjLoAnjlfxgEs24uauwbe2gw40Ff2gt8NgDOLhKkw6JvfRL2yEnKyLKCwHF5VKb1%2BNl9tvGlKU%2FDdpME6OfztB4zFy0fRLCeAI%2B2sX1VUNjZGDETffz6qbcMnSPTnIbj336i%2Ffij7fKlTpSDmUREMMvHSp9Tss5tEeGhiAAD0vw88wJD5XUnGLiDfl1v35GYMaqLoTm1RY%2Fqhb%2BkNNUnUcxvg2Q9hz37ISjsLDBJKy2uC5OYs4z9jdqvT8yY0Jb8n4CiH9ReZce%2FPNp5Y1hqP60L8nrpAxK3T5AlrAeVyytt2GnUPQIeiQeLmv5j%2Byz1M6z%2FxRPxr5IQAkCKttWLE27NZvOIknI6h%2BD05hx15h7r3SROCkRCmepvbBu%2FnqV9MOJH%2FHTqhAKRIa63MGR%2FONh7%2FoAWVpZfg9ebgc9Y9h1gTh2ikhubN%2F85d5%2B5nYq8T8sbr0w8CQIq01op1h2abz28oMl752CBYdjGYb1HY0uTa0zFv7VNpnJo77of%2B69yPQlprh%2F6yatKP%2BafJn%2Bgn%2Bon4L4cd%2F2hQhc%2BBAAAAAElFTkSuQmCC" alt=""/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js')

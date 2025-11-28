@@ -1,0 +1,659 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>常见混淆技术 | Torch's blog</title><meta name="author" content="Torch"><meta name="copyright" content="Torch"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、词法 &#x2F; 文本层面的混淆（最表层的那一层） 1. 标识符改名（Identifier Renaming）  把有语义的名字改成无意义的短名或乱码：  download_and_exfiltrate_credentials() → a() userToken → _0x13f4  特点：  对语义完全无影响，但严重影响可读性； 编译型&#x2F;解释型语言里都常见，恶意 &amp;amp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见混淆技术">
+<meta property="og:url" content="https://funnytorch.github.io/2025/11/28/%E5%B8%B8%E8%A7%81%E6%B7%B7%E6%B7%86%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:site_name" content="Torch&#39;s blog">
+<meta property="og:description" content="一、词法 &#x2F; 文本层面的混淆（最表层的那一层） 1. 标识符改名（Identifier Renaming）  把有语义的名字改成无意义的短名或乱码：  download_and_exfiltrate_credentials() → a() userToken → _0x13f4  特点：  对语义完全无影响，但严重影响可读性； 编译型&#x2F;解释型语言里都常见，恶意 &amp;amp">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg">
+<meta property="article:published_time" content="2025-11-28T09:27:11.000Z">
+<meta property="article:modified_time" content="2025-11-28T09:28:52.223Z">
+<meta property="article:author" content="Torch">
+<meta property="article:tag" content="研究生学习">
+<meta property="article:tag" content="科研">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg"><link rel="shortcut icon" href="https://pic1.imgdb.cn/item/646c285ce03e90d874adadbd.png"><link rel="canonical" href="https://funnytorch.github.io/2025/11/28/%E5%B8%B8%E8%A7%81%E6%B7%B7%E6%B7%86%E6%8A%80%E6%9C%AF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '常见混淆技术',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-28 17:28:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><link rel="stylesheet" href="https://npm.elemecdn.com/ethan4116-blog/lib/css/plane_v2.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><span id="fps"></span><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">93</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">60</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Torch's blog"><span class="site-name">Torch's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">常见混淆技术</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-28T09:27:11.000Z" title="发表于 2025-11-28 17:27:11">2025-11-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-28T09:28:52.223Z" title="更新于 2025-11-28 17:28:52">2025-11-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91/">研究方向</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="常见混淆技术"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="一词法-文本层面的混淆最表层的那一层">一、词法 /
+文本层面的混淆（最表层的那一层）</h2>
+<h3 id="标识符改名identifier-renaming">1. 标识符改名（Identifier
+Renaming）</h3>
+<ul>
+<li><p>把有语义的名字改成<strong>无意义的短名或乱码</strong>：</p>
+<ul>
+<li><code>download_and_exfiltrate_credentials()</code> →
+<code>a()</code></li>
+<li><code>userToken</code> → <code>_0x13f4</code></li>
+</ul></li>
+<li><p>特点：</p>
+<ul>
+<li><strong>对语义完全无影响</strong>，但严重影响可读性；</li>
+<li>编译型/解释型语言里都常见，恶意 &amp; 良性（压缩、保护
+IP）都会用。</li>
+</ul></li>
+<li><p>在 npm / PyPI 中：</p>
+<ul>
+<li>一些恶意包会配合其它技术，把核心逻辑集中到一个“<code>index.min.js</code>
+/ <code>core.cpython-xyz.so</code> + 乱名变量”的文件里。</li>
+</ul></li>
+</ul>
+<h3 id="去掉格式-压缩minification">2. 去掉格式 /
+压缩（Minification）</h3>
+<ul>
+<li><p>删除所有<strong>换行、缩进、多余空格、注释</strong>：</p>
+<ul>
+<li>正常源码 → 一行 JS / Python / Lua “长蛇阵”。</li>
+</ul></li>
+<li><p>典型场景：</p>
+<ul>
+<li>Web 前端打包工具（Webpack、UglifyJS 等）；</li>
+<li>恶意脚本、恶意 npm 包也利用这个手段“顺便”隐藏逻辑。</li>
+</ul></li>
+<li><p>检测挑战：</p>
+<ul>
+<li>单纯“变成一行代码”不能说明恶意，只能当“可疑信号 +1”。</li>
+</ul></li>
+</ul>
+<h3 id="字符级伪装unicode-同形字-看不见字符">3. 字符级伪装（Unicode /
+同形字 / 看不见字符）</h3>
+<ul>
+<li><p>使用<strong>Unicode 同形字、零宽字符</strong>等：</p>
+<ul>
+<li>同形字（homoglyph）：<code>a</code>（ASCII）和某些看起来一样的
+Unicode 字符；</li>
+<li>零宽空格/零宽连接符插到标识符中，肉眼看是
+<code>user</code>，内存里是 <code>user</code>。</li>
+</ul></li>
+<li><p>在安全场景：</p>
+<ul>
+<li>可以造成“看起来一样，实际上不是同一个标识符/域名/包名”。</li>
+<li>配合 typosquatting：<code>reqquests</code> + 同形字之类。</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="二字符串-数据层混淆在恶意包领域非常常见">二、字符串 /
+数据层混淆（在恶意包领域非常常见）</h2>
+<p>很多恶意包不会直接把恶意 URL、Token、Payload
+写明，而是<strong>进行多层编码和加密</strong>。</p>
+<h3 id="字符串编码base64-hex-自定义编码">1. 字符串编码（Base64 / Hex /
+自定义编码）</h3>
+<ul>
+<li><p>常见套路：</p>
+<ul>
+<li><p>把 URL、命令、脚本片段编码成 Base64 / Hex：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64, zlib</span><br><span class="line">payload = zlib.decompress(base64.b64decode(DATA))</span><br><span class="line"><span class="built_in">exec</span>(payload)</span><br></pre></td></tr></table></figure></li>
+<li><p>JS 里用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="title function_">atob</span>(<span class="string">&quot;ZXZhbChhbGVydCgnSGVsbG8nKSk=&quot;</span>))</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>变种：</p>
+<ul>
+<li>多层嵌套：Base64 → zlib → 再 Base64；</li>
+<li>自定义编码表、手写解码函数（字符轮换、异或等）。</li>
+</ul></li>
+</ul>
+<h3 id="字符串拆分-拼接">2. 字符串拆分 / 拼接</h3>
+<ul>
+<li><p>把敏感字符串拆成碎片，然后运行时拼接：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> part1 = <span class="string">&quot;ht&quot;</span> + <span class="string">&quot;tps&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> part2 = <span class="string">&quot;://exa&quot;</span> + <span class="string">&quot;mple.com&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> url = part1 + part2;</span><br></pre></td></tr></table></figure></li>
+<li><p>用途：</p>
+<ul>
+<li>逃避基于关键字的简单扫描（比如“检测是否包含某域名/某命令”）。</li>
+</ul></li>
+</ul>
+<h3 id="运行时解密字符串string-encryption">3. 运行时解密字符串（String
+Encryption）</h3>
+<ul>
+<li><p>将敏感字符串<strong>加密存储</strong>，运行时再解密：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">dec</span>(<span class="params">s, key</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(<span class="built_in">chr</span>(<span class="built_in">ord</span>(c) ^ key) <span class="keyword">for</span> c <span class="keyword">in</span> s)</span><br><span class="line"></span><br><span class="line">enc = <span class="string">&quot;\x10\x02\x07...&quot;</span>  <span class="comment"># 加密后的 payload</span></span><br><span class="line">real = dec(enc, <span class="number">0x42</span>)</span><br><span class="line"><span class="built_in">exec</span>(real)</span><br></pre></td></tr></table></figure></li>
+<li><p>关键点：</p>
+<ul>
+<li>静态分析时看不到明文，只能通过符号执行/仿真运行才能恢复；</li>
+<li>如果解密 key 来自环境（比如某个机器
+ID），就变成“环境绑定的解密”。</li>
+</ul></li>
+</ul>
+<h3 id="数据结构伪装用数组字典藏代码">4.
+数据结构伪装（用数组/字典藏代码）</h3>
+<ul>
+<li><p>把真正要执行的东西藏在<strong>数组、字典、长列表</strong>里：</p>
+<ul>
+<li>例如：把一段脚本按字符拆到数组中，再根据索引重组；</li>
+<li>或者把不同部分混在一个大数组，运行时按某个顺序挑选执行。</li>
+</ul></li>
+<li><p>对特征提取的影响：</p>
+<ul>
+<li>使得直接基于 token/字符串统计的特征难以识别“恶意模式”。</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="三控制流-语法结构混淆让程序看起来不走直线">三、控制流 /
+语法结构混淆（让程序“看起来不走直线”）</h2>
+<p>这种更多出现在<strong>高级混淆器</strong>和有一定技术实力的攻击者写的恶意包里。</p>
+<h3 id="控制流平坦化control-flow-flattening">1.
+控制流平坦化（Control-Flow Flattening）</h3>
+<ul>
+<li><p>原本清晰的 if / loop 结构，被改写成“状态机 + 大 switch”：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> state = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">switch</span> (state) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>: ...; state = <span class="number">2</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>: ...; state = <span class="number">3</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>: ...; state = <span class="number">1</span>; <span class="keyword">break</span>;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>对分析的影响：</p>
+<ul>
+<li>控制流图会变成一坨高连接度节点，很难直接读懂执行顺序；</li>
+<li>静态分析的路径枚举变得复杂。</li>
+</ul></li>
+</ul>
+<h3 id="伪造分支opaque-predicates-bogus-control-flow">2.
+伪造分支（Opaque Predicates / Bogus Control Flow）</h3>
+<ul>
+<li><p>引入一些<strong>逻辑上恒真/恒假的条件</strong>，但用复杂表达式写：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ((x*x) % <span class="number">4</span> == <span class="number">0</span>) &#123;  <span class="comment">// 对某些特定 x 永远为真</span></span><br><span class="line">    <span class="comment">// 真正逻辑</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 无意义的死代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>目的：</p>
+<ul>
+<li>让控制流图变复杂；</li>
+<li>混淆覆盖率、路径数目，让符号执行成本暴涨。</li>
+</ul></li>
+</ul>
+<h3 id="循环和函数的结构变换">3. 循环和函数的结构变换</h3>
+<ul>
+<li><p>例如：</p>
+<ul>
+<li>展开/收缩循环：把一个循环改写成多个重复块，或者反之；</li>
+<li>内联 /
+反内联：把多个函数“搅和”到一起，或把逻辑拆成很多小函数在不同文件里。</li>
+</ul></li>
+<li><p>在恶意包中：</p>
+<ul>
+<li>有时会把真实行为分散到多个 file / module /
+function，再通过动态导入、回调串起来。</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="四动态特性与自修改eval-反射-动态导入">四、动态特性与自修改：eval
+/ 反射 / 动态导入</h2>
+<p>这一类非常关键，因为 npm / PyPI 恶意包<strong>特别爱用“安装脚本 +
+动态执行”</strong>。</p>
+<h3 id="动态执行eval-exec-function-new-function">1.
+动态执行：<code>eval</code> / <code>exec</code> / <code>Function</code>
+/ <code>new Function</code></h3>
+<ul>
+<li><p>JS：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> code = <span class="title function_">getDecryptedPayload</span>();</span><br><span class="line">(<span class="keyword">new</span> <span class="title class_">Function</span>(code))();</span><br></pre></td></tr></table></figure></li>
+<li><p>Python：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">code = decrypt(DATA)</span><br><span class="line"><span class="built_in">exec</span>(code, &#123;&#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p>效果：</p>
+<ul>
+<li>把真正的恶意逻辑藏在字符串/数据里，静态分析只能看到一条
+<code>exec</code>；</li>
+<li>必须模拟运行或做更复杂的分析才能“看到”这段代码。</li>
+</ul></li>
+</ul>
+<h3 id="反射与动态导入reflection-dynamic-import">2.
+反射与动态导入（Reflection / Dynamic Import）</h3>
+<ul>
+<li><p>例子：</p>
+<ul>
+<li>Python：<code>__import__(module_name)</code>、<code>getattr(mod, func_name)</code>；</li>
+<li>JS：动态
+<code>require(someVar)</code>、<code>import(someUrl)</code>。</li>
+</ul></li>
+<li><p>应用：</p>
+<ul>
+<li>根据<strong>环境变量、系统信息、网络响应</strong>决定导入哪个模块 /
+执行哪段逻辑；</li>
+<li>恶意包可以在“正常环境”只执行 benign
+逻辑，在目标环境再加载恶意模块。</li>
+</ul></li>
+</ul>
+<h3 id="自修改代码self-modifying-code">3. 自修改代码（Self-Modifying
+Code）</h3>
+<ul>
+<li><p>比较少见但很“骚”的玩法：</p>
+<ul>
+<li>第一次运行时修改自己的源码文件；</li>
+<li>或将新代码写入某个文件，下次再从这个文件加载执行。</li>
+</ul></li>
+<li><p>在软件包场景：</p>
+<ul>
+<li>可见于“安装后悄悄写一个额外脚本/定时任务”的行为，这部分逻辑本身也可能再被混淆。</li>
+</ul></li>
+</ul>
+<hr />
+<h2
+id="五包级结构与加载流程上的混淆恶意软件分层包装">五、包级结构与加载流程上的混淆（恶意软件“分层包装”）</h2>
+<p>从“单文件脚本混淆”进化到“<strong>整个包的结构设计就是一种混淆</strong>”。</p>
+<h3 id="多阶段加载staged-payload">1. 多阶段加载（Staged Payload）</h3>
+<ul>
+<li><p>第 1 阶段（安装脚本 / 入口文件）：</p>
+<ul>
+<li>只做网络请求 + 下载第二阶段 payload；</li>
+<li>或只做解码/解密，真正恶意逻辑不直接内置。</li>
+</ul></li>
+<li><p>第 2 阶段（下载的脚本 / 库）：</p>
+<ul>
+<li>再做一次混淆/解密，执行真正的窃取/挖矿等逻辑。</li>
+</ul></li>
+<li><p>好处：</p>
+<ul>
+<li>提高溯源难度；</li>
+<li>即使第一阶段被发现，攻击者可以在服务器上替换第二阶段代码。</li>
+</ul></li>
+</ul>
+<h3 id="借壳-依附正常库piggybacking">2. 借壳 /
+依附正常库（Piggybacking）</h3>
+<ul>
+<li><p>在一个看起来正常的包里：</p>
+<ul>
+<li>大部分文件、API 都正常，甚至 fork 自知名项目；</li>
+<li>只在某个角落放入一段混淆的恶意逻辑（比如一个“调试用 script”）。</li>
+</ul></li>
+<li><p>从检测视角：</p>
+<ul>
+<li>抽样扫描、简单统计特征很容易漏掉这部分小而隐蔽的 payload。</li>
+</ul></li>
+</ul>
+<h3 id="资源化配置化恶意逻辑">3. 资源化/配置化恶意逻辑</h3>
+<ul>
+<li><p>不把恶意代码写在 <code>.py</code> / <code>.js</code>
+里，而是：</p>
+<ul>
+<li>藏在 JSON / 图片 / 配置文件 / README 注释中；</li>
+<li>运行时读取这些资源再解码执行。</li>
+</ul></li>
+<li><p>这类属于“<strong>把代码伪装成数据</strong>”，往往会逃掉只扫描源文件的工具。</p></li>
+</ul>
+<hr />
+<h2 id="六对抗分析-对抗检测相关和混淆高度耦合的技巧">六、对抗分析 /
+对抗检测相关（和混淆高度耦合的技巧）</h2>
+<p>严格说这类更偏“反分析”/“反沙箱检测”，但在恶意包研究中经常与混淆一起出现。</p>
+<h3 id="环境检测anti-sandbox-anti-debug">1. 环境检测（Anti-Sandbox /
+Anti-Debug）</h3>
+<ul>
+<li><p>例子：</p>
+<ul>
+<li>检查进程列表、用户名、环境变量是否像分析环境；</li>
+<li>检查文件路径、网络连通性；</li>
+<li>延时执行（只有运行很久才进入恶意分支）。</li>
+</ul></li>
+<li><p>与混淆结合：</p>
+<ul>
+<li>环境检测逻辑本身也被混淆；</li>
+<li>只有在“不是沙箱”的情况下才解密真正 payload。</li>
+</ul></li>
+</ul>
+<h3 id="针对特征的对抗性修改adversarial-obfuscation">2.
+针对特征的对抗性修改（Adversarial Obfuscation）</h3>
+<ul>
+<li><p>知道某些检测工具依赖某一类特征（token、字符串、API
+统计），就刻意：</p>
+<ul>
+<li>插入大量无害但“高度混淆”的代码当噪声；</li>
+<li>模仿良性库的风格/依赖关系，欺骗学习模型。</li>
+</ul></li>
+<li><p>这个在你做“基于
+ML/深度学习的恶意包检测”时，需要专门想对策。</p></li>
+</ul>
+<hr />
+<h2 id="七和你的研究写作怎么对齐">七、和你的研究/写作怎么对齐</h2>
+<p>如果把上面的东西压缩到几句话写进论文/专利，可以概括为三层：</p>
+<ol type="1">
+<li><p><strong>表层混淆（Lexical / Syntactic）：</strong>
+标识符改名、压缩、伪装字符、简单编码等，主要是降低人工可读性，部分会干扰基于
+token 的静态检测。</p></li>
+<li><p><strong>语义相关混淆（Control-flow &amp; Data）：</strong>
+控制流平坦化、伪造分支、字符串加密/多层编码、数据结构伪装等，直接破坏控制流图、数据流分析和常规特征提取。</p></li>
+<li><p><strong>结构与行为混淆（Structural &amp; Behavioral）：</strong>
+多阶段加载、动态执行、反射和环境绑定、自修改代码，以及把恶意逻辑拆到包结构里的各个角落，从整体上降低静态和简单动态检测的有效性。</p></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://funnytorch.github.io">Torch</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://funnytorch.github.io/2025/11/28/%E5%B8%B8%E8%A7%81%E6%B7%B7%E6%B7%86%E6%8A%80%E6%9C%AF/">https://funnytorch.github.io/2025/11/28/%E5%B8%B8%E8%A7%81%E6%B7%B7%E6%B7%86%E6%8A%80%E6%9C%AF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://funnytorch.github.io" target="_blank">Torch's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%B9%A0/">研究生学习</a><a class="post-meta__tags" href="/tags/%E7%A7%91%E7%A0%94/">科研</a></div><div class="post_share"><div class="social-share" data-image="https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/11/06/%E5%B8%B8%E7%94%A8prompt/" title="常用prompt"><img class="cover" src="https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">常用prompt</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/01/07/%E7%A0%94%E7%A9%B6%E5%80%99%E9%80%89%E6%96%B9%E5%90%91%EF%BC%9A%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%86%E6%9E%90%E2%80%94%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" title="研究候选方向：深度学习的方法和密码学分析—论文阅读笔记"><img class="cover" src="http://hbimg.huaban.com/c27016831eb48f10da1b19df62014b7096da361367333-RHmnrY" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-07</div><div class="title">研究候选方向：深度学习的方法和密码学分析—论文阅读笔记</div></div></a></div><div><a href="/2025/01/12/%E7%A0%94%E7%A9%B6%E5%80%99%E9%80%89%E6%96%B9%E5%90%91%EF%BC%9A%E9%9D%A2%E5%90%91%E9%9B%B6%E4%BF%A1%E4%BB%BB%E6%8A%80%E6%9C%AF%E7%9A%84%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81%E6%88%96%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E7%AD%89%E6%96%B9%E6%B3%95-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" title="研究候选方向：面向零信任技术的安全认证或访问控制等方法-论文阅读笔记"><img class="cover" src="http://hbimg.huaban.com/c27016831eb48f10da1b19df62014b7096da361367333-RHmnrY" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-12</div><div class="title">研究候选方向：面向零信任技术的安全认证或访问控制等方法-论文阅读笔记</div></div></a></div><div><a href="/2025/01/12/%E7%A0%94%E7%A9%B6%E5%80%99%E9%80%89%E6%96%B9%E5%90%91%EF%BC%9A%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E8%BD%AF%E4%BB%B6%E4%BE%9B%E5%BA%94%E9%93%BE%E5%AE%89%E5%85%A8%E6%A3%80%E6%B5%8B-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" title="研究候选方向：深度学习的方法和软件供应链安全检测-论文阅读笔记"><img class="cover" src="http://hbimg.huaban.com/c27016831eb48f10da1b19df62014b7096da361367333-RHmnrY" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-12</div><div class="title">研究候选方向：深度学习的方法和软件供应链安全检测-论文阅读笔记</div></div></a></div><div><a href="/2025/01/31/2025-01-27-2025-02-02%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E5%91%A8%E6%8A%A5/" title="2025-01-27~2025-02-02论文阅读周报"><img class="cover" src="https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-31</div><div class="title">2025-01-27~2025-02-02论文阅读周报</div></div></a></div><div><a href="/2025/02/06/2025-02-03-2025-02-09%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E5%91%A8%E6%8A%A5/" title="2025-02-03-2025-02-09论文阅读周报"><img class="cover" src="https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-06</div><div class="title">2025-02-03-2025-02-09论文阅读周报</div></div></a></div><div><a href="/2025/04/07/2025-04-07-2025-04-13%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E5%91%A8%E6%8A%A5/" title="2025-04-07-2025-04-13论文阅读周报"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2F06212a062d0da00d93e03824ed971d2f5630c3b0.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1673181885&t=1278ca088220515681ecb633cb8819b0" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-07</div><div class="title">2025-04-07-2025-04-13论文阅读周报</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic1.imgdb.cn/item/646c2881e03e90d874adf7fc.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Torch</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">93</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">60</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/funnytorch"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/funnytorch" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:torch2147483647@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog<div class="xpand" style="height:200px;"><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas></div></div><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
+margin: 0;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+canvas {
+display: block;
+margin: 0 auto;
+cursor: move;
+}</style></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%AF%8D%E6%B3%95-%E6%96%87%E6%9C%AC%E5%B1%82%E9%9D%A2%E7%9A%84%E6%B7%B7%E6%B7%86%E6%9C%80%E8%A1%A8%E5%B1%82%E7%9A%84%E9%82%A3%E4%B8%80%E5%B1%82"><span class="toc-number">1.</span> <span class="toc-text">一、词法 &#x2F;
+文本层面的混淆（最表层的那一层）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6%E6%94%B9%E5%90%8Didentifier-renaming"><span class="toc-number">1.1.</span> <span class="toc-text">1. 标识符改名（Identifier
+Renaming）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E6%8E%89%E6%A0%BC%E5%BC%8F-%E5%8E%8B%E7%BC%A9minification"><span class="toc-number">1.2.</span> <span class="toc-text">2. 去掉格式 &#x2F;
+压缩（Minification）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%BA%A7%E4%BC%AA%E8%A3%85unicode-%E5%90%8C%E5%BD%A2%E5%AD%97-%E7%9C%8B%E4%B8%8D%E8%A7%81%E5%AD%97%E7%AC%A6"><span class="toc-number">1.3.</span> <span class="toc-text">3. 字符级伪装（Unicode &#x2F;
+同形字 &#x2F; 看不见字符）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%AD%97%E7%AC%A6%E4%B8%B2-%E6%95%B0%E6%8D%AE%E5%B1%82%E6%B7%B7%E6%B7%86%E5%9C%A8%E6%81%B6%E6%84%8F%E5%8C%85%E9%A2%86%E5%9F%9F%E9%9D%9E%E5%B8%B8%E5%B8%B8%E8%A7%81"><span class="toc-number">2.</span> <span class="toc-text">二、字符串 &#x2F;
+数据层混淆（在恶意包领域非常常见）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BC%96%E7%A0%81base64-hex-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BC%96%E7%A0%81"><span class="toc-number">2.1.</span> <span class="toc-text">1. 字符串编码（Base64 &#x2F; Hex &#x2F;
+自定义编码）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%86%E5%88%86-%E6%8B%BC%E6%8E%A5"><span class="toc-number">2.2.</span> <span class="toc-text">2. 字符串拆分 &#x2F; 拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E8%A7%A3%E5%AF%86%E5%AD%97%E7%AC%A6%E4%B8%B2string-encryption"><span class="toc-number">2.3.</span> <span class="toc-text">3. 运行时解密字符串（String
+Encryption）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%AA%E8%A3%85%E7%94%A8%E6%95%B0%E7%BB%84%E5%AD%97%E5%85%B8%E8%97%8F%E4%BB%A3%E7%A0%81"><span class="toc-number">2.4.</span> <span class="toc-text">4.
+数据结构伪装（用数组&#x2F;字典藏代码）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E6%8E%A7%E5%88%B6%E6%B5%81-%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84%E6%B7%B7%E6%B7%86%E8%AE%A9%E7%A8%8B%E5%BA%8F%E7%9C%8B%E8%B5%B7%E6%9D%A5%E4%B8%8D%E8%B5%B0%E7%9B%B4%E7%BA%BF"><span class="toc-number">3.</span> <span class="toc-text">三、控制流 &#x2F;
+语法结构混淆（让程序“看起来不走直线”）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81%E5%B9%B3%E5%9D%A6%E5%8C%96control-flow-flattening"><span class="toc-number">3.1.</span> <span class="toc-text">1.
+控制流平坦化（Control-Flow Flattening）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E9%80%A0%E5%88%86%E6%94%AFopaque-predicates-bogus-control-flow"><span class="toc-number">3.2.</span> <span class="toc-text">2.
+伪造分支（Opaque Predicates &#x2F; Bogus Control Flow）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E7%BB%93%E6%9E%84%E5%8F%98%E6%8D%A2"><span class="toc-number">3.3.</span> <span class="toc-text">3. 循环和函数的结构变换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%8A%A8%E6%80%81%E7%89%B9%E6%80%A7%E4%B8%8E%E8%87%AA%E4%BF%AE%E6%94%B9eval-%E5%8F%8D%E5%B0%84-%E5%8A%A8%E6%80%81%E5%AF%BC%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text">四、动态特性与自修改：eval
+&#x2F; 反射 &#x2F; 动态导入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%89%A7%E8%A1%8Ceval-exec-function-new-function"><span class="toc-number">4.1.</span> <span class="toc-text">1.
+动态执行：eval &#x2F; exec &#x2F; Function
+&#x2F; new Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%8A%A8%E6%80%81%E5%AF%BC%E5%85%A5reflection-dynamic-import"><span class="toc-number">4.2.</span> <span class="toc-text">2.
+反射与动态导入（Reflection &#x2F; Dynamic Import）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E4%BF%AE%E6%94%B9%E4%BB%A3%E7%A0%81self-modifying-code"><span class="toc-number">4.3.</span> <span class="toc-text">3. 自修改代码（Self-Modifying
+Code）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%8C%85%E7%BA%A7%E7%BB%93%E6%9E%84%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E4%B8%8A%E7%9A%84%E6%B7%B7%E6%B7%86%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E5%B1%82%E5%8C%85%E8%A3%85"><span class="toc-number">5.</span> <span class="toc-text">五、包级结构与加载流程上的混淆（恶意软件“分层包装”）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%98%B6%E6%AE%B5%E5%8A%A0%E8%BD%BDstaged-payload"><span class="toc-number">5.1.</span> <span class="toc-text">1. 多阶段加载（Staged Payload）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%9F%E5%A3%B3-%E4%BE%9D%E9%99%84%E6%AD%A3%E5%B8%B8%E5%BA%93piggybacking"><span class="toc-number">5.2.</span> <span class="toc-text">2. 借壳 &#x2F;
+依附正常库（Piggybacking）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%8C%96%E9%85%8D%E7%BD%AE%E5%8C%96%E6%81%B6%E6%84%8F%E9%80%BB%E8%BE%91"><span class="toc-number">5.3.</span> <span class="toc-text">3. 资源化&#x2F;配置化恶意逻辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E5%AF%B9%E6%8A%97%E5%88%86%E6%9E%90-%E5%AF%B9%E6%8A%97%E6%A3%80%E6%B5%8B%E7%9B%B8%E5%85%B3%E5%92%8C%E6%B7%B7%E6%B7%86%E9%AB%98%E5%BA%A6%E8%80%A6%E5%90%88%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="toc-number">6.</span> <span class="toc-text">六、对抗分析 &#x2F;
+对抗检测相关（和混淆高度耦合的技巧）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%A3%80%E6%B5%8Banti-sandbox-anti-debug"><span class="toc-number">6.1.</span> <span class="toc-text">1. 环境检测（Anti-Sandbox &#x2F;
+Anti-Debug）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E7%89%B9%E5%BE%81%E7%9A%84%E5%AF%B9%E6%8A%97%E6%80%A7%E4%BF%AE%E6%94%B9adversarial-obfuscation"><span class="toc-number">6.2.</span> <span class="toc-text">2.
+针对特征的对抗性修改（Adversarial Obfuscation）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E5%92%8C%E4%BD%A0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%86%99%E4%BD%9C%E6%80%8E%E4%B9%88%E5%AF%B9%E9%BD%90"><span class="toc-number">7.</span> <span class="toc-text">七、和你的研究&#x2F;写作怎么对齐</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/28/%E5%B8%B8%E8%A7%81%E6%B7%B7%E6%B7%86%E6%8A%80%E6%9C%AF/" title="常见混淆技术"><img src="https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="常见混淆技术"/></a><div class="content"><a class="title" href="/2025/11/28/%E5%B8%B8%E8%A7%81%E6%B7%B7%E6%B7%86%E6%8A%80%E6%9C%AF/" title="常见混淆技术">常见混淆技术</a><time datetime="2025-11-28T09:27:11.000Z" title="发表于 2025-11-28 17:27:11">2025-11-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/06/%E5%B8%B8%E7%94%A8prompt/" title="常用prompt"><img src="https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="常用prompt"/></a><div class="content"><a class="title" href="/2025/11/06/%E5%B8%B8%E7%94%A8prompt/" title="常用prompt">常用prompt</a><time datetime="2025-11-06T12:18:04.000Z" title="发表于 2025-11-06 20:18:04">2025-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/17/%E5%9B%9E%E6%BA%AF%E6%97%B6%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB/" title="回溯时状态转移"><img src="https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="回溯时状态转移"/></a><div class="content"><a class="title" href="/2025/10/17/%E5%9B%9E%E6%BA%AF%E6%97%B6%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB/" title="回溯时状态转移">回溯时状态转移</a><time datetime="2025-10-17T14:32:44.000Z" title="发表于 2025-10-17 22:32:44">2025-10-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/16/Java%E5%B8%B8%E8%A7%81%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/" title="Java常见语法知识"><img src="https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java常见语法知识"/></a><div class="content"><a class="title" href="/2025/10/16/Java%E5%B8%B8%E8%A7%81%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/" title="Java常见语法知识">Java常见语法知识</a><time datetime="2025-10-16T02:45:20.000Z" title="发表于 2025-10-16 10:45:20">2025-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/13/Java%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/" title="Java引用传递"><img src="https://pic.imgdb.cn/item/65d6d87d9f345e8d03134f04.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java引用传递"/></a><div class="content"><a class="title" href="/2025/10/13/Java%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/" title="Java引用传递">Java引用传递</a><time datetime="2025-10-13T13:18:12.000Z" title="发表于 2025-10-13 21:18:12">2025-10-13</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/about/">关于作者</a><a href="/comments/">留点什么</a></li><li><a href="/categories/">文章分类</a><a href="/tags/">文章标签</a></li><li><a href="/archives/">文章归档</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"></div></div></div><div class="copyright"><span><b>&copy;2020 - 2025</b></span><span><b>&nbsp;&nbsp;By Torch</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="https://img.shields.io/badge/Frame-Hexo-blue?logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="https://img.shields.io/badge/Theme-Butterfly-purple?logo=bitcoin" alt=""/></a><a class="github-badge" target="_blank" href="https://icp.gov.moe/?keyword=20226665" style="margin-inline:5px" title="本站已加入萌ICP豪华套餐，萌ICP备20226665号"><img src="https://sourcebucket.s3.ladydaily.com/badge/萌ICP备-20226665-fe1384.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://cn.aliyun.com/" style="margin-inline:5px" title="本网站大部分图片在阿里云对象存储"><img src="https://img.shields.io/badge/Bucket-%E9%98%BF%E9%87%8C%E4%BA%91-orange?logo=academia" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本网站源码由Github提供存储仓库"><img src="https://img.shields.io/badge/Source-Github-black?logo=github" alt=""/></a><a class="github-badge" target="_blank" href="https://icp.gov.moe/?keyword=20240421" style="margin-inline:5px" title="本站已加入萌ICP豪华套餐，萌ICP备20240421号"><img src="https://img.shields.io/badge/%E8%90%8CICP%E5%A4%87-20240421-F2218A?logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAABHOSURBVHic7ZtpmFTF1cd%2FdXuf6VmYnhlAdiQsGkEWAQEVNb4KGsW8btGAxo1FFAIuBAyLa1BQUFGRqCB5RY3mSWIUI0beyCaLgKjI4gayjszWPT3T6618OLfn9gzTyMCgXzzP00%2FfW1Vd95z%2FPVudqoaf6Cf6iX4M0lo79P%2Fvv09vLL1fa%2B34sfhw%2FtAP1Fo7uHf1dJo9kk9F6U2goUXLfP3g2kom952mlEr%2BkPyoH%2BIhWmtlzv9slvHEyuZs%2FdLA5R5GtseHw5ABCRPC0RoS8b%2BZvbuYxvhBB%2FlN5zuVUvpE83bCANBaK5bufdR8%2FINWxrJPweBi%2FJ4cXA5QKjXI4iLtPpaAUDQEjre4rCdMHLSPs4pPGBhNDoD%2BtPI%2Bc87KLsaijyBecxHZ7ly8LutpSoQ0NVTHIJqQdq8LfC4wlD1GA5E4VEeD%2BHLe4Za%2BmOPP2u3o6L2rKfltMgCS01fPMOatPoXvDg7G6ys8XCANkQRUR9HZOaiRA9B3D0JVJ9AzP0C9sBbi1ZDtITNgkUratllmjh2w1XF3n2lNwfdxAaBf%2BHwqT67qwaYd4HSdhd9ThMM4XKWrYqANuKIPjD8TPbAYhbzkdAb0u3tRc1fD25vBQMBw1zOZRBKqYt%2BRTKzQA09F3T7wY3XNyfcdqwyNBkC%2Ft28cc1cP5s2PQDEAv6cYt%2FNwJqvjEI9D%2F1Pg9n5wbRdb4J1hmLsG5q0Evxs9eiBq3JnQyi1TAOpPW%2BHJ1bBlJ7jdkOXmMHCjCaiKlIBztb66L%2BqO%2Fh%2BpgcUPNDkA%2BovqsfrxlReoBWshFu5JlqcNXpf8Ol1Na2IQiUKrVujb%2B6PG9wWPNUkUmLse5q6CfQfAcECXIthZKqYSi8HJbWD8IPTYHrXM6QoNj61GzVsNZYfA5xV%2FoeqZV00camIHycldy%2BgB%2F1aPDH7iuAHQL24dw6R3hnLwwGl4PW3xuTM5KvBmw0390BPOgo5eW8Vf3oF%2BfBVqwzZwWW9SKaioAv1HGPZ%2FsHQH5LghnoRwDJIJOOc09PgBqGEdhBeAT4Lw2ErU4vWQjEK2uwF%2FYUJ17FuisS20bQNP%2FHKpGtZ%2B3rEBkDvzGczqUXhch9t1OAamQl%2FaEzV%2BAJzb0mZ05UHUnDXwxkZQSfC7wW3lXKVhwICnfwmj%2B0FlBNo8AqFqyMsGlyNNvaNguOG6vjC%2BP%2FQqqDUj%2Fc%2FdqLmr4L0t4HAIGPVDbHUU2rWer7aNHHVsADD5GQJZo2rRDUUgFkP37Iy6YyD6hq61E%2BhdNai5a2HBGqgKQpYHvE5bVQEOheG7yVCY3fADT5kL%2B4IiSEqIWvWOQkEARg9EjzsDVeSyAX96C%2BrJNbDtK%2FB6BQylRBvCzFfRPzQeAP1F9V10um8iAX9zAEIR9F1DUJMGoP21CMGcjahp70HoIHiyRcWNNKHTKZqAkwtg09jD%2B55dB6P%2FAQFfw7%2FVGpKmhMNYHN2tPWrcIPTIn9svoSSBmr4cFq4UPgBKQ%2FMVMzMCYGTqYHtJezCa1779uAP1wADwg3r9S9SgxSjjHtSEl2DDjXBZLzAzzibkccLm%2FTBlWd32kjCMfiWz8CDtTgfkeMHnRX2%2BG8YsQanfw4WvwNI9UOxEP32BaEvqN3C53lw2qfEAfFMOTosZU0OLPAD0W7vgyqdgw07pCxRB50J449fQKhdiSYibdppbnxwGdGxWt604G3BlZAWQ9UJ5DZSGYEhnKJkifAX8sGobDH0UtlSINrj9aWm2o9j8urxtowEwvw2CYXUnTWhdIPPtqQS80LcNfD0JDk2xBfv6TqiaJgIlMwCgEB%2Fw0iZwT4URr4tpeLxHFr6FH16%2BCuZcCm9cC0XZQAwqo1Yk8Fu8AYU5Ak6Kr92VGafOuBw29lWBI00Dii3HdaAKnE74aF%2FD6jr5XfiqHAp8DU%2Bc74MrXpZrvwde%2FxQWb4RAdmb1dyjYfgiuOq1uu54Fs1bAve%2BBQ6H3BiVCtMhGfWEJbSiM76oyiXkEEyivEmcGYGp0sQikS6rAaYDHAe0byEAfXg55nsPb0ynfJx%2BnIR670J9ZeJA%2BtwOufe3wvlyvvCBDoUrCMrwwRyIAiAyHqjNOnRmAYMRmytSoPAFAVVRLu8Ogjt2W1cj30G7iA5qa4kkY1q1u221vwsjXIc8rglZEpD3HYztkBQQTGafNXBGqTthBUgM%2BK6xUJW3YDDes%2FAb%2BdwmUlMKlp8PBKtt5NiVpoFMAHlslWjPyDPj0APgt01Sqdnmt%2FU5UWq3BrM5sApkBqF%2BYSgkVT3NuBT4453lJYwPN4P2vZJzzBJT4AlnQ52nxB4k4rP0WdlWAK02JLd5UepsCzMyKnhmAw16ibrg93dl5T3CJMZBlseKFVz8RP%2BSoJyygta7HZuYyY2aOnfUmjlvXblWLxY9GSkFWvbxBa3CltDS9HXBlzjEyA%2BB32YIqhQ7XCKq5bjvJCEUlR8hvIOTFkhCsgYJsO5rUp0hC6gam9YZSixp3AyYUikI0mkEKl5iGT6KPCkbtZ2qN4c%2FKKGZmAPJ8djKhQJXJw3WBH2VqYejus%2BC05nD1q7Z6poTvWADv3witZtr1vhSZGspCMOhkGNsferWEhIb1e2DmCth6oG5eEIrCXWfB%2Fb9omNclH8O1f4YCAUBX1KBqIxiQm9knZQTALM7CSM%2BmSsSTqpZZIkA8Ab%2FtDR2awfDXRRNS9hiKwtRzoZkPep8EHx%2BQdQBIfC4Lw39Gwtkd6j60WxGM6AmLN8GIVyCQa3n3JAxuL2O%2BrbQSNEvALJcV%2FjScJOk6B9NzGBMKcxsPAK2biVAgk%2B0JAqBb5aGSGjChtfXAG3vDix9JZqc16CRcfor0dSyQrNGD9JWFYOtE6FYMH%2B%2BH6%2F4Cn%2B0Vgfq1h79eB8N7SoIzbBEEcmSeqGUmbe9D8o80jXK5ADe0E0HVgZCdxSY1tPOTiTLHh%2Fb5dj7vMGB3qVx3LbZs1mGHoFF9IRKT60gCLk5LWH4WkFwepDg64RwR%2Fp0dcPos2F0hbzqQA58ehFYzYMchuKwbDD1F5ksntx8KciTfT31yPfJCfhYQt1VeKesYDZhmjPZFkUYDYHQtimAmRSpDQVg0QHUvAJKy8gMIRqF7C8jxicaEYzCmnz1R5yJbk6IRmD1Uroc8DwUFYhqpoonPBXl50PMpGfPoRRCu5%2FjiSfExsYT9SZqAC1q4Ufvj2GFAA%2BafOaf57xsNAL0LJoNejNa2M9pcJtrnzJGsDODOpfJ9Ux8IxwEThnYRO%2F6qDLoWih0mTGhhLYOf3wDK1XB0cDmklLXiGzilWMBOj7udC6WocnJAPp0Lpb2d1G30xn2grNKYBnDFlVIZwscRAFBKRcnKj9dGAqcTvXq3XPdoDe0s%2B3%2F1E6nd3d4fYlVwRXdpX7BBlqFdCgUUU0NLy54%2F%2F84uezXIlRO%2BsEwuL6cuANvGw%2BaxsPE2%2BawfA%2BV%2FEDAAtXqXPXcyCe1bZH4O37c73LsVbPpKfIDbgVr%2BNYw5HQZ3AI9l88EgPL1OQiJuuOUMaV%2BxFXb1kbEgPqva%2Bk0gyw6xDZFpygIHoLKGOg5vzmrxPSmtdDvg7e1w%2Balyv%2FwbyRBBTOXMtvDNMQJgnt8RY%2B1OKTh4HPCuVQUa2hl2fGuN0rBgvQBwaz%2F4n07w1nbAYb%2FFolxZIW4%2FKPfX9oDJ%2FwTtOXwZrDUQg1%2BdKkkSybps%2Fu7vYKSZjwaSYXjuGqkYr9kJBRZ40USUc9tXsySzjJl9AGBc3LWSWCyM1uJVg4dgfwLOOwkGdIIDIcAFXxyEsmqYP0x%2B%2BOw6UF7Y9p3cnxwQR2U44bVPoF0%2BXNVbSuTppTOtoTQIM4bI%2FawVsiuUTm6vXU%2FI90nJvWUbKHSg1pYCCQFHazBjL3PLafccUcYjddInMAXcS2odocsjpSyA7gEJWxjS%2Fsw6%2B3f%2F%2FEwY23FI7js2EyeY54Ub3pC2V6%2BBEb2gtELK5YfCcn3vBTD1PAl%2F05ZJbpFOsRqpPZRVy6cyCMP7SN%2BfN4HXAixpQl5hQikV5wh0RBNQSiX1kNdMPvhM6gFZLpi%2FFu6x7HxHqSyaslxiBlMGw5vbZFqXIf0gjjCVKRoKOj8GOybAoitEa5bukPGXdLUfftIfITfLVvVUYrPwGmsDxBoXScBl3UX9F66XUJpqH94PFhxJwqM5InNz73KWbqrC5%2FbjdMDXe%2BDrKHTwwKZ9AoDTgL0hmPQvWLIF8r2iMRGrFNU6z3bkPhfsC0HWdHj%2Bcvh1DztrBJj3IYx9UzLB1KLIoSSJAri%2BV4NsqhUlsiETsCrCkUiYm3uVfx8A31u60VobqKkLKHDfiGFIYnJlP1g0FP3UFtTtr0hNT2txWh6nvZROmlIjqIiIlqQ7vKQpFV0zBs1yxElWhcHpFuHTcwStJeFqnQuxtHJbSQj%2BfisMaYM%2Bfwlq7XbR1EQStPtFKu65WSl1xPrckX0AoJQyuWngIcLRECAPeGmV9I3tLpuiyaQIl%2B2uW0dwGKKK9YVP9RX4JA0GMYFArji2%2BgmSUpLultdIphmOQUW1ZJJD2kBJAvX%2Bx%2FZGaVWsigmDD32f8EcFAAB%2FunAS0egbEg2UhMSx70vfC1dDeT1vXl%2FQ76v4OoyjG%2Bd0CMAOBeFqeP066bvlTdmLTO1iJZJvMLXfEb1%2Fio4KAKWU5tyeJURiogV%2BD8x7F0LArztBtw72eZ8fgqpjcF5PGFQshy3%2BsSataBsJMWJQydEeqjrq8q3WWqHuXkggb4Q4uBi6WzvUut%2BigxqVNwUKsuzdpBNFSRMqEmhzujDf%2FkkoL5ftd62hNLwY%2FdD1RwvAUXOrlNLmVYN2EYqWAeBxodZvR7%2BwDZWr0K%2FeBGXBzKbQFKQ1lAdh1VgRfvoa2L3fPntQURM0J160qzFH6hpdwNfc%2BxIFnuEYhlXaCqMPzIDmLtTED%2BCxt2VtfyR7PhbSGkor0HOHo%2B7oDlsqocdDdtUokYSo8ZaqufeSxkzbeH39y43fUBasrHWIeV5Up1nSN%2Fts9PWDZAe3KTXBEp7JvxLhI0CP2RI%2BU46vIlhpLh%2F1RWOnbjQA6sqOU7m0%2F4tU1lQA4HKCjqJazZH%2BhZfAhKFQWmnvzx0PJU0R%2FrHfwINnyo5X8cOQ65TIIXZfwdghCx39C8c3Wp5j5Uu3fHwOoYrr8brzASli5DeDvRYPr30JVz8vESNV9WnUA6yjMdVJWD4WBjeHKOjih1FmzI75oWgFXVovUltubbTwcLwHJZ0z5pDFDbidUh2piQFu2HkXtHRBhQl958POXdDMX3cXJ%2BOk1lGYiio4oxt8eIPo6WchOG0W5DhspxeJVuLOXqTK7hl3rDIcV8xSiWnjCSYWEUvIZrzPDc4EnDQVFmyFfAN2jEYvvAFCVjk8kWzYP6QOWJaG0QkH%2Bm9jYN0NaAN4aD38%2FAHId9YVPul56XiEhyY6K6y99z2II3krXlehnM6S8rfu3Rm1%2FEawKmHM2QxT34FQpRyD9bgAbZ81LCpCz7wYfmudPtsThfNegJ27ZZGTcnjhSCnZOc%2Bp0nsmHy%2FvTRardIcnHmTX%2FpE0yw7UMhpNQFUNjLoAnjlfxgEs24uauwbe2gw40Ff2gt8NgDOLhKkw6JvfRL2yEnKyLKCwHF5VKb1%2BNl9tvGlKU%2FDdpME6OfztB4zFy0fRLCeAI%2B2sX1VUNjZGDETffz6qbcMnSPTnIbj336i%2Ffij7fKlTpSDmUREMMvHSp9Tss5tEeGhiAAD0vw88wJD5XUnGLiDfl1v35GYMaqLoTm1RY%2Fqhb%2BkNNUnUcxvg2Q9hz37ISjsLDBJKy2uC5OYs4z9jdqvT8yY0Jb8n4CiH9ReZce%2FPNp5Y1hqP60L8nrpAxK3T5AlrAeVyytt2GnUPQIeiQeLmv5j%2Byz1M6z%2FxRPxr5IQAkCKttWLE27NZvOIknI6h%2BD05hx15h7r3SROCkRCmepvbBu%2FnqV9MOJH%2FHTqhAKRIa63MGR%2FONh7%2FoAWVpZfg9ebgc9Y9h1gTh2ikhubN%2F85d5%2B5nYq8T8sbr0w8CQIq01op1h2abz28oMl752CBYdjGYb1HY0uTa0zFv7VNpnJo77of%2B69yPQlprh%2F6yatKP%2BafJn%2Bgn%2Bon4L4cd%2F2hQhc%2BBAAAAAElFTkSuQmCC" alt=""/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script async src="/js/title.js"></script><script defer src="/js/runtime.js"></script><script src="/js/sun_moon.js" async></script><script async src="/js/fps.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/fireworks.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '0671ba19028145b2a6a05408f0b01332';
+  var gaud_map_key = 'b5a4cd020508da8ff9992038833bd1ba';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.982279,28.19409';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>
